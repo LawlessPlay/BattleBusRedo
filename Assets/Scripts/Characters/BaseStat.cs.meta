@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 356115b06b664ba49aab9eb6943cc7e4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Scripts/Characters/BaseStat.cs
+  uploadId: 617594

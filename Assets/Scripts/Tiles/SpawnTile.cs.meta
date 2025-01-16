@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 5aa1514bd3712ed499f4fcaa7cd183b4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Scripts/Tiles/SpawnTile.cs
+  uploadId: 617594

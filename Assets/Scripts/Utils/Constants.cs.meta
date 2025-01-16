@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2874f4a1e0ed253408c06fe6cbec3770
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Scripts/Utils/Constants.cs
+  uploadId: 617594

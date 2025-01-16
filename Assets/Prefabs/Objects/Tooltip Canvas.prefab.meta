@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e8833d6a09864194a9baa078f84d80d5
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Prefabs/Tooltip Canvas.prefab
+  uploadId: 617594

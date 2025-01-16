@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e8c4d6d25ba27244295884d5163d724d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Scripts/Simple/StatReader.cs
+  uploadId: 617594

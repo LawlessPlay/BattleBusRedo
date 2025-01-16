@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 264c10bc96d27944ca99a6a34e0d9c26
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Scripts/Managers/GamepadInputController.cs
+  uploadId: 617594

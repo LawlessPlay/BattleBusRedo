@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 55c1f8cbc6c36234fbc04c1edc937bb9
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Prefabs/Button.prefab
+  uploadId: 617594

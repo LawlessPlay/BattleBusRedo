@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b86a2d0e1eba17d448033ca1c138e005
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Scripts/Scriptable Objects/Events/GameEventGameObjectListListener.cs
+  uploadId: 617594

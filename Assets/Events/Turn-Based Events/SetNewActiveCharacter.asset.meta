@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c4e0d453d72137543842d48f73e3a632
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Events/Turn-Based Events/SetNewActiveCharacter.asset
+  uploadId: 617594

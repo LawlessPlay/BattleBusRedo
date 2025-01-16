@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2c0c65eeb048b0e4c809a58a417f2376
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/ScriptableObjects/Abilities/Ability.asset
+  uploadId: 617594

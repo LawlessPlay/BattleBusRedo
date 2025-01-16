@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 73dd5bff1e6c0694da8fc573c3cf5d94
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Prefabs/Final Scene Prefabs/Seperate
+    Components/EnemyContainer.prefab
+  uploadId: 617594

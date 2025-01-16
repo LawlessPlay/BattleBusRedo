@@ -1,0 +1,332 @@
+fileFormatVersion: 2
+guid: 4cf9c7ffd8f4f5b45b6b35145231d05a
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 9
+  spritePivot: {x: 0.5076701, y: 0.24797256}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 24, y: 26, z: 45, w: 53}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BlueGuy1_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 27
+        width: 55
+        height: 46
+      alignment: 9
+      pivot: {x: 0.65, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8d9ae721a40ab44fb7d75d8633f9e70
+      internalID: -2127070665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueGuy1_1
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 27
+        width: 54
+        height: 45
+      alignment: 9
+      pivot: {x: 0.65, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef002441c1ef9044fac8aae67bf1b24e
+      internalID: -1667966642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueGuy1_2
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 27
+        width: 52
+        height: 44
+      alignment: 9
+      pivot: {x: 0.65, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93afe27615b40b348bbe2fc7fa958530
+      internalID: 150401219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueGuy1_3
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 27
+        width: 52
+        height: 43
+      alignment: 9
+      pivot: {x: 0.65, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ca6dbe008cf8534b8da26559a0831dc
+      internalID: 929008010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueGuy1_4
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 27
+        width: 56
+        height: 42
+      alignment: 9
+      pivot: {x: 0.65, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65c4e45def4722743a3ed76f57fd1777
+      internalID: 511111762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueGuy1_5
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 27
+        width: 56
+        height: 42
+      alignment: 9
+      pivot: {x: 0.65, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be61901d9f387c943b0074e66a92af32
+      internalID: -1203841169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueGuy1_6
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 27
+        width: 52
+        height: 43
+      alignment: 9
+      pivot: {x: 0.65, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 801666677ea006e408235fb110ff0cd3
+      internalID: -1131197722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueGuy1_7
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 27
+        width: 52
+        height: 44
+      alignment: 9
+      pivot: {x: 0.65, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4f4e455f1ed6c24d89a94d69d08f12a
+      internalID: 2093321341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueGuy1_8
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 27
+        width: 54
+        height: 45
+      alignment: 9
+      pivot: {x: 0.65, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2482f2e27389b1e4bbe450cb7bf4c22e
+      internalID: 1211672253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueGuy1_9
+      rect:
+        serializedVersion: 2
+        x: 1178
+        y: 27
+        width: 55
+        height: 46
+      alignment: 9
+      pivot: {x: 0.65, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9acf2dad6cc23b54190539d584ee40fa
+      internalID: -771476442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: eddf655468d765d49a40009b28f7f96a
+    internalID: -1146761129
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BlueGuy1_0: -2127070665
+      BlueGuy1_1: -1667966642
+      BlueGuy1_2: 150401219
+      BlueGuy1_3: 929008010
+      BlueGuy1_4: 511111762
+      BlueGuy1_5: -1203841169
+      BlueGuy1_6: -1131197722
+      BlueGuy1_7: 2093321341
+      BlueGuy1_8: 1211672253
+      BlueGuy1_9: -771476442
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

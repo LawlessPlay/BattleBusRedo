@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a7d7161c88df79045ace4bd544237192
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/ScriptableObjects/Tiles/TileList.asset
+  uploadId: 617594

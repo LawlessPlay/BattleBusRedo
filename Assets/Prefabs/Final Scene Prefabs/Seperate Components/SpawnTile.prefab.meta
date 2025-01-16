@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cf6454ad22700ea43861ebe47b829fdd
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Prefabs/Final Scene Prefabs/Seperate
+    Components/SpawnTile.prefab
+  uploadId: 617594

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f42217bcb25120c43bfb3ebfe514739c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/ScriptableObjects/Tiles/TileDatas/MudTile.asset
+  uploadId: 617594

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f30cbe7258a912d48a84b0dca1125752
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Abilities/Shapes/BasicAbility.txt
+  uploadId: 617594

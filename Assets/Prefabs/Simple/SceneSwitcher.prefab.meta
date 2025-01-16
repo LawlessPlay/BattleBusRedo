@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1504cda8e84102e45bee422323f020af
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Prefabs/Simple/SceneSwitcher.prefab
+  uploadId: 617594

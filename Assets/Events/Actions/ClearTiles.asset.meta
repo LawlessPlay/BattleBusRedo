@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d1f0c121d77952040a4ecf7bf0747937
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Events/Actions/ClearTiles.asset
+  uploadId: 617594

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ed9f91a02dbbad64cb0bdee60fa7f2f0
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Prefabs/Final Scene Prefabs/Seperate
+    Components/TurnOrderDisplay 1.prefab
+  uploadId: 617594

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 3b920242333a3084489ec4e5d2dc108c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Scripts/Scriptable Objects/Tiles/TileData.cs
+  uploadId: 617594

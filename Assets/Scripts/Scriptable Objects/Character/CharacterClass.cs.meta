@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 260aa8b1e92131440831a2a5e29e8622
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Scripts/Scriptable Objects/Character/CharacterClass.cs
+  uploadId: 617594

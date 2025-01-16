@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: b72ba1df3b47ca64bbb7221c5d2f1ea2
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/ScriptableObjects/Tiles/TileDatas/3d
+    TileDatas/LavaTile3D.asset
+  uploadId: 617594

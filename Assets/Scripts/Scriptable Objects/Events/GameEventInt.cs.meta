@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 7ef35e70d100f3b4aba3ab6c36364106
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Scripts/Scriptable Objects/Events/GameEventInt.cs
+  uploadId: 617594

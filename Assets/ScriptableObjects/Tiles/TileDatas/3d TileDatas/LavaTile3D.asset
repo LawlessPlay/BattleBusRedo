@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b920242333a3084489ec4e5d2dc108c, type: 3}
+  m_Name: LavaTile3D
+  m_EditorClassIdentifier: 
+  baseTiles: []
+  hasTooltip: 1
+  tooltipName: Lava
+  tooltipDescription: When a character stands on this tile, they will receive burn
+    damage at the beginning of each of their next three turns.
+  type: 0
+  MoveCost: 1
+  effect: {fileID: 11400000, guid: 28ba77fd5b6a94d48845cb79e74d02e8, type: 2}
+  Tiles3D:
+  - {fileID: 2100000, guid: 626b69a36ddc23247a936504c2d06e75, type: 2}

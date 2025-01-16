@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 83ba67e24d11a4240b756634bc10dc09
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/ScriptableObjects/Tiles/TileDatas/NonTraversableTiles.asset
+  uploadId: 617594

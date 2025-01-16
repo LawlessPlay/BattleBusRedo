@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 19dc8ee0bf78f204bb2a17945a9196ae
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Events/Simple/IncreaseExp.asset
+  uploadId: 617594
