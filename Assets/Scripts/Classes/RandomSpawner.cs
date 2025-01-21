@@ -13,16 +13,6 @@ public class RandomSpawner : MonoBehaviour
 
 
     public bool hasSpawned = false;
-    void Start()
-    {
-        if (prefabsToSpawn == null || prefabsToSpawn.Count == 0)
-        {
-            Debug.LogError("No prefabs assigned to spawn! Please assign at least one prefab.");
-            return;
-        }
-
-        //SpawnObjects();
-    }
 
     private void Update()
     {
@@ -32,6 +22,9 @@ public class RandomSpawner : MonoBehaviour
         if (hasSpawned)
             return;
 
+        if (prefabsToSpawn.Count <= 0)
+            return;
+        
         SpawnObjects();
     }
 

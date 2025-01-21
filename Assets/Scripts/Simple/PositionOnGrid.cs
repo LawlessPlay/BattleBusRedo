@@ -5,8 +5,13 @@ namespace TacticsToolkit
     //On start up, link a character to the closest tile.
     public class PositionOnGrid : MonoBehaviour
     {
-        // Start is called before the first frame update
         void Start()
+        {
+            PositionEntityOnGrid();
+        }
+        
+        // Start is called before the first frame update
+        public void PositionEntityOnGrid()
         {
             var closestTile = MapManager.Instance.GetOverlayByTransform(transform.position);
             

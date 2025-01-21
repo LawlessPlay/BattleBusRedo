@@ -118,6 +118,7 @@ namespace TacticsToolkit
                 }
 
                 enemy.position = map[new Vector2Int(newX, newY)].transform.position;
+                enemy.GetComponent<PositionOnGrid>().PositionEntityOnGrid();
                 enemy.GetComponent<Entity>().LinkCharacterToTile(map[new Vector2Int(newX, newY)]);
             }
         }

@@ -30,10 +30,6 @@ namespace TacticsToolkit
             //SetMap();
         }
 
-        public void Start()
-        {
-        }
-
         public virtual void SetMap()
         {
             if (tileTypeList)
@@ -155,9 +151,12 @@ namespace TacticsToolkit
         //Get a tile by world position. 
         public virtual OverlayTile GetOverlayByTransform(Vector3 position)
         {
-            var gridLocation = tilemap.WorldToCell(position);
-            if (map.ContainsKey(new Vector2Int(gridLocation.x, gridLocation.y)))
-                return map[new Vector2Int(gridLocation.x, gridLocation.y)];
+            if (map != null)
+            {
+                var gridLocation = tilemap.WorldToCell(position);
+                if (map.ContainsKey(new Vector2Int(gridLocation.x, gridLocation.y)))
+                    return map[new Vector2Int(gridLocation.x, gridLocation.y)];
+            }
 
             return null;
         }

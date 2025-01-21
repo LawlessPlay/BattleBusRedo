@@ -148,9 +148,24 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 4497780830634353512, guid: 94912624c52864e4e833d8cbca8aec94,
         type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497780830634353512, guid: 94912624c52864e4e833d8cbca8aec94,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497780830634353512, guid: 94912624c52864e4e833d8cbca8aec94,
+        type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4497780830634353512, guid: 94912624c52864e4e833d8cbca8aec94,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 464d7c4bd6061d642b5245c80c6a0fe6, type: 2}
     - target: {fileID: 5327592089550427355, guid: 94912624c52864e4e833d8cbca8aec94,
         type: 3}
       propertyPath: m_Name

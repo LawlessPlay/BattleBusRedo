@@ -46,7 +46,6 @@ public class CharacterTurnManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && actionQueue.Count > 0)
         {
-            overlayManager.ClearTiles();
             lineRenderer.positionCount = 0;
             isActive = true;
             actionQueue[0].StartAction();
@@ -61,6 +60,10 @@ public class CharacterTurnManager : MonoBehaviour
         if (actionQueue != null)
         {
             var inProgressAction = actionQueue.FirstOrDefault(x => x.State == Action.ActionState.InProgress && x.Type == Action.ActionType.Move);
+            
+            if(inProgressAction != null)
+                overlayManager.ClearTiles();
+            
             inProgressAction?.DoAction();
         }
     }
@@ -84,7 +87,7 @@ public class CharacterTurnManager : MonoBehaviour
 
     public void StartTurn()
     {
-        //overlayManager.ShowTotalOverlay();
+        overlayManager.ShowTotalOverlay();
         activeCharacter.SetRenderers(lineRenderer, overlayManager);
         
         actionQueue = activeCharacter.StartTurn();

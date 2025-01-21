@@ -34,7 +34,7 @@ namespace TacticsToolkit
                     if (characters.Count > 0)
                     {
                         newCharacter = Instantiate(characters[0]).GetComponent<CharacterManager>();
-
+                        
                         if (spawnCharacter)
                             spawnCharacter.Raise(newCharacter.gameObject);
 

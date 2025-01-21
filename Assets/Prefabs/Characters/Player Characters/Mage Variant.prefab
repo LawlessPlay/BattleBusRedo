@@ -36,9 +36,19 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 5474088384401538651, guid: 4b0c966d053fd2f429fb0a1d15877780,
         type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5474088384401538651, guid: 4b0c966d053fd2f429fb0a1d15877780,
+        type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5474088384401538651, guid: 4b0c966d053fd2f429fb0a1d15877780,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 464d7c4bd6061d642b5245c80c6a0fe6, type: 2}
     - target: {fileID: 5577389769188793928, guid: 4b0c966d053fd2f429fb0a1d15877780,
         type: 3}
       propertyPath: m_LocalPosition.x

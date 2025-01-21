@@ -27,11 +27,6 @@ public class EnemyAI : Entity
         pathRenderer = new PathRenderer();
     }
 
-    void Update()
-    {
-        Debug.DrawLine(transform.position, activeTile.transform.position + Vector3.up * lineOffset, Color.green);
-    }
-
     public override List<Action> StartTurn()
     {
         Senario currentBestSenario = null;

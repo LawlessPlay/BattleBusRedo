@@ -64,15 +64,18 @@ public class OverlayManagerV2 : MonoBehaviour
     {
         var movementTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange);
         var attackTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange + activeCharacter.characterClass.AttackRange);
-
+        
         foreach (var tile in attackTilesToShow.Item1)
         {
             if (movementTilesToShow.Item1.Contains(tile))
             {
                 UpdateTileColors(tile, MoveRangeColor);
             }
+            else
+            {
+                UpdateTileColors(tile, AttackRangeColor);
+            }
 
-            UpdateTileColors(tile, AttackRangeColor);
             ShowTile(tile);
         }
 
@@ -167,7 +170,7 @@ public class OverlayManagerV2 : MonoBehaviour
         if (!ColoredTiles.ContainsKey(activeTile) ||
             !ColoredTiles[activeTile].Contains(MoveRangeColor)) return;
         
-        ClearColor(AttackRangeColor);
+       
         ClearColor(AllyColor);
     }
 
