@@ -27,7 +27,7 @@ namespace TacticsToolkit
                 Destroy(gameObject);
             else
                 Instance = this;
-            SetMap();
+            //SetMap();
         }
 
         public void Start()

@@ -12,19 +12,36 @@ namespace TacticsToolkit
         public TileDataRuntimeSet tileData3D;
         public GameObject enemyList;
 
+
+        public bool MapSet = false;
         new void Awake()
         {
             base.Awake();
         }
 
+        private void Update()
+        {
+            SetMap();
+        }
+
         public override void SetMap()
         {
+            if (MapSet)
+            {
+                return;
+            }
+
             Tilemap[] childTilemaps = gameObject.GetComponentsInChildren<Tilemap>();
             map = new Dictionary<Vector2Int, OverlayTile>();
 
             mapBounds = new MapBounds();
             foreach (var tilemap in childTilemaps)
             {
+                if(tilemap.GetComponentsInChildren<ScaleUp>().Any(x => !x.isReady))
+                {
+                    return;
+                }
+
                 foreach (Transform child in tilemap.transform)
                 {
                     var gridLocation = tilemap.WorldToCell(child.position);
@@ -71,6 +88,9 @@ namespace TacticsToolkit
 
             if(enemyList)
                 PositionEnemies();
+
+
+            MapSet = true;
         }
 
         void PositionEnemies()

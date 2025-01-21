@@ -11,6 +11,8 @@ public class RandomSpawner : MonoBehaviour
     [Header("Spawn Area Settings")]
     public float yOffset = 0.1f; // Offset to place objects slightly above the surface
 
+
+    public bool hasSpawned = false;
     void Start()
     {
         if (prefabsToSpawn == null || prefabsToSpawn.Count == 0)
@@ -18,6 +20,17 @@ public class RandomSpawner : MonoBehaviour
             Debug.LogError("No prefabs assigned to spawn! Please assign at least one prefab.");
             return;
         }
+
+        //SpawnObjects();
+    }
+
+    private void Update()
+    {
+        if (!GetComponent<ScaleUp>().isReady)
+            return;
+
+        if (hasSpawned)
+            return;
 
         SpawnObjects();
     }
@@ -62,6 +75,8 @@ public class RandomSpawner : MonoBehaviour
                     Instantiate(prefabToSpawn, randomPosition, randomRotation);
                 }
             }
+
+            hasSpawned = true;
         }
     }
 }

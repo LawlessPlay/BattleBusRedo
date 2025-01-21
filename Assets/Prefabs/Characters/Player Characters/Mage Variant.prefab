@@ -114,6 +114,12 @@ PrefabInstance:
         type: 3}
       propertyPath: AllySpell
       value: 
+      objectReference: {fileID: 11400000, guid: 2a67dec0b482d2c4bb06187cb87f6f2c,
+        type: 2}
+    - target: {fileID: 9103260821316792254, guid: 4b0c966d053fd2f429fb0a1d15877780,
+        type: 3}
+      propertyPath: EnemySpell
+      value: 
       objectReference: {fileID: 11400000, guid: 78833d6594003ad46881698b841a1fd5,
         type: 2}
     - target: {fileID: 9103260821316792254, guid: 4b0c966d053fd2f429fb0a1d15877780,

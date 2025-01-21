@@ -89,7 +89,10 @@ public class EnemyAI : Entity
             var abilityValue = 0f;
             var affectedTiles = shapeParser.GetAbilityTileLocations(inRangeTile, ability.abilityShape, activeTile.grid2DLocation);
             var characters = new List<Entity>();
-            
+
+            if (ability.includeOrigin)
+                affectedTiles.Add(inRangeTile);
+
             switch (ability.abilityType)
             {
                 case Ability.AbilityTypes.Ally:

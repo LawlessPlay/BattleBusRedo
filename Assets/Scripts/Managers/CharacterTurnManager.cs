@@ -58,8 +58,11 @@ public class CharacterTurnManager : MonoBehaviour
 
     private void HandleInProgressAction()
     {
-        var inProgressAction = actionQueue.FirstOrDefault(x => x.State == Action.ActionState.InProgress && x.Type == Action.ActionType.Move);
-        inProgressAction?.DoAction();
+        if (actionQueue != null)
+        {
+            var inProgressAction = actionQueue.FirstOrDefault(x => x.State == Action.ActionState.InProgress && x.Type == Action.ActionType.Move);
+            inProgressAction?.DoAction();
+        }
     }
 
     private void CleanupFinishedActions()
@@ -81,7 +84,7 @@ public class CharacterTurnManager : MonoBehaviour
 
     public void StartTurn()
     {
-        overlayManager.ShowTotalOverlay();
+        //overlayManager.ShowTotalOverlay();
         activeCharacter.SetRenderers(lineRenderer, overlayManager);
         
         actionQueue = activeCharacter.StartTurn();

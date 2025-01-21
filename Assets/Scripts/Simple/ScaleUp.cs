@@ -8,13 +8,15 @@ public class ScaleUp : MonoBehaviour
     public AnimationCurve customCurve; // Custom curve for scaling
     public bool useAnimationCurve = false; // Whether to use the custom animation curve
 
+    public bool isReady = false;
     private Vector3 initialScale;
     private float elapsedTime;
 
     void Awake()
     {
+        isReady = false;
         initialScale = transform.localScale;
-        //StartCoroutine(ScaleCoroutine());
+        StartCoroutine(ScaleCoroutine());
     }
 
     private System.Collections.IEnumerator ScaleCoroutine()
@@ -30,6 +32,7 @@ public class ScaleUp : MonoBehaviour
         }
 
         transform.localScale = targetScale; // Ensure final scale is set
+        isReady = true;
     }
 
     private float ApplyEasing(float t)
