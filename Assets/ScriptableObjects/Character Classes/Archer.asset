@@ -168,6 +168,6 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  MoveRange: 8
+  MoveRange: 4
   AttackRange: 3
   abilities: []

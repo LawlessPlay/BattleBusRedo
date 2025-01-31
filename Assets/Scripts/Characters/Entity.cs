@@ -410,7 +410,7 @@ namespace TacticsToolkit
             return abilitiesForUse.Find(x => x.ability.Name == abilityName);
         }
 
-        public virtual List<Action> StartTurn()
+        public virtual void StartTurn()
         {
             var fields = typeof(CharacterStats).GetFields();
 
@@ -421,8 +421,6 @@ namespace TacticsToolkit
 
                 value.TickStatMods();
             }
-            
-            return new List<Action>();
         }
         public virtual void CharacterMoved()
         {
@@ -507,15 +505,22 @@ namespace TacticsToolkit
                 isActiveIndicator.SetActive(active);
         }
 
-        public virtual List<Action> SetActiveTile(OverlayTile tile)
+        public virtual void SetActiveTile(OverlayTile tile)
         {
-            return new List<Action>();
         }
         
         
-        public virtual void SetRenderers(LineRenderer lineRenderer, OverlayManagerV2 overlayManager)
+        public virtual void SetRenderers(LineRenderer lineRenderer)
         {
-            Debug.Log("Wrong");
+        }
+        
+        public virtual void TriggerNextAction()
+        {
+        }
+
+        public void EndTurn()
+        {
+            endTurn.Raise();
         }
     }
 }

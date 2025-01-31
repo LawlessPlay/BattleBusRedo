@@ -34,6 +34,9 @@ public class OverlayManagerV2 : MonoBehaviour
     [SerializeField]
     public Color SelfColor;
     
+    
+    public static OverlayManagerV2 Instance { get; private set; }
+    
     private void Awake()
     {
         ColoredTiles = new Dictionary<OverlayTile, List<Color>>();
@@ -46,6 +49,11 @@ public class OverlayManagerV2 : MonoBehaviour
         
         rangeFinder = new RangeFinder();
         shapeParser = new ShapeParser();
+        
+        if (Instance != null && Instance != this)
+            Destroy(gameObject);
+        else
+            Instance = this;
     }
 
     public void UpdateTileColors(OverlayTile tile, Color color)
@@ -166,12 +174,12 @@ public class OverlayManagerV2 : MonoBehaviour
     public void SetActiveTile(OverlayTile activeTile)
     {
         this.activeTile = activeTile;
+        ClearColor(AllyColor);
         
         if (!ColoredTiles.ContainsKey(activeTile) ||
             !ColoredTiles[activeTile].Contains(MoveRangeColor)) return;
         
        
-        ClearColor(AllyColor);
     }
 
     public void ClearTiles()

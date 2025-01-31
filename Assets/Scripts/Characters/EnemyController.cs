@@ -53,10 +53,9 @@ namespace TacticsToolkit
             base.Update();
         }
 
-        public override List<Action> StartTurn()
+        public override void StartTurn()
         {
             StartCoroutine(CalculateBestSenario());
-            return new List<Action>();
         }
 
         public override void CharacterMoved()
@@ -265,7 +264,7 @@ namespace TacticsToolkit
 
         private IEnumerator CastAbility()
         {
-            var abilityAffectedTiles = shapeParser.GetAbilityTileLocations(bestSenario.targetTile, bestSenario.targetAbility.ability.abilityShape, bestSenario.positionTile.grid2DLocation);
+            var abilityAffectedTiles = shapeParser.GetAbilityTileLocations(bestSenario.targetTile, bestSenario.targetAbility.ability.abilityShape, bestSenario.positionTile.grid2DLocation, bestSenario.targetAbility.ability.includeOrigin );
             abilityAffectedTiles.Add(bestSenario.targetTile);
             OverlayController.Instance.ColorTiles(OverlayController.Instance.AttackRangeColor, abilityAffectedTiles);
             yield return new WaitForSeconds(0.5f);
@@ -460,7 +459,7 @@ namespace TacticsToolkit
             var senario = new Senario();
             foreach (var tile in tilesInAbilityRange)
             {
-                var abilityAffectedTiles = shapeParser.GetAbilityTileLocations(tile, abilityContainer.ability.abilityShape, position.grid2DLocation);
+                var abilityAffectedTiles = shapeParser.GetAbilityTileLocations(tile, abilityContainer.ability.abilityShape, position.grid2DLocation, abilityContainer.ability.includeOrigin);
 
                 //How many players can the ability hit
                 var players = FindAllCharactersInTiles(abilityAffectedTiles);

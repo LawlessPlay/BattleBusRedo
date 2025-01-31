@@ -114,7 +114,7 @@ using UnityEngine;
         private void CastAbility()
         {
             var inRangeCharacters = new List<Entity>();
-            var abilityAffectedTiles = ShapeParser.GetAbilityTileLocations(Target, Ability.abilityShape, Entity.activeTile.grid2DLocation);
+            var abilityAffectedTiles = ShapeParser.GetAbilityTileLocations(Target, Ability.abilityShape, Entity.activeTile.grid2DLocation, Ability.includeOrigin);
             
             if (Ability.includeOrigin)
                 abilityAffectedTiles.Add(Target);
@@ -123,7 +123,7 @@ using UnityEngine;
             foreach (var tile in abilityAffectedTiles)
             {
                 var targetCharacter = tile.activeCharacter;
-                if (targetCharacter != null &&  targetCharacter.isAlive)
+                if (targetCharacter &&  targetCharacter.isAlive)
                 {
                     inRangeCharacters.Add(targetCharacter);
                 }

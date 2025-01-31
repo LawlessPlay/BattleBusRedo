@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpCost: 0
   MoveRangeColor: {r: 1, g: 1, b: 1, a: 1}
-  AttackRangeColor: {r: 0, g: 1, b: 0.99030876, a: 1}
+  AttackRangeColor: {r: 0.9056604, g: 0.42561102, b: 0.40583837, a: 1}
   BlockedTileColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
   EnemyColor: {r: 0.4847924, g: 0.08962262, b: 1, a: 1}
   AllyColor: {r: 0, g: 1, b: 0.35566998, a: 1}

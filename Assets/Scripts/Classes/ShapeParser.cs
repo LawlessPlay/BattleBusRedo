@@ -7,7 +7,7 @@ namespace TacticsToolkit
     public class ShapeParser
     {
 
-        public List<OverlayTile> GetAbilityTileLocations(OverlayTile abilityPosition, TextAsset defaultAbility, Vector2Int characterPosition)
+        public List<OverlayTile> GetAbilityTileLocations(OverlayTile abilityPosition, TextAsset defaultAbility, Vector2Int characterPosition, bool includeOrigin = true)
         {
             int[,] abilityMap = mapAbility(defaultAbility);
 
@@ -17,6 +17,11 @@ namespace TacticsToolkit
 
             var affectedTileLocations = new List<Vector2Int>();
 
+            if (includeOrigin)
+            {
+                affectedTileLocations.Add(abilityPosition.grid2DLocation);
+            }
+            
             //2 is a tile that the ability will hit
             if (SearchAbilityMapForValue(2, abilityMap))
                 affectedTileLocations.AddRange(GetShapeAbilityTiles(abilityPosition, characterPosition, abilityMap, originLocation));

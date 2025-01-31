@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TacticsToolkit;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,9 +16,11 @@ public class EnemyAI : Entity
     private ShapeParser shapeParser;
     private LineRenderer lineRenderer;
     private float lineOffset = 0.5f;
-        
-    private List<Vector3> linePositions = new List<Vector3>();
+    [SerializeField] private List<Action> actionQueue;
     
+
+    private List<Vector3> linePositions = new List<Vector3>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +28,33 @@ public class EnemyAI : Entity
         pathFinder = new PathFinder();
         shapeParser = new ShapeParser();
         pathRenderer = new PathRenderer();
+        actionQueue = new List<Action>();
     }
 
-    public override List<Action> StartTurn()
+    void Update()
+    {
+        if (actionQueue.Count > 0)
+        {
+            if(actionQueue[0].State == Action.ActionState.InProgress && actionQueue[0].Type == Action.ActionType.Move)
+                actionQueue[0].DoAction();
+            
+            if (actionQueue[0].State == Action.ActionState.Finished)
+            {
+                actionQueue.RemoveAt(0);
+                if (actionQueue.Count > 0)
+                    actionQueue[0].StartAction();
+                else
+                {
+                    EndTurn();
+                }
+            }
+        }
+    }
+
+    public override void StartTurn()
     {
         Senario currentBestSenario = null;
-    
+
         // Cache movement range tiles
         var movementRangeData = rangeFinder.GetTilesInRange(activeTile, characterClass.MoveRange);
         var movementRangeTiles = movementRangeData.Item1.Where(x => !x.activeCharacter).ToList();
@@ -51,47 +75,46 @@ public class EnemyAI : Entity
             }
         }
 
-        return CreateActionQueueFromSenario(currentBestSenario);
+        CreateActionQueueFromSenario(currentBestSenario);
     }
 
-
-    private List<Action> CreateActionQueueFromSenario(Senario currentBestSenario)
+    private void CreateActionQueueFromSenario(Senario currentBestSenario)
     {
         var actionQueue = new List<Action>();
         var path = pathFinder.FindPath(activeTile, currentBestSenario.positionTile,
             rangeFinder.GetTilesInRange(activeTile, characterClass.MoveRange).Item1);
         var nicePath = pathRenderer.GeneratePath(path, activeTile.transform.position, -1);
-        
+
         actionQueue.Add(new Action(nicePath, Action.ActionType.Move, currentBestSenario.positionTile, this));
-        
-        if(currentBestSenario.targetTile != null)
-            actionQueue.Add(new Action(nicePath, Action.ActionType.Attack, currentBestSenario.targetTile, this, currentBestSenario.Ability));
-        
-        
+
+        if (currentBestSenario.targetTile != null)
+            actionQueue.Add(new Action(nicePath, Action.ActionType.Attack, currentBestSenario.targetTile, this,
+                currentBestSenario.Ability));
+
+        this.actionQueue = actionQueue;
         actionQueue[0].StartAction();
-        return actionQueue;
     }
 
     public Senario GetBestSpellAction(Ability ability, OverlayTile overlayTile)
     {
-        var inRangeTiles = rangeFinder.GetTilesInRange(overlayTile, ability.range);
-        
+        var inRangeTiles = rangeFinder.GetTilesInRange(overlayTile, ability.range).Item1;
+
+
         OverlayTile currentBestTile = null;
         var currentBestValue = 0f;
-        
-        foreach (var inRangeTile in inRangeTiles.Item1)
-        { 
-            var abilityValue = 0f;
-            var affectedTiles = shapeParser.GetAbilityTileLocations(inRangeTile, ability.abilityShape, activeTile.grid2DLocation);
-            var characters = new List<Entity>();
 
-            if (ability.includeOrigin)
-                affectedTiles.Add(inRangeTile);
+        foreach (var inRangeTile in inRangeTiles)
+        {
+            var abilityValue = 0f;
+            var affectedTiles = shapeParser.GetAbilityTileLocations(inRangeTile, ability.abilityShape,
+                activeTile.grid2DLocation, ability.includeOrigin);
+            var characters = new List<Entity>();
 
             switch (ability.abilityType)
             {
                 case Ability.AbilityTypes.Ally:
-                    characters = affectedTiles.Where(x => x.activeCharacter && x.activeCharacter.teamID == teamID).Select(x => x.activeCharacter).ToList();
+                    characters = affectedTiles.Where(x => x.activeCharacter && x.activeCharacter.teamID == teamID)
+                        .Select(x => x.activeCharacter).ToList();
 
                     foreach (var character in characters)
                     {
@@ -103,42 +126,45 @@ public class EnemyAI : Entity
                             value = ability.value;
                         else
                             value = characterMissingHealth;
-                        
+
                         //if character is close to dying try to save it.
                         if (character.statsContainer.getStat(Stats.CurrentHealth).statValue <=
                             character.statsContainer.getStat(Stats.Health).statValue / 100 * 20)
                         {
                             value += 1000;
                         }
-                        
+
                         abilityValue += value;
                     }
-                    
+
                     break;
                 case Ability.AbilityTypes.Enemy:
-                    characters = affectedTiles.Where(x => x.activeCharacter && x.activeCharacter.teamID != teamID).Select(x => x.activeCharacter).ToList();
-                    
+                    characters = affectedTiles.Where(x => x.activeCharacter && x.activeCharacter.teamID != teamID)
+                        .Select(x => x.activeCharacter).ToList();
+
                     foreach (var character in characters)
                     {
                         var value = ability.value;
-                        
+
                         //if character is close to dying, finish them.
                         if (character.statsContainer.getStat(Stats.CurrentHealth).statValue < ability.value)
                         {
                             value += 1000;
                         }
-                        
+
                         abilityValue += value;
                     }
+
                     break;
                 case Ability.AbilityTypes.All:
                     characters = affectedTiles.Where(x => x.activeCharacter).Select(x => x.activeCharacter).ToList();
-                    
+
                     foreach (var character in characters)
                     {
                         var value = ability.value;
                         abilityValue = value;
                     }
+
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -153,7 +179,7 @@ public class EnemyAI : Entity
 
         return new Senario(currentBestValue, ability, currentBestTile, overlayTile);
     }
-    
+
     Senario GetWeightedRandomSpell(Senario EnemyAction, Senario AllyAction, Senario SelfAction)
     {
         // Step 1: Calculate total weight
@@ -168,26 +194,31 @@ public class EnemyAI : Entity
 
         // Step 3: Select based on weight
         float cumulativeWeight = 0f;
-        
+
         cumulativeWeight += EnemyAction.senarioValue;
         if (randomValue <= cumulativeWeight)
-        { 
+        {
             return EnemyAction;
         }
-        
+
         cumulativeWeight += AllyAction.senarioValue;
         if (randomValue <= cumulativeWeight)
-        { 
+        {
             return AllyAction;
         }
-        
+
         cumulativeWeight += SelfAction.senarioValue;
         if (randomValue <= cumulativeWeight)
-        { 
+        {
             return SelfAction;
         }
 
         // Fallback (shouldn't happen if weights are set correctly)
         return null;
+    }
+
+    public override void TriggerNextAction()
+    {
+        actionQueue[0].DoAction();
     }
 }

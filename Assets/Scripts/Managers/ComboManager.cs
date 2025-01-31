@@ -40,12 +40,12 @@ public class ComboManager : MonoBehaviour
         if (combos.Count == 0)
         {
             attackUnit.Raise();
-            endAttack.Raise();
+            //endAttack.Raise();
         }
         else
         {
             attackUnit.Raise();
-            endAttack.Raise();
+            //endAttack.Raise();
             if (animationController)
             {
                 var direction = animationController.cameraDirection;

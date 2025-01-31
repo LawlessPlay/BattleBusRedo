@@ -11,12 +11,12 @@ namespace TacticsToolkit
     //Script for a playable character.
     public class CharacterManager : Entity
     { 
-        private OverlayManagerV2 overlayManager;
         private PathFinder pathFinder;
         private PathRenderer pathRenderer;
         private RangeFinder rangeFinder;
         private LineRenderer lineRenderer;
         private float lineOffset = 0.5f;
+        [SerializeField] private List<Action> actionQueue;
         
         private List<Vector3> linePositions = new List<Vector3>();
         
@@ -25,43 +25,73 @@ namespace TacticsToolkit
             rangeFinder = new RangeFinder();
             pathFinder = new PathFinder();
             pathRenderer = new PathRenderer(lineOffset);
+            
+            actionQueue = new List<Action>();
         }
 
-        public override void SetRenderers(LineRenderer lineRenderer, OverlayManagerV2 overlayManager)
+        void Update()
+        {
+            if (actionQueue.Count > 0)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    lineRenderer.positionCount = 0;
+                    OverlayManagerV2.Instance.ClearTiles();
+                    actionQueue[0].StartAction();
+                }
+                
+                if(actionQueue[0].State == Action.ActionState.InProgress && actionQueue[0].Type == Action.ActionType.Move)
+                    actionQueue[0].DoAction();
+                
+                if (actionQueue[0].State == Action.ActionState.Finished)
+                {
+                    actionQueue.RemoveAt(0);
+                    if (actionQueue.Count > 0)
+                        actionQueue[0].StartAction();
+                    else
+                        EndTurn();
+                }
+            }
+        }
+
+        public override void SetRenderers(LineRenderer lineRenderer)
         {
             if(this.lineRenderer == null)
                 this.lineRenderer = lineRenderer;
-        
-            if(this.overlayManager == null)
-                this.overlayManager = overlayManager;
         }
 
-        public override List<Action> SetActiveTile(OverlayTile targetTile)
+        public override void SetActiveTile(OverlayTile targetTile)
         {
-            return targetTile.activeCharacter != null ? HandleActiveTileWithCharacter(targetTile) : HandleActiveTileWithoutCharacter(targetTile);
+            actionQueue = targetTile.activeCharacter != null ? HandleActiveTileWithCharacter(targetTile) : HandleActiveTileWithoutCharacter(targetTile);
         }
         
         private List<Action> HandleActiveTileWithCharacter(OverlayTile targetTile)
         {
-            var movementTiles = rangeFinder.GetTilesInRange(targetTile, characterClass.MoveRange + SelfSpell.range);
-            var path = pathFinder.FindPath(activeTile, targetTile, movementTiles.Item1);
-
-            var actionQueue = new List<Action>();
+            var aq = new List<Action>();
             if (targetTile.activeCharacter == this)
             {
-                actionQueue = DisplaySpell(path, SelfSpell, targetTile);
+                aq = DisplaySpell(new List<OverlayTile>(), SelfSpell, targetTile);
             }
             else if (targetTile.activeCharacter.teamID == teamID)
             {
-            
-                actionQueue = DisplaySpell(path, AllySpell, targetTile);
+                if (pathFinder.GetManhattenDistance(activeTile, targetTile) >
+                    this.characterClass.MoveRange + AllySpell.range) return aq;
+                
+                var movementTiles = rangeFinder.GetTilesInRange(activeTile, characterClass.MoveRange);
+                var path = pathFinder.FindPath(activeTile, targetTile, movementTiles.Item1);
+                aq = DisplaySpell(path, AllySpell, targetTile);
             }
             else
             {
-                actionQueue = DisplaySpell(path, EnemySpell, targetTile);
+                if (pathFinder.GetManhattenDistance(activeTile, targetTile) >
+                    this.characterClass.MoveRange + EnemySpell.range) return aq;
+                
+                var movementTiles = rangeFinder.GetTilesInRange(activeTile, characterClass.MoveRange);
+                var path = pathFinder.FindPath(activeTile, targetTile, movementTiles.Item1);
+                aq = DisplaySpell(path, EnemySpell, targetTile);
             }
-            
-            return actionQueue;
+
+            return aq;
         }
 
         private List<Action> HandleActiveTileWithoutCharacter(OverlayTile targetTile)
@@ -111,10 +141,9 @@ namespace TacticsToolkit
         private List<Action> DisplaySpell(List<OverlayTile> path, Ability ability, OverlayTile targetTile)
         {
             var actionQueue = new List<Action>();
-            overlayManager.DrawSpell(targetTile, ability);
+            OverlayManagerV2.Instance.DrawSpell(targetTile, ability);
             if (ability.range <= path.Count)
             {
-                path.RemoveRange(path.Count - ability.range, ability.range);
                 var finalPath = pathRenderer.GeneratePath(path, activeTile.transform.position, -1);
 
                 var renderedPath = AdjustPath(finalPath);
@@ -136,12 +165,15 @@ namespace TacticsToolkit
             }
             else
             {
-                ResetLineRenderer();
+                if (pathFinder.GetManhattenDistance(activeTile, targetTile) <= ability.range)
+                {
+                    ResetLineRenderer();
 
-                var posCount = lineRenderer.positionCount;
-                AddArcToLineRenderer(activeTile.transform.position, targetTile.transform.position, ref posCount, 2);
+                    var posCount = lineRenderer.positionCount;
+                    AddArcToLineRenderer(activeTile.transform.position, targetTile.transform.position, ref posCount, 2);
 
-                actionQueue.Add(new Action(linePositions, Action.ActionType.Attack, targetTile, this, ability));
+                    actionQueue.Add(new Action(linePositions, Action.ActionType.Attack, targetTile, this, ability));
+                }
             }
             
             return actionQueue;
@@ -169,6 +201,17 @@ namespace TacticsToolkit
 
             lineRenderer.SetPosition(lineCount++, interpolated);
         }
+    }
+    
+    public override void TriggerNextAction()
+    {
+        if(actionQueue.Count > 0)
+            actionQueue[0].DoAction();
+    }
+
+    public override void StartTurn()
+    {
+        OverlayManagerV2.Instance.ShowTotalOverlay();
     }
     }
 }

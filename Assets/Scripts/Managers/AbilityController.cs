@@ -149,7 +149,7 @@ namespace TacticsToolkit
                 abilityAffectedTiles = new List<OverlayTile>();
                 if (abilityRangeTiles.Contains(map[tilePosition.grid2DLocation]))
                 {
-                    abilityAffectedTiles = shapeParser.GetAbilityTileLocations(tilePosition, abilityContainer.ability.abilityShape, activeCharacter.activeTile.grid2DLocation);
+                    abilityAffectedTiles = shapeParser.GetAbilityTileLocations(tilePosition, abilityContainer.ability.abilityShape, activeCharacter.activeTile.grid2DLocation, abilityContainer.ability.includeOrigin);
 
                     if (abilityContainer.ability.includeOrigin)
                         abilityAffectedTiles.Add(tilePosition);

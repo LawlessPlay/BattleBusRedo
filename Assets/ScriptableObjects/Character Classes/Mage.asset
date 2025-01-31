@@ -168,7 +168,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  MoveRange: 8
+  MoveRange: 3
   AttackRange: 3
   abilities:
   - {fileID: 11400000, guid: 153af8d8d25e4ce4f935badcc071fa12, type: 2}
