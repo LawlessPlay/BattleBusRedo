@@ -16,7 +16,6 @@ public class EnemyAI : Entity
     private ShapeParser shapeParser;
     private LineRenderer lineRenderer;
     private float lineOffset = 0.5f;
-    [SerializeField] private List<Action> actionQueue;
     
 
     private List<Vector3> linePositions = new List<Vector3>();
@@ -28,7 +27,6 @@ public class EnemyAI : Entity
         pathFinder = new PathFinder();
         shapeParser = new ShapeParser();
         pathRenderer = new PathRenderer();
-        actionQueue = new List<Action>();
     }
 
     void Update()
@@ -42,7 +40,10 @@ public class EnemyAI : Entity
             {
                 actionQueue.RemoveAt(0);
                 if (actionQueue.Count > 0)
+                {
+                    OverlayManagerV2.Instance.DrawSpell(actionQueue[0].Target, actionQueue[0].Ability);
                     actionQueue[0].StartAction();
+                }
                 else
                 {
                     EndTurn();
@@ -88,8 +89,21 @@ public class EnemyAI : Entity
         actionQueue.Add(new Action(nicePath, Action.ActionType.Move, currentBestSenario.positionTile, this));
 
         if (currentBestSenario.targetTile != null)
+        {
+            Debug.Log("Casting: " + currentBestSenario.Ability.name + " by " + this.name + " at " + currentBestSenario.targetTile.activeCharacter + " with a value of " + currentBestSenario.senarioValue);
+            var affectedCharacters = shapeParser.GetAbilityTileLocations(currentBestSenario.targetTile,
+                    currentBestSenario.Ability.abilityShape,
+                    activeTile.grid2DLocation, currentBestSenario.Ability.includeOrigin).Where(c => c.activeCharacter)
+                .ToList();
+
+            foreach (var character in affectedCharacters)
+            {
+                Debug.Log("Affecting: " + character.activeCharacter.name);
+            }
+            setTarget.Raise(currentBestSenario.targetTile.gameObject);
             actionQueue.Add(new Action(nicePath, Action.ActionType.Attack, currentBestSenario.targetTile, this,
                 currentBestSenario.Ability));
+        }
 
         this.actionQueue = actionQueue;
         actionQueue[0].StartAction();
@@ -99,20 +113,19 @@ public class EnemyAI : Entity
     {
         var inRangeTiles = rangeFinder.GetTilesInRange(overlayTile, ability.range).Item1;
 
-
         OverlayTile currentBestTile = null;
         var currentBestValue = 0f;
 
         foreach (var inRangeTile in inRangeTiles)
         {
-            var abilityValue = 0f;
+            int abilityValue = 0;
             var affectedTiles = shapeParser.GetAbilityTileLocations(inRangeTile, ability.abilityShape,
                 activeTile.grid2DLocation, ability.includeOrigin);
             var characters = new List<Entity>();
 
             switch (ability.abilityType)
             {
-                case Ability.AbilityTypes.Ally:
+                case Ability.AbilityTypes.Heal:
                     characters = affectedTiles.Where(x => x.activeCharacter && x.activeCharacter.teamID == teamID)
                         .Select(x => x.activeCharacter).ToList();
 
@@ -138,21 +151,27 @@ public class EnemyAI : Entity
                     }
 
                     break;
-                case Ability.AbilityTypes.Enemy:
-                    characters = affectedTiles.Where(x => x.activeCharacter && x.activeCharacter.teamID != teamID)
-                        .Select(x => x.activeCharacter).ToList();
+                case Ability.AbilityTypes.Damage:
+                    characters = affectedTiles.Select(x => x.activeCharacter).Where(c => c != null).ToList();
+                    var enemyCharacters = characters.Where(c => c.teamID != teamID).ToList();
+                    var allyCharacters = characters.Where(c => c.teamID == teamID || activeTile == c.activeTile).ToList();
 
-                    foreach (var character in characters)
+                    
+                    foreach (var enemy in enemyCharacters)
                     {
-                        var value = ability.value;
+                        abilityValue += ability.value;
 
                         //if character is close to dying, finish them.
-                        if (character.statsContainer.getStat(Stats.CurrentHealth).statValue < ability.value)
+                        if (enemy.statsContainer.getStat(Stats.CurrentHealth).statValue < ability.value)
                         {
-                            value += 1000;
+                            abilityValue += 1000;
                         }
-
-                        abilityValue += value;
+                    }
+                    
+                    foreach (var ally in allyCharacters)
+                    {
+                        Debug.Log("Will Hit: " + ally.gameObject.name);
+                        abilityValue = Int32.MinValue;
                     }
 
                     break;

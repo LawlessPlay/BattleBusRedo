@@ -68,6 +68,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Mage Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6060005318990743006, guid: 2f89de34b9b451a47a4485e2e0c4d697,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2808479133026122511, guid: 502365853da6b584bb44e1b3aead62d8,
+        type: 3}
     - target: {fileID: 6566995158917057154, guid: 2f89de34b9b451a47a4485e2e0c4d697,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -78,6 +84,12 @@ PrefabInstance:
       propertyPath: characterClass
       value: 
       objectReference: {fileID: 11400000, guid: 877fb9b69af760f49bcb3ef3934df957,
+        type: 2}
+    - target: {fileID: 7065301894268166837, guid: 2f89de34b9b451a47a4485e2e0c4d697,
+        type: 3}
+      propertyPath: triggerProjectile
+      value: 
+      objectReference: {fileID: 11400000, guid: 6db8c17fc01e4344f820ee1a85ff32dd,
         type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -403,6 +403,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 464d7c4bd6061d642b5245c80c6a0fe6, type: 2}
+    - target: {fileID: 8073934641136977839, guid: 94912624c52864e4e833d8cbca8aec94,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073934641136977839, guid: 94912624c52864e4e833d8cbca8aec94,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.45
+      objectReference: {fileID: 0}
     - target: {fileID: 8416307111765967649, guid: 94912624c52864e4e833d8cbca8aec94,
         type: 3}
       propertyPath: m_FlipX
@@ -413,7 +423,8 @@ PrefabInstance:
       propertyPath: m_MaskInteraction
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8073934641136977839, guid: 94912624c52864e4e833d8cbca8aec94, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4105686119712588667, guid: 94912624c52864e4e833d8cbca8aec94,

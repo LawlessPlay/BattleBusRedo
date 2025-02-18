@@ -8,6 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 401081446798531228, guid: 4b0c966d053fd2f429fb0a1d15877780,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 401081446798531228, guid: 4b0c966d053fd2f429fb0a1d15877780,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 401081446798531228, guid: 4b0c966d053fd2f429fb0a1d15877780,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4096002495730896882, guid: 4b0c966d053fd2f429fb0a1d15877780,
         type: 3}
       propertyPath: m_Controller
@@ -110,6 +125,12 @@ PrefabInstance:
       propertyPath: combos.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7535737440437776612, guid: 4b0c966d053fd2f429fb0a1d15877780,
+        type: 3}
+      propertyPath: GameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b1747f5f26686f4697ca678891c0889,
+        type: 2}
     - target: {fileID: 7736894875611031077, guid: 4b0c966d053fd2f429fb0a1d15877780,
         type: 3}
       propertyPath: m_Controller
@@ -154,6 +175,12 @@ PrefabInstance:
       propertyPath: spriteOffset.z
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 9103260821316792254, guid: 4b0c966d053fd2f429fb0a1d15877780,
+        type: 3}
+      propertyPath: triggerProjectile
+      value: 
+      objectReference: {fileID: 11400000, guid: 6db8c17fc01e4344f820ee1a85ff32dd,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

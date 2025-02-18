@@ -6,6 +6,7 @@ using TacticsToolkit;
 
 public class CharacterTurnManager : MonoBehaviour
 {
+    public SpawnProjectilesScript spawnProjectiles;
     [SerializeField] private bool hasMoved;
     [SerializeField] private bool hasUsedAbility;
 
@@ -46,5 +47,10 @@ public class CharacterTurnManager : MonoBehaviour
     public void TriggerActiveAction()
     {
         activeCharacter.TriggerNextAction();
+    }
+    
+    public void TriggerProjectile()
+    {
+        activeCharacter.TriggerProjectile();
     }
 }

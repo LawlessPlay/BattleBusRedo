@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using TacticsToolkit;
 using UnityEngine;
 
-public class ComboManager : MonoBehaviour
+public class FXManager : MonoBehaviour
 {
-    public List<Combo> combos;
+    public List<AttackFx> combos;
     private Dictionary<string, List<GameObject>> comboList = new Dictionary<string, List<GameObject>>();
     private Dictionary<string, List<GameObject>> comboFlippedList = new Dictionary<string, List<GameObject>>();
     public Vector2 currentFacingDirection = Vector2.zero;
@@ -20,7 +20,7 @@ public class ComboManager : MonoBehaviour
         if (animationController)
             currentFacingDirection = animationController.cameraDirection;
 
-        foreach (Combo combo in combos)
+        foreach (AttackFx combo in combos)
         {
             List<GameObject> comboAttacks = new List<GameObject>();
             List<GameObject> comboFlippedAttacks = new List<GameObject>();

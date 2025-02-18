@@ -12,7 +12,7 @@ public class CharacterAnimationController : MonoBehaviour
     public Animator animator;
     public Entity entity;
     public Camera camera;
-    public Combo basicAttack;
+    public AttackFx basicAttack;
     public Animator attackFX;
 
     public Vector2 cameraDirection;

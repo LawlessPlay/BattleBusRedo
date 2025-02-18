@@ -17,6 +17,8 @@ namespace TacticsToolkit
 
         public List<ScriptableEffect> effects;
 
+        public GameObject abilityFX;
+
         public int range;
 
         public int cooldown;
@@ -35,8 +37,8 @@ namespace TacticsToolkit
 
         public enum AbilityTypes
         {
-            Ally,
-            Enemy,
+            Heal,
+            Damage,
             All
         }
 

@@ -85,7 +85,7 @@ namespace TacticsToolkit
 
         private void UpdateCharacterPreview()
         {
-            if (CheckIsTileOnSpawnTile() || (globalSpawn && characters.Count > 0 && !focusedOnTile.isBlocked))
+            if (CheckIsTileOnSpawnTile() || (globalSpawn && characters.Count > 0 && !focusedOnTile.isBlocked && !focusedOnTile.activeCharacter))
             {
                 foreach (Transform child in characters[0].transform)
                 {

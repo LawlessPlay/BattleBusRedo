@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4971682650635210250}
   - component: {fileID: 4925748005230298987}
   - component: {fileID: 4261214183116006153}
+  - component: {fileID: 5581735970822382230}
+  - component: {fileID: 6389605311138425262}
   m_Layer: 0
   m_Name: CharacterSprite
   m_TagString: Untagged
@@ -157,6 +159,54 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &5581735970822382230
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16684740511355054}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 2, z: 0}
+--- !u!54 &6389605311138425262
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16684740511355054}
+  serializedVersion: 4
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1388557544742868788
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +805,12 @@ MonoBehaviour:
   projectile: {fileID: 0}
   myRenderer: {fileID: 0}
   spriteOffset: {x: 0, y: 0, z: 0}
+  EnemySpell: {fileID: 0}
+  AllySpell: {fileID: 0}
+  SelfSpell: {fileID: 0}
+  isActing: 0
+  triggerProjectile: {fileID: 11400000, guid: 6db8c17fc01e4344f820ee1a85ff32dd, type: 2}
+  setTarget: {fileID: 11400000, guid: 55f8c37e8ebd1174aa655f615f441954, type: 2}
   personality: 2
   enemyAction: {fileID: 11400000, guid: 31027d94d42dd9c43957e6a681625515, type: 2}
   battleController: {fileID: 0}

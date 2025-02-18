@@ -16,6 +16,7 @@ MonoBehaviour:
   Desc: 
   abilityShape: {fileID: 4900000, guid: f30cbe7258a912d48a84b0dca1125752, type: 3}
   effects: []
+  abilityFX: {fileID: 1625816069985526, guid: fb43124103718ee40835cafd2a48ded4, type: 3}
   range: 5
   cooldown: 2
   cost: 5

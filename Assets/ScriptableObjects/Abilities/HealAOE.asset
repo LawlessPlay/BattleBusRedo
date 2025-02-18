@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c5e685a8bcdc547813e305986d832e, type: 3}
   m_Name: HealAOE
   m_EditorClassIdentifier: 
-  Name: Heal
+  Name: HealAOE
   Desc: 
   abilityShape: {fileID: 4900000, guid: e8efbd9d3eedcd94aa4f7079a9e5c85a, type: 3}
   effects: []
+  abilityFX: {fileID: 1336076067446332, guid: 7f334556ecbce5a41b441c034827f8e6, type: 3}
   range: 5
   cooldown: 2
   cost: 5
@@ -23,4 +24,4 @@ MonoBehaviour:
   abilityType: 0
   includeOrigin: 1
   requiredLevel: 0
-  requiresTarget: 1
+  requiresTarget: 0

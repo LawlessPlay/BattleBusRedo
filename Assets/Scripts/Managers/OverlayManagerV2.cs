@@ -8,7 +8,8 @@ using UnityEngine.Serialization;
 
 public class OverlayManagerV2 : MonoBehaviour
 {
-    private Dictionary<OverlayTile, List<Color>> ColoredTiles;
+    private Dictionary<OverlayTile, List<Color>> _inRangeColoredTiles;
+    private Dictionary<OverlayTile, List<Color>> _abilityColoredTiles;
     public GameConfig gameConfig;
 
     private RangeFinder rangeFinder;
@@ -39,7 +40,8 @@ public class OverlayManagerV2 : MonoBehaviour
     
     private void Awake()
     {
-        ColoredTiles = new Dictionary<OverlayTile, List<Color>>();
+        _inRangeColoredTiles = new Dictionary<OverlayTile, List<Color>>();
+        _abilityColoredTiles = new Dictionary<OverlayTile, List<Color>>();
         MoveRangeColor = gameConfig.MoveRangeColor;
         AttackRangeColor = gameConfig.AttackRangeColor;
         BlockedTileColor = gameConfig.BlockedTileColor;
@@ -58,22 +60,38 @@ public class OverlayManagerV2 : MonoBehaviour
 
     public void UpdateTileColors(OverlayTile tile, Color color)
     {
-        if (ColoredTiles.ContainsKey(tile))
+        if (_inRangeColoredTiles.ContainsKey(tile))
         {
-            ColoredTiles[tile].Add(color);
+            _inRangeColoredTiles[tile].Add(color);
         }
         else
         {
-            ColoredTiles.Add(tile, new List<Color>() { color });
+            _inRangeColoredTiles.Add(tile, new List<Color>() { color });
+        }
+    }
+    
+    public void UpdateAbilityTileColors(OverlayTile tile, Color color)
+    {
+        if (_abilityColoredTiles.ContainsKey(tile))
+        {
+            _abilityColoredTiles[tile].Add(color);
+        }
+        else
+        {
+            _abilityColoredTiles.Add(tile, new List<Color>() { color });
         }
     }
     
     public void ShowTotalOverlay()
     {
         var movementTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange);
-        var attackTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange + activeCharacter.characterClass.AttackRange);
+        var enemySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange + activeCharacter.EnemySpell.range);
+        var allySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange + activeCharacter.AllySpell.range);
+
+        var combinedTiles = new HashSet<OverlayTile>(enemySpellTilesToShow.Item1);
+        combinedTiles.UnionWith(allySpellTilesToShow.Item1); 
         
-        foreach (var tile in attackTilesToShow.Item1)
+        foreach (var tile in combinedTiles)
         {
             if (movementTilesToShow.Item1.Contains(tile))
             {
@@ -81,51 +99,32 @@ public class OverlayManagerV2 : MonoBehaviour
             }
             else
             {
-                UpdateTileColors(tile, AttackRangeColor);
+                if (allySpellTilesToShow.Item1.Contains(tile))
+                {
+                    UpdateTileColors(tile, AllyColor);
+                }
+                if (enemySpellTilesToShow.Item1.Contains(tile))
+                {
+                    UpdateTileColors(tile, AttackRangeColor);
+                }
             }
 
             ShowTile(tile);
         }
-
-        ShowCharacterTiles(attackTilesToShow.Item2);
-    }
-    
-    public void ShowMovementOverlay()
-    {
-        var movementTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange);
-        var attackTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange + activeCharacter.characterClass.AttackRange);
         
-        foreach (var tile in movementTilesToShow.Item1)
-        {
-            UpdateTileColors(tile, MoveRangeColor);
-            ShowTile(tile);
-        }
-
-        ShowCharacterTiles(attackTilesToShow.Item2);
-    }
-    
-    private void ShowAttackOverlay(OverlayTile originTile)
-    {
-        if (!activeCharacter) return;
-        var attackTilesToShow = rangeFinder.GetTilesInRange(originTile, activeCharacter.SelfSpell.range, true, true);
-
-        foreach (var tile in attackTilesToShow.Item1)
-        {
-            UpdateTileColors(tile, AttackRangeColor);
-            ShowTile(tile);
-        }
-
-        
-        ShowCharacterTiles(attackTilesToShow.Item2);
+        ShowCharacterTiles(enemySpellTilesToShow.Item2.Where(x => x.activeCharacter.teamID != activeCharacter.teamID).ToList());
+        ShowCharacterTiles(allySpellTilesToShow.Item2.Where(x => x.activeCharacter.teamID == activeCharacter.teamID).ToList());
     }
 
     private void ShowCharacterTiles(List<OverlayTile> tiles)
     {
+        ClearTiles(tiles);
         foreach (var overlayTile in tiles)
         {
             if (overlayTile.activeCharacter == activeCharacter)
             {
                 UpdateTileColors(overlayTile, SelfColor);
+                ShowTile(overlayTile);
                 continue;
             }
 
@@ -136,31 +135,31 @@ public class OverlayManagerV2 : MonoBehaviour
 
     private void ShowTile(OverlayTile tile)
     {
-        var tileColors = ColoredTiles[tile];
-        tile.ShowTile(CombineColors(tileColors));
-    }
-    
-    public static Color CombineColors(Color color1, Color color2)
-    {
-        // Blend the two colors equally
-        return Color.Lerp(color1, color2, 0.5f);
+        var tempTileColors = new List<Color>();
+        
+        if(_inRangeColoredTiles.ContainsKey(tile))
+            tempTileColors.AddRange(_inRangeColoredTiles[tile]);
+        
+        if(_abilityColoredTiles.ContainsKey(tile))
+            tempTileColors.AddRange(_abilityColoredTiles[tile]);
+        
+        
+        tile.ShowTile(CombineColors(tempTileColors));
     }
     
     public static Color CombineColors(List<Color> colors)
     {
         if (colors == null || colors.Count == 0)
         {
-            throw new ArgumentException("The colors list must not be null or empty.");
+            return default;
         }
 
-        // Start with the first color
-        Color combinedColor = colors[0];
+        float totalWeight = colors.Count;
+        Color combinedColor = new Color(0, 0, 0); // Start with black or any neutral color.
 
-        // Gradually blend with the remaining colors
-        for (var i = 1; i < colors.Count; i++)
+        foreach (var color in colors)
         {
-            var t = 1f / (i + 1); // Adjust interpolation factor
-            combinedColor = Color.Lerp(combinedColor, colors[i], t);
+            combinedColor += color / totalWeight; // Evenly distribute the contribution of each color
         }
 
         return combinedColor;
@@ -173,32 +172,59 @@ public class OverlayManagerV2 : MonoBehaviour
 
     public void SetActiveTile(OverlayTile activeTile)
     {
+        ClearAbilityTiles();
+        
         this.activeTile = activeTile;
-        ClearColor(AllyColor);
-        
-        if (!ColoredTiles.ContainsKey(activeTile) ||
-            !ColoredTiles[activeTile].Contains(MoveRangeColor)) return;
-        
-       
+
+        if (activeTile.activeCharacter)
+        {
+            
+        }
     }
 
     public void ClearTiles()
     {
-        foreach (var tile in ColoredTiles.Keys)
+        foreach (var tile in _inRangeColoredTiles.Keys)
         {
             tile.HideTile();
         }
         
-        ColoredTiles.Clear();
+        _inRangeColoredTiles.Clear();
+    }
+    
+    public void ClearTile(OverlayTile tile)
+    {
+        tile.HideTile();
+        _inRangeColoredTiles.Remove(tile);
+    }
+    public void ClearTiles(List<OverlayTile> tiles)
+    {
+        foreach (var tile in tiles)
+        {
+            tile.HideTile();
+            _inRangeColoredTiles.Remove(tile);
+        }
+    }
+    
+    public void ClearAbilityTiles()
+    {
+        var tempTilesToUpdate = new List<OverlayTile>();
+        tempTilesToUpdate.AddRange(_abilityColoredTiles.Keys);
+        _abilityColoredTiles.Clear();
+        foreach (var tile in tempTilesToUpdate)
+        {
+            tile.HideTile();
+            ShowTile(tile);
+        }
     }
     
     public void ClearColor(Color color)
     {
-        foreach (var tile in ColoredTiles.Keys)
+        foreach (var tile in _inRangeColoredTiles.Keys)
         {
-            ColoredTiles[tile].Remove(color);
+            _inRangeColoredTiles[tile].Remove(color);
 
-            if (ColoredTiles[tile].Count == 0)
+            if (_inRangeColoredTiles[tile].Count == 0)
             {
                 tile.HideTile();
             }
@@ -211,14 +237,11 @@ public class OverlayManagerV2 : MonoBehaviour
     
     public void ClearTileColor(OverlayTile tile, Color color)
     {
-        var tileColors = ColoredTiles[tile];
+        var tileColors = _inRangeColoredTiles[tile];
 
-        foreach (var tileColor in tileColors.ToList().Where(tileColor => tileColor == color))
-        {
-            tileColors.Remove(tileColor);
-        }
+        tileColors.RemoveAll(c => c == color);
         
-        ColoredTiles[tile] = tileColors;
+        _inRangeColoredTiles[tile] = tileColors;
     }
 
     public void DrawSpell(OverlayTile overlayTile, Ability ability)
@@ -227,7 +250,7 @@ public class OverlayManagerV2 : MonoBehaviour
 
         foreach (var tile in tiles)
         {
-            UpdateTileColors(tile, AllyColor);
+            UpdateAbilityTileColors(tile, AllyColor);
             ShowTile(tile);
         }
     }

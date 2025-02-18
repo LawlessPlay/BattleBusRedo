@@ -60,7 +60,14 @@ namespace TacticsToolkit
         public Ability EnemySpell;
         public Ability AllySpell;
         public Ability SelfSpell;
+        
+        public bool isActing = false;
 
+        public GameEventGameObject triggerProjectile;
+        public GameEventGameObject setTarget;
+        
+        protected List<Action> actionQueue = new List<Action>();
+        
         private void Awake()
         {
             SpawnCharacter();
@@ -432,6 +439,7 @@ namespace TacticsToolkit
             UnlinkCharacterToTile();
             tile.activeCharacter = this;
             activeTile = tile;
+            activeTile.isBlocked = true;
         }
 
         //Unlink an entity from a previous tile it was standing on. 
@@ -440,6 +448,7 @@ namespace TacticsToolkit
             if (activeTile)
             {
                 activeTile.activeCharacter = null;
+                activeTile.isBlocked = false;
                 activeTile = null;
             }
         }
@@ -517,7 +526,15 @@ namespace TacticsToolkit
         public virtual void TriggerNextAction()
         {
         }
-
+        
+        public virtual void TriggerProjectile()
+        {
+            if (actionQueue.Count > 0)
+            {
+                triggerProjectile.Raise(actionQueue[0].Ability.abilityFX);
+            }
+        }
+        
         public void EndTurn()
         {
             endTurn.Raise();

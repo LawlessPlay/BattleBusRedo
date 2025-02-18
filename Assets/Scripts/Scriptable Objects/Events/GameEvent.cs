@@ -27,9 +27,6 @@ namespace TacticsToolkit
 
         public void Raise(System.Action onRaised)
         {
-            if (name != "CorsorEvent" && name != "FocusedOnNewTile")
-                Debug.Log(this.name);
-
             for (int i = eventListeners.Count - 1; i >= 0; i--)
                 eventListeners[i].OnEventRaised();
             onRaised?.Invoke();
@@ -64,9 +61,6 @@ namespace TacticsToolkit
 
         public virtual void Raise(T param, System.Action onRaised)
         {
-            if (name != "FocusOnTile")
-                Debug.Log(this.name);
-
             for (int i = eventListeners.Count - 1; i >= 0; i--)
                 eventListeners[i].OnEventRaised(param);
             onRaised?.Invoke();

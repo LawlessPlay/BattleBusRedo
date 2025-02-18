@@ -11,26 +11,38 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animations/orc_warrior/back/ork_warrior_back_attack.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/orc_warrior/back/ork_warrior_back_attack.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animations/orc_warrior/front/ork_warrior_attack.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/orc_warrior/front/ork_warrior_attack.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Base.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy Characters/Enemy Archer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy Characters/Enemy Archer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy Characters/Enemy Mage Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy Characters/Enemy Mage Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy Characters/Enemy Warrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy Characters/Enemy Warrior.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player Characters/Archer Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player Characters/Archer Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player Characters/Mage Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player Characters/Mage Variant.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player Characters/Warrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player Characters/Warrior.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/3D Overlay Tile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/3D Overlay Tile.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Abilities/SwordSwing.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Abilities/SwordSwing.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Character Classes/Archer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Character Classes/Archer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Character Classes/Mage.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Character Classes/Mage.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Character Classes/Warrior.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Character Classes/Warrior.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Abilities/Fireball.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Abilities/Fireball.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Abilities/Heal.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Abilities/Heal.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Abilities/HealAOE.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Abilities/HealAOE.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/GameConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/GameConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/CharacterAnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/CharacterAnimationController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/CharacterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/CharacterManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Combo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/AttackFx.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Combo.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/AttackFx.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Entity.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Classes/Action.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Classes/Action.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Classes/ShapeParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Classes/ShapeParser.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/AbilityController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/AbilityController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterSpawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterTurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterTurnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/ComboManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/ComboManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/ComboManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/FXManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/ComboManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/FXManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/MapManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/MapManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/OverlayManagerV2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/OverlayManagerV2.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Actions/Ability.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Actions/Ability.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Events/GameEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Events/GameEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Events/GameEventListenerInternal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Events/GameEventListenerInternal.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <list id="fad7dc97-0138-4e61-b232-51a97a9935b3" name="Commit" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,11 +72,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0e74aaecc5d24ba79f82222a4901f73195c800/ec/a270c507/Editor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/31687ccd371e4dc6b0c23a1317cf947446ac00/e7/0fcaa418/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/50e5acd061cd4a73b7fc8eecbf07e915176600/60/869f7215/LineRenderer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/50e5acd061cd4a73b7fc8eecbf07e915176600/fb/d9e1c49f/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a2fb550e986748b88facf50cd71afc3c10fc00/4f/de987c14/Enumerable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/EventTriggerer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/aaron/Documents/BattleBusRedo/Assets/Scenes/Prototype1/ProtoType1.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/aaron/Documents/BattleBusRedo/Assets/Scripts/Managers/CharacterTurnManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/aaron/Documents/BattleBusRedo/Assets/Scripts/Managers/OverlayManagerV2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../BattleBusURP/Assets/Scripts/ComboManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -77,25 +87,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.49857953&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "CodeLensConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/Build/temp\BattleBusRedo.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Build/temp/BattleBusRedo.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\aaron\Documents\BattleBusRedo\Build" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -131,10 +141,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="36896">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="32804">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="36896" />
+      <option name="pid" value="32804" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -195,7 +205,16 @@
       <workItem from="1738027142186" duration="583000" />
       <workItem from="1738258683548" duration="4679000" />
       <workItem from="1738265724260" duration="290000" />
-      <workItem from="1738341271592" duration="2531000" />
+      <workItem from="1738341271592" duration="9269000" />
+      <workItem from="1738689853678" duration="675000" />
+      <workItem from="1738695943107" duration="3615000" />
+      <workItem from="1738870133697" duration="1912000" />
+      <workItem from="1739041142638" duration="3999000" />
+      <workItem from="1739104226215" duration="7179000" />
+      <workItem from="1739553985623" duration="6019000" />
+      <workItem from="1739729279505" duration="902000" />
+      <workItem from="1739805172374" duration="6588000" />
+      <workItem from="1739903357905" duration="6542000" />
     </task>
     <task id="LOCAL-00001" summary="git ignore and attributes">
       <option name="closed" value="true" />
@@ -229,7 +248,23 @@
       <option name="project" value="LOCAL" />
       <updated>1737489593949</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Bug fixes">
+      <option name="closed" value="true" />
+      <created>1738344043123</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738344043123</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add Textmesh">
+      <option name="closed" value="true" />
+      <created>1738344088074</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738344088074</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,7 +295,8 @@
     <MESSAGE value="Test" />
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fixes" />
+    <MESSAGE value="Add Textmesh" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Textmesh" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -292,19 +328,6 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Classes/Action.cs</url>
-          <line>174</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Classes\Action.cs" containingFunctionPresentation="Method 'CheckAbilityTargets'">
-            <startOffsets>
-              <option value="6014" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6060" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Characters/EnemyController.cs</url>
           <line>68</line>
           <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Characters\EnemyController.cs" containingFunctionPresentation="Method 'CharacterMoved'">
@@ -332,13 +355,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Characters/Entity.cs</url>
-          <line>240</line>
+          <line>247</line>
           <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Characters\Entity.cs" containingFunctionPresentation="Method 'TakeDamage'">
             <startOffsets>
-              <option value="10024" />
+              <option value="10254" />
             </startOffsets>
             <endOffsets>
-              <option value="10040" />
+              <option value="10270" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="58" />
@@ -409,17 +432,95 @@
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Characters/CharacterManager.cs</url>
-          <line>85</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Characters\CharacterManager.cs" containingFunctionPresentation="Method 'HandleActiveTileWithCharacter'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/AbilityController.cs</url>
+          <line>67</line>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\AbilityController.cs" containingFunctionPresentation="Method 'CastAbility'">
             <startOffsets>
-              <option value="3027" />
+              <option value="2627" />
             </startOffsets>
             <endOffsets>
-              <option value="3158" />
+              <option value="2680" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="71" />
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/AbilityController.cs</url>
+          <line>70</line>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\AbilityController.cs" containingFunctionPresentation="Method 'CastAbility'">
+            <startOffsets>
+              <option value="2791" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2844" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/BattleController.cs</url>
+          <line>92</line>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\BattleController.cs" containingFunctionPresentation="Method 'AttackUnit'">
+            <startOffsets>
+              <option value="2454" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2533" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/BattleController.cs</url>
+          <line>122</line>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\BattleController.cs" containingFunctionPresentation="Method 'FinishAttack'">
+            <startOffsets>
+              <option value="3792" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3871" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/3D Specific/Projectile.cs</url>
+          <line>42</line>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\3D Specific\Projectile.cs" containingFunctionPresentation="Method 'Update'">
+            <startOffsets>
+              <option value="1078" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1127" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Characters/CharacterManager.cs</url>
+          <line>47</line>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Characters\CharacterManager.cs" containingFunctionPresentation="Method 'Update'">
+            <startOffsets>
+              <option value="1473" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1523" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Characters/EnemyAI.cs</url>
+          <line>173</line>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Characters\EnemyAI.cs" containingFunctionPresentation="Method 'GetBestSpellAction'">
+            <startOffsets>
+              <option value="7213" />
+            </startOffsets>
+            <endOffsets>
+              <option value="7243" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="112" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

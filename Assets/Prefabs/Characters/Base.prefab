@@ -485,6 +485,9 @@ MonoBehaviour:
   EnemySpell: {fileID: 0}
   AllySpell: {fileID: 0}
   SelfSpell: {fileID: 0}
+  isActing: 0
+  triggerProjectile: {fileID: 11400000, guid: 6db8c17fc01e4344f820ee1a85ff32dd, type: 2}
+  setTarget: {fileID: 11400000, guid: 55f8c37e8ebd1174aa655f615f441954, type: 2}
 --- !u!114 &7694651815376587606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,6 +618,7 @@ GameObject:
   - component: {fileID: 3049728560614822872}
   - component: {fileID: 2216462961659624214}
   - component: {fileID: 2092164961323871703}
+  - component: {fileID: 8073934641136977839}
   m_Layer: 0
   m_Name: CharacterSprite
   m_TagString: Untagged
@@ -771,3 +775,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameEvent: {fileID: 11400000, guid: 4ce671989c47b274ca279185ae3134e0, type: 2}
+--- !u!65 &8073934641136977839
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8404681411429198176}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

@@ -122,7 +122,7 @@ namespace TacticsToolkit
                 var isSameTeam = isActiveCharacter && tile.activeCharacter.teamID == Instance.activeCharacter.teamID;
                 var canWalkThroughAllies = walkThroughAllies && isSameTeam;
 
-                if (ignoreObstacles || (!isBlocked) || canWalkThroughAllies)
+                if (ignoreObstacles || (!isBlocked) || canWalkThroughAllies || isActiveCharacter)
                     if (tile.GetMoveCost() <= remainingRange || ignoreObstacles)
                         canAccessLocation = true;
 

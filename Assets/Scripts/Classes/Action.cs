@@ -114,7 +114,7 @@ using UnityEngine;
         private void CastAbility()
         {
             var inRangeCharacters = new List<Entity>();
-            var abilityAffectedTiles = ShapeParser.GetAbilityTileLocations(Target, Ability.abilityShape, Entity.activeTile.grid2DLocation, Ability.includeOrigin);
+            var abilityAffectedTiles = ShapeParser.GetAbilityTileLocations(Target, Ability.abilityShape, Entity.activeTile.grid2DLocation, false);
             
             if (Ability.includeOrigin)
                 abilityAffectedTiles.Add(Target);
@@ -145,10 +145,10 @@ using UnityEngine;
                     //apply value
                     switch (Ability.abilityType)
                     {
-                        case Ability.AbilityTypes.Ally:
+                        case Ability.AbilityTypes.Heal:
                             character.HealEntity(Ability.value);
                             break;
-                        case Ability.AbilityTypes.Enemy:
+                        case Ability.AbilityTypes.Damage:
                             character.TakeDamage(Ability.value);
                             break;
                         case Ability.AbilityTypes.All:
@@ -164,19 +164,19 @@ using UnityEngine;
                             character.UndoEffect(effect);
                     }
                 }
-                Entity.UpdateInitiative(Constants.AbilityCost);
                 
-                State = ActionState.Finished;
+                Entity.UpdateInitiative(Constants.AbilityCost);
             }
+            State = ActionState.Finished;
         }
         
         private bool CheckAbilityTargets(Ability.AbilityTypes abilityType, Entity characterTarget)
         {
-            if (abilityType == Ability.AbilityTypes.Enemy)
+            if (abilityType == Ability.AbilityTypes.Damage)
             {
                 return characterTarget.teamID != Entity.teamID;
             }
-            else if (abilityType == Ability.AbilityTypes.Ally)
+            else if (abilityType == Ability.AbilityTypes.Heal)
             {
                 return characterTarget.teamID == Entity.teamID;
             }
