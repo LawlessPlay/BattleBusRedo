@@ -106,7 +106,7 @@ namespace TacticsToolkit
                     {
                         float percentageDifference = (float)(statMod.value / 100f) * (float)baseStatValue;
                         character.TakeDamage(Mathf.CeilToInt(percentageDifference), true);
-                        ChangeStatValue(character.statsContainer.CurrentHealth.statValue);
+                        statValue = character.statsContainer.CurrentHealth.statValue;
                     }
                     else
                     {

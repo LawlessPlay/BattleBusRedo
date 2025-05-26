@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -177,6 +178,25 @@ namespace TacticsToolkit
         public OverlayTile GetOverlayTileFromGridPosition(Vector2Int position)
         {
             return map[position];
+        }
+
+        public int GetClosestCharacterDistance(bool getPlayers, Entity self, OverlayTile location)
+        {
+            var pathFinder = new PathFinder();
+            var team = getPlayers ? GameObject.FindGameObjectsWithTag("Player").Select(x => x.GetComponent<Entity>()).Where(x => x != self).ToList() : GameObject.FindGameObjectsWithTag("Enemy").Select(x => x.GetComponent<Entity>()).ToList().Where(x => x != self).ToList();
+            
+            var closestDistance = int.MaxValue;
+            
+            foreach (var entity in team)
+            {
+                var distanceFromCharacter = pathFinder.GetManhattenDistance(location, entity.activeTile);
+
+                if (!(distanceFromCharacter <= closestDistance)) continue;
+                
+                closestDistance = distanceFromCharacter;
+            }
+            
+            return closestDistance;
         }
     }
 

@@ -34,6 +34,8 @@ namespace TacticsToolkit
         public int requiredLevel;
 
         public bool requiresTarget;
+        
+        public TooltipSO tooltip;
 
         public enum AbilityTypes
         {

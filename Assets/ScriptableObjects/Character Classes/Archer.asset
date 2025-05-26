@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   Health:
-    baseStatValue: 100
+    baseStatValue: 250
     baseStatModifier:
       serializedVersion: 2
       m_Curve:

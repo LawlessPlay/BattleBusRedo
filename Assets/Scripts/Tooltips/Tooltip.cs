@@ -9,8 +9,11 @@ namespace TacticsToolkit
     [ExecuteInEditMode()]
     public class Tooltip : MonoBehaviour
     {
+        public TooltipSO tooltip;
+        
         public Text title;
         public Text description;
+        public Image image;
 
         public LayoutElement layoutElement;
 
@@ -45,10 +48,11 @@ namespace TacticsToolkit
         [SerializeField]
         private RectTransform canvas;
 
-        public void SetContent(string title, string description, Vector3 position, Vector2 dimensions)
+        public void SetContent(Sprite image, string title, string description, Vector3 position, Vector2 dimensions)
         {
             this.title.text = title;
             this.description.text = description;
+            this.image.sprite = image;
 
             int titleLenght = this.title.text.Length;
             int descriptionLenght = this.description.text.Length;

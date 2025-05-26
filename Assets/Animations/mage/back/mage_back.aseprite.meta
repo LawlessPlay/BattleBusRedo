@@ -88,7 +88,7 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
@@ -101,13 +101,13 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638688704484500082
+  platformSettingsDirtyTick: 638835184480444999
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -133,15 +133,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: mage_back_Frame_0
     originalName: 
-    pivot: {x: 0.45454547, y: 0}
+    pivot: {x: 0.45652175, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 63
-      y: 140
-      width: 44
-      height: 59
+      x: 65
+      y: 144
+      width: 46
+      height: 61
     spriteID: f75c74036f4acf5479d48ab62ca25a06
     spriteBone: []
     spriteOutline: []
@@ -150,18 +150,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 63, y: 140}
+    uvTransform: {x: 65, y: 144}
   - name: mage_back_Frame_1
     originalName: 
-    pivot: {x: 0.45238096, y: 0}
+    pivot: {x: 0.45454547, y: -0.016393442}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 116
-      y: 139
-      width: 42
-      height: 59
+      x: 120
+      y: 143
+      width: 44
+      height: 61
     spriteID: b12b783fc58f75e4dbfcd58704e8a6be
     spriteBone: []
     spriteOutline: []
@@ -170,18 +170,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 116, y: 139}
+    uvTransform: {x: 120, y: 143}
   - name: mage_back_Frame_2
     originalName: 
-    pivot: {x: 0.42857143, y: 0}
+    pivot: {x: 0.4318182, y: -0.016129032}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 116
-      y: 71
-      width: 42
-      height: 60
+      x: 120
+      y: 73
+      width: 44
+      height: 62
     spriteID: b5f77361505989c4daaa2be6569c606c
     spriteBone: []
     spriteOutline: []
@@ -190,18 +190,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 116, y: 71}
+    uvTransform: {x: 120, y: 73}
   - name: mage_back_Frame_3
     originalName: 
-    pivot: {x: 0.45238096, y: 0}
+    pivot: {x: 0.45454547, y: -0.016393442}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 168
+      x: 174
       y: 4
-      width: 42
-      height: 59
+      width: 44
+      height: 61
     spriteID: d24259ed2024841469f9a089ff55b17e
     spriteBone: []
     spriteOutline: []
@@ -210,18 +210,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 168, y: 4}
+    uvTransform: {x: 174, y: 4}
   - name: mage_back_Frame_4
     originalName: 
-    pivot: {x: 0.45454547, y: 0}
+    pivot: {x: 0.45652175, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 116
+      x: 120
       y: 4
-      width: 44
-      height: 59
+      width: 46
+      height: 61
     spriteID: d288cdf4fa741b34db0404428c18d260
     spriteBone: []
     spriteOutline: []
@@ -230,18 +230,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 116, y: 4}
+    uvTransform: {x: 120, y: 4}
   - name: mage_back_Frame_5
     originalName: 
-    pivot: {x: 0.53333336, y: 0}
+    pivot: {x: 0.5319149, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 139
-      width: 45
-      height: 60
+      y: 143
+      width: 47
+      height: 62
     spriteID: 6977c10a7fe390947926bcfdeaf9c114
     spriteBone: []
     spriteOutline: []
@@ -250,18 +250,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 139}
+    uvTransform: {x: 4, y: 143}
   - name: mage_back_Frame_6
     originalName: 
-    pivot: {x: 0.5217391, y: 0}
+    pivot: {x: 0.5208334, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 71
-      width: 46
-      height: 60
+      y: 73
+      width: 48
+      height: 62
     spriteID: 12ba712dc82d5ca4a958255b710abf7f
     spriteBone: []
     spriteOutline: []
@@ -270,18 +270,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 71}
+    uvTransform: {x: 4, y: 73}
   - name: mage_back_Frame_7
     originalName: 
-    pivot: {x: 0.53333336, y: 0}
+    pivot: {x: 0.5319149, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 63
+      x: 65
       y: 4
-      width: 45
-      height: 60
+      width: 47
+      height: 62
     spriteID: c9f1982266398a148bdf1c8964c724e2
     spriteBone: []
     spriteOutline: []
@@ -290,18 +290,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 63, y: 4}
+    uvTransform: {x: 65, y: 4}
   - name: mage_back_Frame_8
     originalName: 
-    pivot: {x: 0.53333336, y: 0}
+    pivot: {x: 0.5319149, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 63
-      y: 72
-      width: 45
-      height: 60
+      x: 65
+      y: 74
+      width: 47
+      height: 62
     spriteID: 9bf43ab5cc76fa447b2fc6a9172625ef
     spriteBone: []
     spriteOutline: []
@@ -310,18 +310,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 63, y: 72}
+    uvTransform: {x: 65, y: 74}
   - name: mage_back_Frame_9
     originalName: 
-    pivot: {x: 0.39215687, y: 0}
+    pivot: {x: 0.3962264, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 51
-      height: 59
+      width: 53
+      height: 61
     spriteID: 1e9c36e2443050345a87051c600182aa
     spriteBone: []
     spriteOutline: []

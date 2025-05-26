@@ -36,7 +36,7 @@ namespace TacticsToolkit
         public GameObject isActiveIndicator;
 
         public GameEvent endTurn;
-        public Image healthBar;
+        private HealthBarManager healthBarManager;
         [HideInInspector]
         public int previousTurnCost = -1;
 
@@ -66,6 +66,10 @@ namespace TacticsToolkit
         public GameEventGameObject triggerProjectile;
         public GameEventGameObject setTarget;
         
+        
+        protected bool hasAttacked = false;
+        protected bool hasMoved = false;
+        
         protected List<Action> actionQueue = new List<Action>();
         
         private void Awake()
@@ -78,7 +82,7 @@ namespace TacticsToolkit
             SetAbilityList();
             SetStats();
             requiredExperience = gameConfig.GetRequiredExp(level);
-
+            healthBarManager = GetComponent<HealthBarManager>();
             myRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
             initiativeValue = Mathf.RoundToInt(initiativeBase / GetStat(Stats.Speed).statValue);
             initialSpritePosition = myRenderer.transform.position;
@@ -237,7 +241,7 @@ namespace TacticsToolkit
             {
                 statsContainer.CurrentHealth.statValue -= damageToTake;
                 StartCoroutine(ShowDamage());
-                UpdateCharacterUI();
+                healthBarManager.UpdateCharacterUI();
                 if (GetStat(Stats.CurrentHealth).statValue <= 0)
                 {
                     isAlive = false;
@@ -280,11 +284,11 @@ namespace TacticsToolkit
                 statsContainer.CurrentHealth.statValue = statsContainer.Health.statValue;
             
             StartCoroutine(ShowHeal());
-            UpdateCharacterUI();
+            healthBarManager.UpdateCharacterUI();
         }
 
         //basic example if using a defencive stat
-        private int CalculateDamage(int damage)
+        public int CalculateDamage(int damage)
         {
             var endurance = (float)GetStat(Stats.Endurance).statValue;
             float percentage = ((endurance / (float)damage) * 100) / 2;
@@ -350,12 +354,6 @@ namespace TacticsToolkit
             GetComponent<SpriteRenderer>().color = new Color(0.35f, 0.35f, 0.35f, 1);
         }
 
-        //Updates the characters healthbar. 
-        private void UpdateCharacterUI()
-        {
-            healthBar.fillAmount = (float)statsContainer.CurrentHealth.statValue / (float)statsContainer.Health.statValue;
-        }
-
         //Change characters mana
         public void UpdateMana(int value) => statsContainer.CurrentMana.statValue -= value;
 
@@ -382,7 +380,7 @@ namespace TacticsToolkit
             var statMod = new StatModifier(scriptableEffect.statKey, scriptableEffect.Value, scriptableEffect.Duration, scriptableEffect.Operator, scriptableEffect.name);
             Stat value = statsContainer.getStat(scriptableEffect.GetStatKey());
             value.ApplySingleStatMod(statMod);
-            UpdateCharacterUI();
+            healthBarManager.UpdateCharacterUI();
         }
 
         //Effects that don't have a duration should be manually removed. 
@@ -391,7 +389,7 @@ namespace TacticsToolkit
             var statMod = new StatModifier(scriptableEffect.statKey, scriptableEffect.Value, scriptableEffect.Duration, scriptableEffect.Operator, scriptableEffect.name);
             Stat value = statsContainer.getStat(scriptableEffect.GetStatKey());
             value.UndoStatMod(statMod);
-            UpdateCharacterUI();
+            healthBarManager.UpdateCharacterUI();
         }
 
 
@@ -406,9 +404,10 @@ namespace TacticsToolkit
                 Stat value = (Stat)item.GetValue(statsContainer);
 
                 value.ApplyStatMods();
+                value.TickStatMods();
             }
 
-            UpdateCharacterUI();
+            healthBarManager.UpdateCharacterUI();
         }
 
         //Gets Entities ability. 
@@ -419,15 +418,10 @@ namespace TacticsToolkit
 
         public virtual void StartTurn()
         {
-            var fields = typeof(CharacterStats).GetFields();
-
-            foreach (var item in fields)
-            {
-                var type = item.FieldType;
-                Stat value = (Stat)item.GetValue(statsContainer);
-
-                value.TickStatMods();
-            }
+            SetIsActive(true);
+            
+            myRenderer.material.SetFloat("_Enabled", 1);
+            ApplyEffects();
         }
         public virtual void CharacterMoved()
         {
@@ -527,16 +521,21 @@ namespace TacticsToolkit
         {
         }
         
-        public virtual void TriggerProjectile()
+        public virtual void TriggerAction()
         {
             if (actionQueue.Count > 0)
             {
-                triggerProjectile.Raise(actionQueue[0].Ability.abilityFX);
+                if(actionQueue[0].Ability.abilityFX)
+                    triggerProjectile.Raise(actionQueue[0].Ability.abilityFX);
+                else
+                    actionQueue[0].DoAction();
             }
         }
         
         public void EndTurn()
         {
+            SetIsActive(false);
+            myRenderer.material.SetFloat("_Enabled", 0);
             endTurn.Raise();
         }
     }

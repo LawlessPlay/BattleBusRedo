@@ -88,7 +88,7 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
@@ -101,13 +101,13 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638688704545978226
+  platformSettingsDirtyTick: 638835184537182639
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -133,15 +133,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: mage_Frame_0
     originalName: 
-    pivot: {x: 0.47058827, y: 0}
+    pivot: {x: 0.4716981, y: -0.016949153}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 67
-      y: 132
-      width: 51
-      height: 57
+      x: 69
+      y: 136
+      width: 53
+      height: 59
     spriteID: ab24979a81735ae40ac6013b9f61d5e0
     spriteBone: []
     spriteOutline: []
@@ -150,18 +150,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 67, y: 132}
+    uvTransform: {x: 69, y: 136}
   - name: mage_Frame_1
     originalName: 
-    pivot: {x: 0.44444445, y: 0}
+    pivot: {x: 0.4464286, y: -0.01724138}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 67
+      x: 69
       y: 4
-      width: 54
-      height: 56
+      width: 56
+      height: 58
     spriteID: 6017c5f38e457154f89a5806a6df4bfc
     spriteBone: []
     spriteOutline: []
@@ -170,18 +170,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 67, y: 4}
+    uvTransform: {x: 69, y: 4}
   - name: mage_Frame_2
     originalName: 
-    pivot: {x: 0.43636364, y: 0}
+    pivot: {x: 0.4385965, y: -0.01754386}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 134
-      width: 55
-      height: 55
+      y: 138
+      width: 57
+      height: 57
     spriteID: 2f04a8ae35f43b143b96b7438bd08c46
     spriteBone: []
     spriteOutline: []
@@ -190,18 +190,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 134}
+    uvTransform: {x: 4, y: 138}
   - name: mage_Frame_3
     originalName: 
-    pivot: {x: 0.44444445, y: 0}
+    pivot: {x: 0.4464286, y: -0.01724138}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 67
-      y: 68
-      width: 54
-      height: 56
+      x: 69
+      y: 70
+      width: 56
+      height: 58
     spriteID: ff41b3959ff595e42957176fe7b02421
     spriteBone: []
     spriteOutline: []
@@ -210,18 +210,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 67, y: 68}
+    uvTransform: {x: 69, y: 70}
   - name: mage_Frame_4
     originalName: 
-    pivot: {x: 0.48, y: 0}
+    pivot: {x: 0.48076925, y: -0.016949153}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 129
+      x: 133
       y: 4
-      width: 50
-      height: 57
+      width: 52
+      height: 59
     spriteID: 4862fb9805d849142b75903dd90e5719
     spriteBone: []
     spriteOutline: []
@@ -230,18 +230,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 129, y: 4}
+    uvTransform: {x: 133, y: 4}
   - name: mage_Frame_5
     originalName: 
-    pivot: {x: 0.5714286, y: 0}
+    pivot: {x: 0.5681818, y: -0.01724138}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 129
-      y: 133
-      width: 42
-      height: 56
+      x: 133
+      y: 137
+      width: 44
+      height: 58
     spriteID: 608f04deb16ab3344a6529e25ba1684a
     spriteBone: []
     spriteOutline: []
@@ -250,18 +250,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 129, y: 133}
+    uvTransform: {x: 133, y: 137}
   - name: mage_Frame_6
     originalName: 
-    pivot: {x: 0.54545456, y: 0}
+    pivot: {x: 0.54347825, y: -0.01724138}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 129
-      y: 69
-      width: 44
-      height: 56
+      x: 133
+      y: 71
+      width: 46
+      height: 58
     spriteID: 4ac24311727447a4586d6bbb89420dac
     spriteBone: []
     spriteOutline: []
@@ -270,18 +270,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 129, y: 69}
+    uvTransform: {x: 133, y: 71}
   - name: mage_Frame_7
     originalName: 
-    pivot: {x: 0.5714286, y: 0}
+    pivot: {x: 0.5681818, y: -0.01724138}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 187
+      x: 193
       y: 4
-      width: 42
-      height: 56
+      width: 44
+      height: 58
     spriteID: 5ce36c5152367d442a48b32225ad338e
     spriteBone: []
     spriteOutline: []
@@ -290,18 +290,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 187, y: 4}
+    uvTransform: {x: 193, y: 4}
   - name: mage_Frame_8
     originalName: 
-    pivot: {x: 0.58536583, y: 0}
+    pivot: {x: 0.5813953, y: -0.01724138}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 187
-      y: 68
-      width: 41
-      height: 56
+      x: 193
+      y: 70
+      width: 43
+      height: 58
     spriteID: 182a6068d96d28845898e581c1129058
     spriteBone: []
     spriteOutline: []
@@ -310,18 +310,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 187, y: 68}
+    uvTransform: {x: 193, y: 70}
   - name: mage_Frame_9
     originalName: 
-    pivot: {x: 0.43636364, y: 0}
+    pivot: {x: 0.4385965, y: -0.016949153}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 55
-      height: 57
+      width: 57
+      height: 59
     spriteID: 0a669cda71d78a54a9f0f86ccb703931
     spriteBone: []
     spriteOutline: []
@@ -333,15 +333,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: mage_Frame_10
     originalName: 
-    pivot: {x: 0.43636364, y: 0}
+    pivot: {x: 0.4385965, y: -0.016949153}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 69
-      width: 55
-      height: 57
+      y: 71
+      width: 57
+      height: 59
     spriteID: c19466aacfeeb394985e893fdcae4bf1
     spriteBone: []
     spriteOutline: []
@@ -350,7 +350,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 69}
+    uvTransform: {x: 4, y: 71}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0

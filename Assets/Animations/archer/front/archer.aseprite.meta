@@ -98,7 +98,7 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
@@ -111,13 +111,13 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638688704219144885
+  platformSettingsDirtyTick: 638835184304925164
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -143,15 +143,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: archer_Frame_0
     originalName: 
-    pivot: {x: 0.62068963, y: 0}
+    pivot: {x: 0.61290324, y: -0.049180325}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 49
-      y: 72
-      width: 29
-      height: 59
+      x: 51
+      y: 74
+      width: 31
+      height: 61
     spriteID: 598bfbc0402570b42813639d68f876b3
     spriteBone: []
     spriteOutline: []
@@ -160,18 +160,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 49, y: 72}
+    uvTransform: {x: 51, y: 74}
   - name: archer_Frame_1
     originalName: 
-    pivot: {x: 0.6, y: 0}
+    pivot: {x: 0.59375, y: -0.048387095}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 134
-      width: 30
-      height: 60
+      y: 138
+      width: 32
+      height: 62
     spriteID: 1756aec33da97d847a9f95f9dfb7b66f
     spriteBone: []
     spriteOutline: []
@@ -180,18 +180,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 134}
+    uvTransform: {x: 4, y: 138}
   - name: archer_Frame_2
     originalName: 
-    pivot: {x: 0.5862069, y: 0}
+    pivot: {x: 0.58064514, y: -0.050000004}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 87
-      y: 69
-      width: 29
-      height: 58
+      x: 91
+      y: 71
+      width: 31
+      height: 60
     spriteID: c4c7e891f373e2c4f8db29f91af612d3
     spriteBone: []
     spriteOutline: []
@@ -200,18 +200,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 69}
+    uvTransform: {x: 91, y: 71}
   - name: archer_Frame_3
     originalName: 
-    pivot: {x: 0.6, y: 0}
+    pivot: {x: 0.59375, y: -0.048387095}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 49
+      x: 51
       y: 4
-      width: 30
-      height: 60
+      width: 32
+      height: 62
     spriteID: 9873ab0dcf094dd45b6dd3651e136b62
     spriteBone: []
     spriteOutline: []
@@ -220,18 +220,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 49, y: 4}
+    uvTransform: {x: 51, y: 4}
   - name: archer_Frame_4
     originalName: 
-    pivot: {x: 0.62068963, y: 0}
+    pivot: {x: 0.61290324, y: -0.049180325}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 49
-      y: 139
-      width: 29
-      height: 59
+      x: 51
+      y: 143
+      width: 31
+      height: 61
     spriteID: da5f05032bcf4854f837b67827a77013
     spriteBone: []
     spriteOutline: []
@@ -240,18 +240,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 49, y: 139}
+    uvTransform: {x: 51, y: 143}
   - name: archer_Frame_5
     originalName: 
-    pivot: {x: 0.6296296, y: 0}
+    pivot: {x: 0.62068963, y: -0.050847456}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 87
-      y: 135
-      width: 27
-      height: 57
+      x: 91
+      y: 139
+      width: 29
+      height: 59
     spriteID: ccbfca85be7c08948bfc71ce753726ab
     spriteBone: []
     spriteOutline: []
@@ -260,18 +260,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 135}
+    uvTransform: {x: 91, y: 139}
   - name: archer_Frame_6
     originalName: 
-    pivot: {x: 0.2857143, y: 0}
+    pivot: {x: 0.2972973, y: -0.050847456}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 69
-      width: 35
-      height: 57
+      y: 71
+      width: 37
+      height: 59
     spriteID: 093943e32702e4242af3fa1e36850bae
     spriteBone: []
     spriteOutline: []
@@ -280,18 +280,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 69}
+    uvTransform: {x: 4, y: 71}
   - name: archer_Frame_7
     originalName: 
-    pivot: {x: 0.38709676, y: 0}
+    pivot: {x: 0.3939394, y: -0.050847456}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 87
+      x: 91
       y: 4
-      width: 31
-      height: 57
+      width: 33
+      height: 59
     spriteID: 42cac231a5de128469252f5f547f9c70
     spriteBone: []
     spriteOutline: []
@@ -300,18 +300,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 87, y: 4}
+    uvTransform: {x: 91, y: 4}
   - name: archer_Frame_8
     originalName: 
-    pivot: {x: 0.5405406, y: 0}
+    pivot: {x: 0.53846157, y: -0.050847456}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 37
-      height: 57
+      width: 39
+      height: 59
     spriteID: 41251ff58f0cf7247bda627da3340107
     spriteBone: []
     spriteOutline: []

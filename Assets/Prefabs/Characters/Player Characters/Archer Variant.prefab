@@ -58,6 +58,12 @@ PrefabInstance:
       propertyPath: spriteOffset.z
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 2092164961323871703, guid: 94912624c52864e4e833d8cbca8aec94,
+        type: 3}
+      propertyPath: GameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b1747f5f26686f4697ca678891c0889,
+        type: 2}
     - target: {fileID: 2216462961659624214, guid: 94912624c52864e4e833d8cbca8aec94,
         type: 3}
       propertyPath: m_Controller

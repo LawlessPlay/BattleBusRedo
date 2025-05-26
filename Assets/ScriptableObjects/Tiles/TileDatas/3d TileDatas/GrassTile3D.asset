@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseTiles: []
   hasTooltip: 0
-  tooltipName: 
-  tooltipDescription: 
+  tooltip: {fileID: 11400000, guid: f657f62b4104c7e4ea1ae4dd159f2dcf, type: 2}
+  tooltipName: Grass
+  tooltipDescription: This is grass
   type: 0
-  MoveCost: 3
+  MoveCost: 1
   effect: {fileID: 0}
   Tiles3D:
   - {fileID: 2100000, guid: 72bb7f23fd787be4b82895e983e578d8, type: 2}
+  - {fileID: 2100000, guid: cbcd3b6314691a34bae3d435a0633c64, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mage
   m_EditorClassIdentifier: 
   Health:
-    baseStatValue: 100
+    baseStatValue: 150
     baseStatModifier:
       serializedVersion: 2
       m_Curve:

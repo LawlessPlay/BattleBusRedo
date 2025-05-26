@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   jumpCost: 0
-  MoveRangeColor: {r: 1, g: 1, b: 1, a: 1}
-  AttackRangeColor: {r: 1, g: 0.046875, b: 0, a: 1}
-  BlockedTileColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
-  EnemyColor: {r: 1, g: 0.09019607, b: 0.9746809, a: 1}
-  AllyColor: {r: 0, g: 1, b: 0.35566998, a: 1}
-  SelfColor: {r: 0, g: 0.9388051, b: 1, a: 1}
+  MoveRangeColor: {r: 0.92156863, g: 0.92941177, b: 0.9137255, a: 1}
+  AttackRangeColor: {r: 1, g: 0.061854362, b: 0, a: 1}
+  BlockedTileColor: {r: 0.22352941, g: 0.2901961, b: 0.3137255, a: 1}
+  EnemyColor: {r: 1, g: 0.0698705, b: 0, a: 1}
+  AllyColor: {r: 0, g: 1, b: 0.09811425, a: 1}
+  SelfColor: {r: 0.30980393, g: 0.56078434, b: 0.7294118, a: 1}
   xpScalingMode: 2
   LevelIncreaseAmount: 5
   expCurve:

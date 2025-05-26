@@ -68,7 +68,7 @@ namespace TacticsToolkit
                             {
                                 if (coloredTile.grid2DLocation == usedTile.grid2DLocation)
                                 {
-                                    coloredTile.ShowTile(usedColors);
+                                    coloredTile.ShowTile(OverlayTile.TileColors.MovementColor);
                                 }
                             }
                         }
@@ -95,10 +95,10 @@ namespace TacticsToolkit
             ClearTiles(color);
             foreach (var tile in overlayTiles)
             {
-                tile.ShowTile(color);
+                tile.ShowTile(OverlayTile.TileColors.MovementColor);
 
                 if (tile.isBlocked)
-                    tile.ShowTile(BlockedTileColor);
+                    tile.ShowTile(OverlayTile.TileColors.MovementColor);
             }
 
             if (characterTiles != null)
@@ -109,20 +109,20 @@ namespace TacticsToolkit
                     {
                         if (tile.activeCharacter == activeCharacter)
                         {
-                            tile.ShowTile(SelfColor);
+                            tile.ShowTile(OverlayTile.TileColors.MovementColor);
                         }
                         else if (tile.activeCharacter.teamID == activeCharacter.teamID)
                         {
-                            tile.ShowTile(AllyColor);
+                            tile.ShowTile(OverlayTile.TileColors.MovementColor);
                         }
                         else
                         {
-                            tile.ShowTile(EnemyColor);
+                            tile.ShowTile(OverlayTile.TileColors.MovementColor);
                         }
                     }
                     else
                     {
-                        tile.ShowTile(EnemyColor);
+                        tile.ShowTile(OverlayTile.TileColors.MovementColor);
                     }
 
                 }
@@ -135,10 +135,10 @@ namespace TacticsToolkit
         public void ColorSingleTile(Color color, OverlayTile tile)
         {
             //ClearTiles(color);
-            tile.ShowTile(color);
+            tile.ShowTile(OverlayTile.TileColors.MovementColor);
 
             if (tile.isBlocked)
-                tile.ShowTile(BlockedTileColor);
+                tile.ShowTile(OverlayTile.TileColors.MovementColor);
 
 
             var list = new List<OverlayTile>();

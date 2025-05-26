@@ -32,8 +32,9 @@ namespace TacticsToolkit
         public enum TileColors
         {
             MovementColor,
-            AttackRangeColor,
-            AttackColor
+            SupportColor,
+            AttackColor,
+            HighlightColor
         }
 
         private void Start()
@@ -42,10 +43,29 @@ namespace TacticsToolkit
         }
 
         //Color a tile
-        public void ShowTile(Color color)
+        public void ShowTile(TileColors color)
         {
-            childSpriteRenderer.color = color;
-            //StartCoroutine(LerpColor(color));
+            var imageControllers = childSpriteRenderer.gameObject.GetComponent<OverlayImageController>();
+            
+            switch (color)
+            {
+                case TileColors.MovementColor:
+                    imageControllers.EnableMovementImage();
+                    break;
+                case TileColors.AttackColor:
+                    imageControllers.EnableAttackImage();
+                    
+                    break;
+                case TileColors.SupportColor:
+                    imageControllers.EnableSupportImage();
+                    break;
+                case TileColors.HighlightColor:
+                    imageControllers.EnableHighlightImage();
+                    break;
+                default:
+                    imageControllers.EnableMovementImage();
+                    break;
+            }
         }
         
         private IEnumerator LerpColor(Color targetColor)
@@ -68,8 +88,8 @@ namespace TacticsToolkit
         //Remove the color from a tile.
         public void HideTile()
         {
-            childSpriteRenderer.color = new Color(1, 1, 1, 0);
-            SetArrowSprite(ArrowDirection.None);
+            var imageControllers = childSpriteRenderer.gameObject.GetComponent<OverlayImageController>();
+            imageControllers.DisableAll();
         }
 
         //Sets the arrow sprite for displaying the path.

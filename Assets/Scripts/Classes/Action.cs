@@ -125,6 +125,7 @@ using UnityEngine;
                 var targetCharacter = tile.activeCharacter;
                 if (targetCharacter &&  targetCharacter.isAlive)
                 {
+                    targetCharacter.GetComponent<HealthBarManager>().HidePreview();
                     inRangeCharacters.Add(targetCharacter);
                 }
             }
@@ -167,6 +168,8 @@ using UnityEngine;
                 
                 Entity.UpdateInitiative(Constants.AbilityCost);
             }
+            
+            OverlayManagerV2.Instance.ClearAbilityTiles();
             State = ActionState.Finished;
         }
         

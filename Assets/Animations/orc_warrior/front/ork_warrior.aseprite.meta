@@ -87,8 +87,8 @@ ScriptedImporter:
     defaultPivotSpace: 1
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 0
-    spritePadding: 0
+    mosaicPadding: 4
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
@@ -100,14 +100,14 @@ ScriptedImporter:
     defaultPivotSpace: 1
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 0
-    spritePadding: 0
+    mosaicPadding: 4
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638688703504696605
+  platformSettingsDirtyTick: 638835184695450046
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -138,10 +138,10 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 28
-      y: 0
-      width: 38
-      height: 51
+      x: 42
+      y: 4
+      width: 40
+      height: 53
     spriteID: c692d32113160e24aa9b4d2ffeb7cfa6
     spriteBone: []
     spriteOutline: []
@@ -150,7 +150,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 28, y: 0}
+    uvTransform: {x: 42, y: 4}
   - name: ork_warrior_Frame_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -158,10 +158,10 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 28
-      y: 51
-      width: 38
-      height: 51
+      x: 90
+      y: 4
+      width: 40
+      height: 53
     spriteID: e61d42dd19dfbe74d83bfdc5fea7a3f3
     spriteBone: []
     spriteOutline: []
@@ -170,7 +170,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 28, y: 51}
+    uvTransform: {x: 90, y: 4}
   - name: ork_warrior_Frame_2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -178,10 +178,10 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 66
-      y: 0
-      width: 38
-      height: 50
+      x: 90
+      y: 65
+      width: 40
+      height: 52
     spriteID: 45a8942fdecca714787e071566b69ca7
     spriteBone: []
     spriteOutline: []
@@ -190,7 +190,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 66, y: 0}
+    uvTransform: {x: 90, y: 65}
   - name: ork_warrior_Frame_3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -198,10 +198,10 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 28
-      y: 102
-      width: 38
-      height: 51
+      x: 138
+      y: 4
+      width: 40
+      height: 53
     spriteID: bbe2c02e526e78f40854724829d6aaae
     spriteBone: []
     spriteOutline: []
@@ -210,7 +210,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 28, y: 102}
+    uvTransform: {x: 138, y: 4}
   - name: ork_warrior_Frame_4
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -218,10 +218,10 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 28
-      y: 153
-      width: 38
-      height: 51
+      x: 186
+      y: 4
+      width: 40
+      height: 53
     spriteID: 20671110fe366b644b8d3a6e30c07fde
     spriteBone: []
     spriteOutline: []
@@ -230,7 +230,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 28, y: 153}
+    uvTransform: {x: 186, y: 4}
   - name: ork_warrior_Frame_5
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -238,10 +238,10 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 28
-      height: 80
+      x: 4
+      y: 4
+      width: 30
+      height: 82
     spriteID: 740925137acbeca4f81856da6837bb02
     spriteBone: []
     spriteOutline: []
@@ -250,7 +250,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
+    uvTransform: {x: 4, y: 4}
   - name: ork_warrior_Frame_6
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -258,10 +258,10 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 66
-      y: 50
-      width: 30
-      height: 51
+      x: 138
+      y: 65
+      width: 32
+      height: 53
     spriteID: 36127d8bda35b3344bcca8d07a74d4b2
     spriteBone: []
     spriteOutline: []
@@ -270,7 +270,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 66, y: 50}
+    uvTransform: {x: 138, y: 65}
   - name: ork_warrior_Frame_7
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -278,10 +278,10 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 28
-      y: 204
-      width: 38
-      height: 51
+      x: 42
+      y: 65
+      width: 40
+      height: 53
     spriteID: 16d222b497346a94098be3937d6a1fc5
     spriteBone: []
     spriteOutline: []
@@ -290,7 +290,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 28, y: 204}
+    uvTransform: {x: 42, y: 65}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0

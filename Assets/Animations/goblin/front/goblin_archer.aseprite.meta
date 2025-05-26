@@ -88,7 +88,7 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
@@ -101,13 +101,13 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638688704419527893
+  platformSettingsDirtyTick: 638835184428274997
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -133,15 +133,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: goblin_archer_Frame_0
     originalName: 
-    pivot: {x: 0.21739131, y: 0}
+    pivot: {x: 0.24, y: -0.114285715}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 40
-      y: 85
-      width: 23
-      height: 33
+      x: 42
+      y: 89
+      width: 25
+      height: 35
     spriteID: ac7d64d7acea04f48be773663175377f
     spriteBone: []
     spriteOutline: []
@@ -150,18 +150,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 40, y: 85}
+    uvTransform: {x: 42, y: 89}
   - name: goblin_archer_Frame_1
     originalName: 
-    pivot: {x: 0.16666667, y: 0}
+    pivot: {x: 0.1923077, y: -0.114285715}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 205
-      width: 24
-      height: 33
+      y: 215
+      width: 26
+      height: 35
     spriteID: 92cb50c4d0a472f49b4acef6a1e89a2e
     spriteBone: []
     spriteOutline: []
@@ -170,18 +170,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 205}
+    uvTransform: {x: 4, y: 215}
   - name: goblin_archer_Frame_2
     originalName: 
-    pivot: {x: 0.16666667, y: 0}
+    pivot: {x: 0.1923077, y: -0.11764706}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 40
-      y: 45
-      width: 24
-      height: 32
+      x: 42
+      y: 47
+      width: 26
+      height: 34
     spriteID: 1c5b4d5ff791ab546b60110a76c8c3f8
     spriteBone: []
     spriteOutline: []
@@ -190,18 +190,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 40, y: 45}
+    uvTransform: {x: 42, y: 47}
   - name: goblin_archer_Frame_3
     originalName: 
-    pivot: {x: 0.16666667, y: 0}
+    pivot: {x: 0.1923077, y: -0.114285715}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 40
+      x: 42
       y: 4
-      width: 24
-      height: 33
+      width: 26
+      height: 35
     spriteID: f2fcd7e0a46b1e04688c4e91d8c05d24
     spriteBone: []
     spriteOutline: []
@@ -210,18 +210,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 40, y: 4}
+    uvTransform: {x: 42, y: 4}
   - name: goblin_archer_Frame_4
     originalName: 
-    pivot: {x: 0.21739131, y: 0}
+    pivot: {x: 0.24, y: -0.114285715}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 40
-      y: 126
-      width: 23
-      height: 33
+      x: 42
+      y: 132
+      width: 25
+      height: 35
     spriteID: cf080e68a4c93784c9941b73ac9df34f
     spriteBone: []
     spriteOutline: []
@@ -230,18 +230,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 40, y: 126}
+    uvTransform: {x: 42, y: 132}
   - name: goblin_archer_Frame_5
     originalName: 
-    pivot: {x: 0.16, y: 0}
+    pivot: {x: 0.1851852, y: -0.114285715}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 84
-      width: 25
-      height: 33
+      y: 88
+      width: 27
+      height: 35
     spriteID: 00bb6efd17d12ea45b1cb719c4980dcc
     spriteBone: []
     spriteOutline: []
@@ -250,18 +250,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 84}
+    uvTransform: {x: 4, y: 88}
   - name: goblin_archer_Frame_6
     originalName: 
-    pivot: {x: 0.16, y: 0}
+    pivot: {x: 0.1851852, y: -0.11764706}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 125
-      width: 25
-      height: 32
+      y: 131
+      width: 27
+      height: 34
     spriteID: 2379659669beb2a4a849fafe0b8a1c39
     spriteBone: []
     spriteOutline: []
@@ -270,18 +270,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 125}
+    uvTransform: {x: 4, y: 131}
   - name: goblin_archer_Frame_7
     originalName: 
-    pivot: {x: 0.16, y: 0}
+    pivot: {x: 0.1851852, y: -0.11764706}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 165
-      width: 25
-      height: 32
+      y: 173
+      width: 27
+      height: 34
     spriteID: e17deef53f6c7dc4b9f304888f7f248e
     spriteBone: []
     spriteOutline: []
@@ -290,18 +290,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 165}
+    uvTransform: {x: 4, y: 173}
   - name: goblin_archer_Frame_8
     originalName: 
-    pivot: {x: 0.14285715, y: 0}
+    pivot: {x: 0.16666667, y: -0.11764706}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 28
-      height: 32
+      width: 30
+      height: 34
     spriteID: 5b06030476e9f934c8e6556a9d4762fd
     spriteBone: []
     spriteOutline: []
@@ -313,15 +313,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: goblin_archer_Frame_9
     originalName: 
-    pivot: {x: 0.14285715, y: 0}
+    pivot: {x: 0.16666667, y: -0.11764706}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 44
-      width: 28
-      height: 32
+      y: 46
+      width: 30
+      height: 34
     spriteID: 29c1c9df7a66c7247929458529c63482
     spriteBone: []
     spriteOutline: []
@@ -330,7 +330,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 44}
+    uvTransform: {x: 4, y: 46}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0

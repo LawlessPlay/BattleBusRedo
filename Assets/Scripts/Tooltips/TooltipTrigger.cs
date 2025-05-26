@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace TacticsToolkit
 {
@@ -7,14 +8,15 @@ namespace TacticsToolkit
     {
         public string title;
         public string description;
+        public Sprite image;
+        
         public void OnPointerEnter(PointerEventData eventData)
         {
             RectTransform rectTransform = GetComponent<RectTransform>();
             Vector3 position = rectTransform.position;
             Vector2 dimensions = new Vector2(rectTransform.rect.width, rectTransform.rect.height);
 
-
-            TooltipManager.Show(title, description, position, dimensions);
+            TooltipManager.Show(image, title, description, position, dimensions);
         }
 
 

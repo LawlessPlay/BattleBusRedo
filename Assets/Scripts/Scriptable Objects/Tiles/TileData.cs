@@ -11,6 +11,7 @@ namespace TacticsToolkit
         public List<TileBase> baseTiles;
 
         public bool hasTooltip;
+        public TooltipSO tooltip;
         public string tooltipName;
         [TextArea(3, 10)]
         public string tooltipDescription;

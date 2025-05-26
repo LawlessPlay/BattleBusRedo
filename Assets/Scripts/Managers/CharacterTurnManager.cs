@@ -6,9 +6,11 @@ using TacticsToolkit;
 
 public class CharacterTurnManager : MonoBehaviour
 {
+    
     public SpawnProjectilesScript spawnProjectiles;
     [SerializeField] private bool hasMoved;
     [SerializeField] private bool hasUsedAbility;
+    [SerializeField] private List<Entity> activeCharacters;
 
     [SerializeField] private Entity activeCharacter;
     [SerializeField] private OverlayTile activeTile;
@@ -20,6 +22,9 @@ public class CharacterTurnManager : MonoBehaviour
     private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        activeCharacters = new List<Entity>();
+        activeCharacters = GameObject.FindGameObjectsWithTag("Player").Select(x => x.GetComponent<Entity>()).ToList();
+        activeCharacters.AddRange(GameObject.FindGameObjectsWithTag("Enemy").Select(x => x.GetComponent<Entity>()).ToList());
     }
 
     public void StartTurn()
@@ -35,8 +40,18 @@ public class CharacterTurnManager : MonoBehaviour
         StartTurn();
     }
 
+    public void SpawnCharacter(GameObject character)
+    {
+        activeCharacters.Add(character.GetComponent<Entity>());
+    }
+
     public void SetActiveTile(GameObject tile)
     {
+        foreach (var character in activeCharacters)
+        {
+           character.GetComponent<HealthBarManager>().HidePreview();
+        }
+        
         if (activeCharacter == null) return;
 
         OverlayManagerV2.Instance.SetActiveTile(tile.GetComponent<OverlayTile>());
@@ -49,8 +64,8 @@ public class CharacterTurnManager : MonoBehaviour
         activeCharacter.TriggerNextAction();
     }
     
-    public void TriggerProjectile()
+    public void TriggerAction()
     {
-        activeCharacter.TriggerProjectile();
+        activeCharacter.TriggerAction();
     }
 }

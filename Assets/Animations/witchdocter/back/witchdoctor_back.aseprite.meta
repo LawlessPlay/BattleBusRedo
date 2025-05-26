@@ -88,7 +88,7 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
@@ -101,13 +101,13 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638641837484585538
+  platformSettingsDirtyTick: 638835184870012176
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -133,15 +133,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: witchdoctor_back_Frame_0
     originalName: 
-    pivot: {x: 0.21875003, y: 0}
+    pivot: {x: 0.2352941, y: -0.04761905}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 44
-      y: 145
-      width: 32
-      height: 61
+      x: 46
+      y: 163
+      width: 34
+      height: 63
     spriteID: fd204ee5bcdd0c34e8bfbb302931e3df
     spriteBone: []
     spriteOutline: []
@@ -150,18 +150,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 44, y: 145}
+    uvTransform: {x: 46, y: 163}
   - name: witchdoctor_back_Frame_1
     originalName: 
-    pivot: {x: 0.19354838, y: 0}
+    pivot: {x: 0.21212123, y: -0.04761905}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 84
-      y: 141
-      width: 31
-      height: 61
+      x: 88
+      y: 145
+      width: 33
+      height: 63
     spriteID: c5e288f37c84cd643ac8b0d74d713e53
     spriteBone: []
     spriteOutline: []
@@ -170,18 +170,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 84, y: 141}
+    uvTransform: {x: 88, y: 145}
   - name: witchdoctor_back_Frame_2
     originalName: 
-    pivot: {x: 0.18749999, y: 0}
+    pivot: {x: 0.20588237, y: -0.048387095}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 84
-      y: 73
-      width: 32
-      height: 60
+      x: 88
+      y: 75
+      width: 34
+      height: 62
     spriteID: d67439bb219179046bd43e0a924f7f67
     spriteBone: []
     spriteOutline: []
@@ -190,18 +190,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 84, y: 73}
+    uvTransform: {x: 88, y: 75}
   - name: witchdoctor_back_Frame_3
     originalName: 
-    pivot: {x: 0.19354838, y: 0}
+    pivot: {x: 0.21212123, y: -0.04761905}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 124
+      x: 130
       y: 4
-      width: 31
-      height: 61
+      width: 33
+      height: 63
     spriteID: aedded92c3213e548967b3f66f0e5127
     spriteBone: []
     spriteOutline: []
@@ -210,18 +210,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 124, y: 4}
+    uvTransform: {x: 130, y: 4}
   - name: witchdoctor_back_Frame_4
     originalName: 
-    pivot: {x: 0.21875003, y: 0}
+    pivot: {x: 0.2352941, y: -0.04761905}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 84
+      x: 88
       y: 4
-      width: 32
-      height: 61
+      width: 34
+      height: 63
     spriteID: c26b587f5213d1e499b1cced190cea22
     spriteBone: []
     spriteOutline: []
@@ -230,18 +230,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 84, y: 4}
+    uvTransform: {x: 88, y: 4}
   - name: witchdoctor_back_Frame_5
     originalName: 
-    pivot: {x: 0.24999999, y: 0}
+    pivot: {x: 0.2647059, y: -0.046875}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 44
-      y: 75
-      width: 32
-      height: 62
+      x: 46
+      y: 91
+      width: 34
+      height: 64
     spriteID: 2a5e1dc0c06ce9346b7e98d1734bda7e
     spriteBone: []
     spriteOutline: []
@@ -250,18 +250,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 44, y: 75}
+    uvTransform: {x: 46, y: 91}
   - name: witchdoctor_back_Frame_6
     originalName: 
-    pivot: {x: 0.28125003, y: 0}
+    pivot: {x: 0.29411763, y: -0.046153847}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 44
-      y: 4
-      width: 32
-      height: 63
+      x: 4
+      y: 178
+      width: 34
+      height: 65
     spriteID: 21c1d3f353851d242be9656015f4c4d3
     spriteBone: []
     spriteOutline: []
@@ -270,18 +270,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 44, y: 4}
+    uvTransform: {x: 4, y: 178}
   - name: witchdoctor_back_Frame_7
     originalName: 
-    pivot: {x: 0.18749999, y: 0}
+    pivot: {x: 0.20588237, y: -0.037974685}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 32
-      height: 77
+      width: 34
+      height: 79
     spriteID: 0e80c36e37a02cd4a8ba8df3a681b654
     spriteBone: []
     spriteOutline: []
@@ -293,15 +293,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: witchdoctor_back_Frame_8
     originalName: 
-    pivot: {x: 0.18749999, y: 0}
+    pivot: {x: 0.20588237, y: -0.037974685}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 89
-      width: 32
-      height: 77
+      y: 91
+      width: 34
+      height: 79
     spriteID: 8ec48ed12eed6ca49b3df3d442a98c0e
     spriteBone: []
     spriteOutline: []
@@ -310,18 +310,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 89}
+    uvTransform: {x: 4, y: 91}
   - name: witchdoctor_back_Frame_9
     originalName: 
-    pivot: {x: 0.18749999, y: 0}
+    pivot: {x: 0.20588237, y: -0.037974685}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 174
-      width: 32
-      height: 77
+      x: 46
+      y: 4
+      width: 34
+      height: 79
     spriteID: 3764fea16a8f9554ab6da840f31a7054
     spriteBone: []
     spriteOutline: []
@@ -330,7 +330,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 174}
+    uvTransform: {x: 46, y: 4}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0

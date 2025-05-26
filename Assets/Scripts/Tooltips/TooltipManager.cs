@@ -18,16 +18,16 @@ namespace TacticsToolkit
             instance = this;
         }
 
-        public static void Show(string title, string description, Vector3 position, Vector2 dimensions) => instance.StartCoroutine(instance.ShowTooltipOverTime(title, description, position, dimensions));
+        public static void Show(Sprite image, string title, string description, Vector3 position, Vector2 dimensions) => instance.StartCoroutine(instance.ShowTooltipOverTime(image, title, description, position, dimensions));
 
-        private IEnumerator ShowTooltipOverTime(string title, string description, Vector3 position, Vector2 dimensions)
+        private IEnumerator ShowTooltipOverTime(Sprite image, string title, string description, Vector3 position, Vector2 dimensions)
         {
             if (instance)
             {
                 yield return new WaitForSeconds(waitTime);
 
                 tooltip.gameObject.SetActive(true);
-                tooltip.SetContent(title, description, position, dimensions);
+                tooltip.SetContent(image, title, description, position, dimensions);
 
                 yield return new WaitForEndOfFrame();
                 // Get all the child components with Image or Text components
@@ -73,7 +73,7 @@ namespace TacticsToolkit
                     var endAlpha = endAlphas[i];
 
                     var color = child.color;
-                    color.a = endAlpha;
+                    color.a = 1;
                     child.color = color;
                 }
             }
@@ -84,7 +84,6 @@ namespace TacticsToolkit
             if (instance)
             {
                 instance.StopAllCoroutines();
-                instance.tooltip.GetComponent<Image>().color = new Color(1, 1, 1, 0);
                 instance.tooltip.ResetContent();
                 instance.tooltip.gameObject.SetActive(false);
             }

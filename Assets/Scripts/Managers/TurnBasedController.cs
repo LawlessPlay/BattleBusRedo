@@ -143,7 +143,7 @@ namespace TacticsToolkit
                 }
             }
         }
-
+        
         private IEnumerator EndTurnWithWaits()
         {
             if (activeCharacter.isAlive)

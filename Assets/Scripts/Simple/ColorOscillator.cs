@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace TacticsToolkit
 {
@@ -10,10 +11,14 @@ namespace TacticsToolkit
 
         public float speed;
 
+        public bool isUI = false;
         // Update is called once per frame
         void Update()
         {
-            GetComponent<SpriteRenderer>().material.color = Color.Lerp(color1, color2, Mathf.PingPong(Time.time * speed, 1));
+            if (!isUI)
+                GetComponent<SpriteRenderer>().material.color = Color.Lerp(color1, color2, Mathf.PingPong(Time.time * speed, 1));
+            else
+                GetComponent<Image>().color = Color.Lerp(color1, color2, Mathf.PingPong(Time.time * speed, 1));
         }
     }
 }

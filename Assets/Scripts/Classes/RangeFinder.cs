@@ -16,7 +16,7 @@ namespace TacticsToolkit
                 //up
                 var tileLocation = new Vector2Int(startingTile.grid2DLocation.x + i, startingTile.grid2DLocation.y);
                 if(MapManager.Instance.map.ContainsKey(tileLocation))
-                inRangeTiles.Add(MapManager.Instance.map[tileLocation]);
+                    inRangeTiles.Add(MapManager.Instance.map[tileLocation]);
                 
                 //down
                 tileLocation = new Vector2Int(startingTile.grid2DLocation.x - i, startingTile.grid2DLocation.y);
@@ -75,7 +75,7 @@ namespace TacticsToolkit
 
                     //split between emptyTiles and character tiles
                     var charTiles = newNeighbours.Where(x => x.activeCharacter).ToList();
-                    var allTiles = newNeighbours.ToList();
+                    var allTiles = newNeighbours.Where(x => !x.activeCharacter).ToList();
                     charactersInRange.AddRange(charTiles);
                     surroundingTiles.AddRange(allTiles.Where(x => x.remainingMovement >= 0).ToList()); // Add the neighbouring tiles to the list of surrounding tiles
                 }

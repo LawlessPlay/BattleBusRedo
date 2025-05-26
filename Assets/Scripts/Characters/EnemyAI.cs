@@ -51,32 +51,73 @@ public class EnemyAI : Entity
             }
         }
     }
-
+    
     public override void StartTurn()
     {
+        StartCoroutine(StartTurnRoutine());
+    }
+    
+    IEnumerator StartTurnRoutine()
+    {
+        base.StartTurn();
+        yield return new WaitForSeconds(0.5f);
         Senario currentBestSenario = null;
 
+        OverlayTile originalActiveTile = activeTile;
+        
         // Cache movement range tiles
         var movementRangeData = rangeFinder.GetTilesInRange(activeTile, characterClass.MoveRange);
         var movementRangeTiles = movementRangeData.Item1.Where(x => !x.activeCharacter).ToList();
 
-        foreach (var movementRangeTile in movementRangeTiles)
+        foreach (var movementRangeTile in movementRangeTiles.Where(movementRangeTile => !movementRangeTile.activeCharacter))
         {
+            activeTile = movementRangeTile;
+            movementRangeTile.activeCharacter = this;
+            
+            List<Senario> spells = new List<Senario>();
+            
             // Cache spell actions for this tile
-            var enemySpellAction = GetBestSpellAction(EnemySpell, movementRangeTile);
-            var allySpellAction = GetBestSpellAction(AllySpell, movementRangeTile);
-            var selfSpellAction = GetBestSpellAction(SelfSpell, movementRangeTile);
 
-            var selectedSenario = GetWeightedRandomSpell(enemySpellAction, allySpellAction, selfSpellAction);
+            spells.Add(GetBestSpellAction(EnemySpell, movementRangeTile));
+            spells.Add(GetBestSpellAction(AllySpell, movementRangeTile));
+            spells.Add(GetBestSpellAction(SelfSpell, movementRangeTile));
 
-            if (currentBestSenario == null || selectedSenario.senarioValue > currentBestSenario.senarioValue)
+            var bestSpell = spells.OrderByDescending(x => x.senarioValue).First();
+            
+            var distanceFromClosestEnemy = MapManager.Instance.GetClosestCharacterDistance(true, this, movementRangeTile);
+            var distanceFromClosestAlly = MapManager.Instance.GetClosestCharacterDistance(false, this, movementRangeTile);
+            
+            //var selectedSenario = GetWeightedRandomSpell(enemySpellAction, allySpellAction, selfSpellAction);
+
+            bestSpell.senarioValue += (GetStat(Stats.MoveRange).statValue - distanceFromClosestEnemy);
+            //bestSpell.senarioValue += (distanceFromClosestAlly - GetStat(Stats.MoveRange).statValue);
+            
+            if (currentBestSenario == null || bestSpell.senarioValue > currentBestSenario.senarioValue)
             {
-                currentBestSenario = selectedSenario;
+                currentBestSenario = bestSpell;
                 currentBestSenario.positionTile = movementRangeTile;
             }
+            
+            movementRangeTile.activeCharacter = null;
         }
 
+        activeTile = originalActiveTile;
         CreateActionQueueFromSenario(currentBestSenario);
+    }
+
+    private int CalulatePositionValue(OverlayTile movementRangeTile, int currentValue)
+    {
+        var distanceFromClosestEnemy = MapManager.Instance.GetClosestCharacterDistance(true, this, movementRangeTile);
+        var distanceFromClosestAlly = MapManager.Instance.GetClosestCharacterDistance(false, this, movementRangeTile);
+
+        //further
+        var enemyDistance = distanceFromClosestEnemy * 10;
+        
+        //closer
+        var allyDistance = Mathf.Abs(distanceFromClosestAlly - 10) * 10;
+        
+        return enemyDistance + allyDistance;
+        
     }
 
     private void CreateActionQueueFromSenario(Senario currentBestSenario)
@@ -111,8 +152,10 @@ public class EnemyAI : Entity
 
     public Senario GetBestSpellAction(Ability ability, OverlayTile overlayTile)
     {
-        var inRangeTiles = rangeFinder.GetTilesInRange(overlayTile, ability.range).Item1;
-
+        var twoCollections = rangeFinder.GetTilesInRange(overlayTile, ability.range);
+        var inRangeTiles = twoCollections.Item1;
+        inRangeTiles.AddRange(twoCollections.Item2);
+        
         OverlayTile currentBestTile = null;
         var currentBestValue = 0f;
 
@@ -154,8 +197,7 @@ public class EnemyAI : Entity
                 case Ability.AbilityTypes.Damage:
                     characters = affectedTiles.Select(x => x.activeCharacter).Where(c => c != null).ToList();
                     var enemyCharacters = characters.Where(c => c.teamID != teamID).ToList();
-                    var allyCharacters = characters.Where(c => c.teamID == teamID || activeTile == c.activeTile).ToList();
-
+                    var allyCharacters = characters.Where(c => c.teamID == teamID).ToList();
                     
                     foreach (var enemy in enemyCharacters)
                     {
@@ -171,9 +213,12 @@ public class EnemyAI : Entity
                     foreach (var ally in allyCharacters)
                     {
                         Debug.Log("Will Hit: " + ally.gameObject.name);
-                        abilityValue = Int32.MinValue;
+                        abilityValue -= 9999;
                     }
 
+                    //damage inflation
+                    //abilityValue = Mathf.RoundToInt(abilityValue * 2f);
+                    
                     break;
                 case Ability.AbilityTypes.All:
                     characters = affectedTiles.Where(x => x.activeCharacter).Select(x => x.activeCharacter).ToList();

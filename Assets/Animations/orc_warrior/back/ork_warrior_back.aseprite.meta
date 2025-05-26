@@ -42,7 +42,7 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 1
+    spriteMeshType: 0
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
     spritePixelsToUnits: 18
@@ -87,8 +87,8 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 9
     customPivotPosition: {x: 0.4, y: 0.08}
-    mosaicPadding: 0
-    spritePadding: 0
+    mosaicPadding: 4
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
@@ -100,14 +100,14 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 9
     customPivotPosition: {x: 0.4, y: 0.08}
-    mosaicPadding: 0
-    spritePadding: 0
+    mosaicPadding: 4
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638688705402625053
+  platformSettingsDirtyTick: 638835184616647700
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -131,37 +131,17 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: ork_warrior_back
-    originalName: 
-    pivot: {x: 0.20540541, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 33
-      y: 49
-      width: 37
-      height: 50
-    spriteID: a655e25ca1621e243b0d20247749e240
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 33, y: 49}
   - name: ork_warrior_back_Frame_1
     originalName: 
-    pivot: {x: 0.17837839, y: 0}
+    pivot: {x: 0.19487181, y: 0.013846146}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 33
-      y: 99
-      width: 37
-      height: 50
+      x: 47
+      y: 123
+      width: 39
+      height: 52
     spriteID: 7ba56f5a43b07ca4ba6d851862eb022c
     spriteBone: []
     spriteOutline: []
@@ -170,18 +150,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 33, y: 99}
+    uvTransform: {x: 47, y: 123}
   - name: ork_warrior_back_Frame_2
     originalName: 
-    pivot: {x: 0.17837839, y: 0}
+    pivot: {x: 0.19487181, y: 0.014117639}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 71
-      y: 50
-      width: 37
-      height: 49
+      x: 95
+      y: 124
+      width: 39
+      height: 51
     spriteID: b0ad1dc9fe029184099901804fe28e2d
     spriteBone: []
     spriteOutline: []
@@ -190,18 +170,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 71, y: 50}
+    uvTransform: {x: 95, y: 124}
   - name: ork_warrior_back_Frame_3
     originalName: 
-    pivot: {x: 0.17837839, y: 0}
+    pivot: {x: 0.19487181, y: 0.013846146}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 33
-      y: 149
-      width: 37
-      height: 50
+      x: 47
+      y: 183
+      width: 39
+      height: 52
     spriteID: 353d22dd4b69b3541b906fdd24df381e
     spriteBone: []
     spriteOutline: []
@@ -210,18 +190,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 33, y: 149}
+    uvTransform: {x: 47, y: 183}
   - name: ork_warrior_back_Frame_4
     originalName: 
-    pivot: {x: 0.20540541, y: 0}
+    pivot: {x: 0.22051284, y: 0.013846146}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 33
-      y: 199
-      width: 37
-      height: 50
+      x: 95
+      y: 4
+      width: 39
+      height: 52
     spriteID: 8435b4afd86a60b48a4ce9c40ca451c3
     spriteBone: []
     spriteOutline: []
@@ -230,18 +210,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 33, y: 199}
+    uvTransform: {x: 95, y: 4}
   - name: ork_warrior_back_Frame_5
     originalName: 
-    pivot: {x: 0.07878789, y: 0}
+    pivot: {x: 0.10285716, y: 0.02293333}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 33
-      height: 73
+      x: 4
+      y: 4
+      width: 35
+      height: 75
     spriteID: e2a1f406f0b895e4ba574a7e0fdabfe8
     spriteBone: []
     spriteOutline: []
@@ -250,18 +230,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
+    uvTransform: {x: 4, y: 4}
   - name: ork_warrior_back_Frame_6
     originalName: 
-    pivot: {x: 0.09473685, y: 0}
+    pivot: {x: 0.11500001, y: 0.03372549}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 33
-      y: 0
-      width: 38
-      height: 49
+      x: 47
+      y: 4
+      width: 40
+      height: 51
     spriteID: 1c8d7cfd8b0f78a45adbd903f305cd48
     spriteBone: []
     spriteOutline: []
@@ -270,18 +250,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 33, y: 0}
+    uvTransform: {x: 47, y: 4}
   - name: ork_warrior_back_Frame_7
     originalName: 
-    pivot: {x: 0.20540541, y: 0}
+    pivot: {x: 0.22051284, y: 0.013846146}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 71
-      y: 0
-      width: 37
-      height: 50
+      x: 95
+      y: 64
+      width: 39
+      height: 52
     spriteID: d5e27e4a04c987c4891f4e14301801ca
     spriteBone: []
     spriteOutline: []
@@ -290,7 +270,27 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 71, y: 0}
+    uvTransform: {x: 95, y: 64}
+  - name: Frame_0
+    originalName: 
+    pivot: {x: 0.22051284, y: 0.013846146}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 47
+      y: 63
+      width: 39
+      height: 52
+    spriteID: a655e25ca1621e243b0d20247749e240
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 47, y: 63}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0

@@ -34,6 +34,8 @@ public class OverlayManagerV2 : MonoBehaviour
     public Color AllyColor;
     [SerializeField]
     public Color SelfColor;
+    [SerializeField]
+    public Color HighlightColor;
     
     
     public static OverlayManagerV2 Instance { get; private set; }
@@ -97,16 +99,13 @@ public class OverlayManagerV2 : MonoBehaviour
             {
                 UpdateTileColors(tile, MoveRangeColor);
             }
-            else
+            if (allySpellTilesToShow.Item1.Contains(tile))
             {
-                if (allySpellTilesToShow.Item1.Contains(tile))
-                {
-                    UpdateTileColors(tile, AllyColor);
-                }
-                if (enemySpellTilesToShow.Item1.Contains(tile))
-                {
-                    UpdateTileColors(tile, AttackRangeColor);
-                }
+                UpdateTileColors(tile, AllyColor);
+            }
+            if (enemySpellTilesToShow.Item1.Contains(tile))
+            {
+                UpdateTileColors(tile, AttackRangeColor);
             }
 
             ShowTile(tile);
@@ -115,7 +114,48 @@ public class OverlayManagerV2 : MonoBehaviour
         ShowCharacterTiles(enemySpellTilesToShow.Item2.Where(x => x.activeCharacter.teamID != activeCharacter.teamID).ToList());
         ShowCharacterTiles(allySpellTilesToShow.Item2.Where(x => x.activeCharacter.teamID == activeCharacter.teamID).ToList());
     }
+    
+    public void ShowMovementOverlay()
+    {
+        var movementTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange);
 
+        
+        foreach (var tile in movementTilesToShow.Item1)
+        {
+            if (movementTilesToShow.Item1.Contains(tile))
+            {
+                UpdateTileColors(tile, MoveRangeColor);
+            }
+            ShowTile(tile);
+        }
+    }
+
+    public void ShowAttackOverlay()
+    {
+        var enemySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.EnemySpell.range);
+        var allySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.AllySpell.range);
+
+        var combinedTiles = new HashSet<OverlayTile>(enemySpellTilesToShow.Item1);
+        combinedTiles.UnionWith(allySpellTilesToShow.Item1); 
+        
+        foreach (var tile in combinedTiles)
+        {
+            if (allySpellTilesToShow.Item1.Contains(tile))
+            {
+                UpdateTileColors(tile, AllyColor);
+            }
+            if (enemySpellTilesToShow.Item1.Contains(tile))
+            {
+                UpdateTileColors(tile, AttackRangeColor);
+            }
+                
+            ShowTile(tile);
+        }
+        
+        ShowCharacterTiles(enemySpellTilesToShow.Item2.Where(x => x.activeCharacter.teamID != activeCharacter.teamID).ToList());
+        ShowCharacterTiles(allySpellTilesToShow.Item2.Where(x => x.activeCharacter.teamID == activeCharacter.teamID).ToList());
+    }
+    
     private void ShowCharacterTiles(List<OverlayTile> tiles)
     {
         ClearTiles(tiles);
@@ -142,9 +182,31 @@ public class OverlayManagerV2 : MonoBehaviour
         
         if(_abilityColoredTiles.ContainsKey(tile))
             tempTileColors.AddRange(_abilityColoredTiles[tile]);
+
+        if (tempTileColors.Contains(AttackRangeColor) || tempTileColors.Contains(EnemyColor))
+        {
+            tile.ShowTile(OverlayTile.TileColors.AttackColor);
+        }
         
+        if (tempTileColors.Contains(AllyColor))
+        {
+            tile.ShowTile(OverlayTile.TileColors.SupportColor);
+        }
         
-        tile.ShowTile(CombineColors(tempTileColors));
+        if (tempTileColors.Contains(SelfColor))
+        {
+            tile.ShowTile(OverlayTile.TileColors.SupportColor);
+        }
+        
+        if (tempTileColors.Contains(MoveRangeColor))
+        {
+            tile.ShowTile(OverlayTile.TileColors.MovementColor);
+        }
+        
+        if (tempTileColors.Contains(HighlightColor))
+        {
+            tile.ShowTile(OverlayTile.TileColors.HighlightColor);
+        }
     }
     
     public static Color CombineColors(List<Color> colors)
@@ -197,6 +259,7 @@ public class OverlayManagerV2 : MonoBehaviour
         tile.HideTile();
         _inRangeColoredTiles.Remove(tile);
     }
+    
     public void ClearTiles(List<OverlayTile> tiles)
     {
         foreach (var tile in tiles)
@@ -246,11 +309,18 @@ public class OverlayManagerV2 : MonoBehaviour
 
     public void DrawSpell(OverlayTile overlayTile, Ability ability)
     {
+        if(ability.tooltip != null)
+            TooltipManager.Show(ability.tooltip.image, ability.tooltip.tooltipName, ability.tooltip.tooltipDescription, new Vector3(0,0,0), new Vector2(50, 50));
+        
         var tiles = shapeParser.GetAbilityTileLocations(overlayTile, ability.abilityShape, activeCharacter.activeTile.grid2DLocation);
 
         foreach (var tile in tiles)
         {
-            UpdateAbilityTileColors(tile, AllyColor);
+            UpdateAbilityTileColors(tile, HighlightColor);
+            
+            if(tile.activeCharacter)
+                tile.activeCharacter.GetComponent<HealthBarManager>().SetPreview(ability.value, ability.abilityType == Ability.AbilityTypes.Damage);
+            
             ShowTile(tile);
         }
     }

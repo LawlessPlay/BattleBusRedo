@@ -13,6 +13,8 @@ public class RandomSpawner : MonoBehaviour
 
 
     public bool hasSpawned = false;
+    
+    public GameObject parent;
 
     private void Update()
     {
@@ -65,7 +67,7 @@ public class RandomSpawner : MonoBehaviour
                     GameObject prefabToSpawn = prefabsToSpawn[Random.Range(0, prefabsToSpawn.Count)];
 
                     // Spawn the prefab at the position with random rotation
-                    Instantiate(prefabToSpawn, randomPosition, randomRotation);
+                    Instantiate(prefabToSpawn, randomPosition, randomRotation, parent.transform);
                 }
             }
 

@@ -88,7 +88,7 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.33, y: 0.33}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
@@ -101,13 +101,13 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.33, y: 0.33}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638688703572249003
+  platformSettingsDirtyTick: 638835184759979761
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -133,15 +133,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: warrior_back_Frame_0
     originalName: 
-    pivot: {x: 0.2500846, y: 0}
-    alignment: 9
+    pivot: {x: 0.33, y: 0.33}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 74
+      x: 76
       y: 4
-      width: 55
-      height: 57
+      width: 57
+      height: 59
     spriteID: a1cbbdaa81347fb43af6ac7aa2e70042
     spriteBone: []
     spriteOutline: []
@@ -150,18 +150,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 74, y: 4}
+    uvTransform: {x: 76, y: 4}
   - name: warrior_back_Frame_1
     originalName: 
-    pivot: {x: 0.27048618, y: 0}
-    alignment: 9
+    pivot: {x: 0.33, y: 0.33}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 137
+      x: 141
       y: 4
-      width: 55
-      height: 56
+      width: 57
+      height: 58
     spriteID: a4ef353d8544ed541887492251f57ca2
     spriteBone: []
     spriteOutline: []
@@ -170,18 +170,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 137, y: 4}
+    uvTransform: {x: 141, y: 4}
   - name: warrior_back_Frame_2
     originalName: 
-    pivot: {x: 0.25955677, y: 0}
-    alignment: 9
+    pivot: {x: 0.33, y: 0.33}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 69
-      width: 56
-      height: 55
+      y: 71
+      width: 58
+      height: 57
     spriteID: f306d48eadceef244bf1947d3932f814
     spriteBone: []
     spriteOutline: []
@@ -190,18 +190,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 69}
+    uvTransform: {x: 4, y: 71}
   - name: warrior_back_Frame_3
     originalName: 
-    pivot: {x: 0.2683951, y: 0}
-    alignment: 9
+    pivot: {x: 0.33, y: 0.33}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 132
-      width: 55
-      height: 56
+      y: 136
+      width: 57
+      height: 58
     spriteID: 6d0b251f09366c247b85fd47863d18f0
     spriteBone: []
     spriteOutline: []
@@ -210,18 +210,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 132}
+    uvTransform: {x: 4, y: 136}
   - name: warrior_back_Frame_4
     originalName: 
-    pivot: {x: 0.28282544, y: 0}
-    alignment: 9
+    pivot: {x: 0.33, y: 0.33}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 62
-      height: 57
+      width: 64
+      height: 59
     spriteID: c675a5955cdd29e4ea493146ff5135e7
     spriteBone: []
     spriteOutline: []
@@ -233,15 +233,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: warrior_back_Frame_5
     originalName: 
-    pivot: {x: 0.3948063, y: 0}
-    alignment: 9
+    pivot: {x: 0.33, y: 0.33}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 67
-      y: 132
-      width: 40
-      height: 65
+      x: 69
+      y: 136
+      width: 42
+      height: 67
     spriteID: 270784652a19ccc4c893b461741bfe0e
     spriteBone: []
     spriteOutline: []
@@ -250,18 +250,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 67, y: 132}
+    uvTransform: {x: 69, y: 136}
   - name: warrior_back_Frame_6
     originalName: 
-    pivot: {x: 0.64385515, y: 0}
-    alignment: 9
+    pivot: {x: 0.33, y: 0.33}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 115
-      y: 132
-      width: 39
-      height: 48
+      x: 4
+      y: 202
+      width: 41
+      height: 50
     spriteID: bd5c037bf3201634c92d455f9f21a6e6
     spriteBone: []
     spriteOutline: []
@@ -270,18 +270,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 115, y: 132}
+    uvTransform: {x: 4, y: 202}
   - name: warrior_back_Frame_7
     originalName: 
-    pivot: {x: 0.3661173, y: 0}
-    alignment: 9
+    pivot: {x: 0.33, y: 0.33}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 200
+      x: 206
       y: 4
-      width: 44
-      height: 55
+      width: 46
+      height: 57
     spriteID: 06d9be910d7ad564e8f8cb4706ef89e4
     spriteBone: []
     spriteOutline: []
@@ -290,18 +290,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 200, y: 4}
+    uvTransform: {x: 206, y: 4}
   - name: warrior_back_Frame_8
     originalName: 
-    pivot: {x: 0.35, y: 0}
-    alignment: 9
+    pivot: {x: 0.33, y: 0.33}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 196
-      width: 44
-      height: 55
+      x: 119
+      y: 136
+      width: 46
+      height: 57
     spriteID: ef574704bc0803d40b25650fc6d54b3c
     spriteBone: []
     spriteOutline: []
@@ -310,7 +310,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 196}
+    uvTransform: {x: 119, y: 136}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0

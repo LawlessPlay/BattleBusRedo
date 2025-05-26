@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -34,6 +35,16 @@ namespace TacticsToolkit
                 lineRenderer.positionCount = 0;
                 OverlayManagerV2.Instance.ClearTiles();
                 actionQueue[0].StartAction();
+
+                if (actionQueue[0].Type == Action.ActionType.Move)
+                {
+                    hasMoved = true;
+                }
+                
+                if (actionQueue[0].Type == Action.ActionType.Attack)
+                {
+                    hasAttacked = true;
+                }
             }
             
             if (actionQueue[0].State == Action.ActionState.InProgress && actionQueue[0].Type == Action.ActionType.Move)
@@ -44,13 +55,30 @@ namespace TacticsToolkit
             actionQueue.RemoveAt(0);
             if (actionQueue.Count > 0)
             {
+                hasAttacked = true;
                 actionQueue[0].StartAction();
-                setTarget.Raise(actionQueue[0].Target.gameObject);
             }
             else
             {
                 isActing = false;
-                EndTurn();
+                if (hasMoved && hasAttacked)
+                {
+                    hasMoved = false;
+                    hasAttacked = false;
+                    EndTurn();
+                    return;
+                }
+
+                if (hasMoved)
+                {
+                    OverlayManagerV2.Instance.ShowAttackOverlay();
+                }
+                
+                
+                if (hasAttacked)
+                {
+                    OverlayManagerV2.Instance.ShowMovementOverlay();
+                }
             }
         }
 
@@ -70,6 +98,10 @@ namespace TacticsToolkit
 
         private List<Action> HandleActiveTileWithCharacter(OverlayTile targetTile)
         {
+            if (hasAttacked)
+                return new List<Action>();
+                
+            setTarget.Raise(targetTile.gameObject);
             var aq = new List<Action>();
             
             if (targetTile.activeCharacter == this)
@@ -88,20 +120,34 @@ namespace TacticsToolkit
             if (distance > characterClass.MoveRange + EnemySpell.range) return aq;
             
             var enemyPath = pathFinder.FindPath(activeTile, targetTile,new List<OverlayTile>());
+            
             return DisplaySpell(enemyPath, EnemySpell, targetTile);
         }
 
         private List<Action> HandleActiveTileWithoutCharacter(OverlayTile targetTile)
         {
-            var movementTiles = rangeFinder.GetTilesInRange(activeTile, characterClass.MoveRange);
-            var path = pathFinder.FindPath(activeTile, targetTile, movementTiles.Item1);
-            
-            if (path.Count == 0) return new List<Action>();
-            
-            var finalPath = pathRenderer.GeneratePath(path, activeTile.transform.position, -1);
-            RenderPath(finalPath);
-            
-            return new List<Action> { new(finalPath, Action.ActionType.Move, targetTile, this) };
+            setTarget.Raise(targetTile.gameObject);
+            switch (hasMoved)
+            {
+                case false:
+                {
+                    var movementTiles = rangeFinder.GetTilesInRange(activeTile, characterClass.MoveRange);
+                    var path = pathFinder.FindPath(activeTile, targetTile, movementTiles.Item1);
+
+                    if (path.Count == 0) return new List<Action>();
+
+                    var finalPath = pathRenderer.GeneratePath(path, activeTile.transform.position, -1);
+                    RenderPath(finalPath);
+
+                    return new List<Action> { new(finalPath, Action.ActionType.Move, targetTile, this) };
+                }
+                case true:
+                {
+                    return DisplaySpell(new List<OverlayTile>(), EnemySpell, targetTile);
+                }
+                default:
+                    return new List<Action>();
+            }
         }
 
         private void RenderPath(List<Vector3> path)
@@ -124,7 +170,11 @@ namespace TacticsToolkit
         {
             var actionQueue = new List<Action>();
             OverlayManagerV2.Instance.DrawSpell(targetTile, ability);
+            
 
+            if(hasMoved)
+                path = new List<OverlayTile>();
+            
             if (ability.range <= path.Count)
             {
                 path.RemoveRange(path.Count - ability.range, ability.range);
@@ -172,12 +222,19 @@ namespace TacticsToolkit
         
         public override void TriggerNextAction()
         {
-            if (actionQueue.Count > 0)
+            if (actionQueue.Count <= 0) return;
                 actionQueue[0].DoAction();
         }
         
         public override void StartTurn()
         {
+            StartCoroutine(StartTurnRoutine());
+        }
+
+        IEnumerator StartTurnRoutine()
+        {
+            base.StartTurn();
+            yield return new WaitForSeconds(1);
             OverlayManagerV2.Instance.ShowTotalOverlay();
         }
     }

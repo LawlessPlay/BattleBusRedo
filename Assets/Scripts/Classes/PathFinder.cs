@@ -12,7 +12,7 @@ namespace TacticsToolkit
         // Finds the shortest path from start to end using A* pathfinding algorithm.
         // It takes the start and end tiles, a list of searchable tiles, a boolean flag to ignore obstacles, and another to allow walking through allies as input.
         // It returns a list of tiles that represents the path from start to end.
-        public List<OverlayTile> FindPath(OverlayTile start, OverlayTile end, List<OverlayTile> searchableTiles, bool ignoreObstacles = false, bool walkTroughAllies = true)
+        public List<OverlayTile> FindPath(OverlayTile start, OverlayTile end, List<OverlayTile> searchableTiles, bool ignoreObstacles = false, bool walkTroughAllies = false)
         {
             List<OverlayTile> openList = new List<OverlayTile>();
             List<OverlayTile> closedList = new List<OverlayTile>();
@@ -36,7 +36,7 @@ namespace TacticsToolkit
                 // Calculate and update the G and H cost of each neighbouring tile.
                 foreach (var neighbour in neighbourTiles)
                 {
-                    if (closedList.Contains(neighbour))
+                    if (closedList.Contains(neighbour) || (neighbour.activeCharacter && neighbour != end))
                     {
                         continue;
                     }

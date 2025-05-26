@@ -88,7 +88,7 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
@@ -101,13 +101,13 @@ ScriptedImporter:
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
     mosaicPadding: 4
-    spritePadding: 0
+    spritePadding: 2
     generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638641837354997054
+  platformSettingsDirtyTick: 638835185133268545
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -133,15 +133,15 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: witchdocter_Frame_0
     originalName: 
-    pivot: {x: 0.44117647, y: 0}
+    pivot: {x: 0.44444445, y: -0.033898305}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 44
+      x: 46
       y: 4
-      width: 34
-      height: 57
+      width: 36
+      height: 59
     spriteID: f326f066e1085b442b1e389776fc8b74
     spriteBone: []
     spriteOutline: []
@@ -150,18 +150,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 44, y: 4}
+    uvTransform: {x: 46, y: 4}
   - name: witchdocter_Frame_1
     originalName: 
-    pivot: {x: 0.4117647, y: 0}
+    pivot: {x: 0.41666666, y: -0.03508772}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 86
+      x: 90
       y: 4
-      width: 34
-      height: 55
+      width: 36
+      height: 57
     spriteID: 23839f16a1eb4824486e82080866d82d
     spriteBone: []
     spriteOutline: []
@@ -170,18 +170,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 86, y: 4}
+    uvTransform: {x: 90, y: 4}
   - name: witchdocter_Frame_2
     originalName: 
-    pivot: {x: 0.4117647, y: 0}
+    pivot: {x: 0.41666666, y: -0.035714287}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 86
-      y: 130
-      width: 34
-      height: 54
+      x: 90
+      y: 134
+      width: 36
+      height: 56
     spriteID: 06b2eba1e36a86d4b80a0888b5825c74
     spriteBone: []
     spriteOutline: []
@@ -190,18 +190,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 86, y: 130}
+    uvTransform: {x: 90, y: 134}
   - name: witchdocter_Frame_3
     originalName: 
-    pivot: {x: 0.4117647, y: 0}
+    pivot: {x: 0.41666666, y: -0.03508772}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 86
-      y: 67
-      width: 34
-      height: 55
+      x: 90
+      y: 69
+      width: 36
+      height: 57
     spriteID: 6684059f6fb197843b833b4442993563
     spriteBone: []
     spriteOutline: []
@@ -210,18 +210,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 86, y: 67}
+    uvTransform: {x: 90, y: 69}
   - name: witchdocter_Frame_4
     originalName: 
-    pivot: {x: 0.44117647, y: 0}
+    pivot: {x: 0.44444445, y: -0.033898305}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 44
-      y: 69
-      width: 34
-      height: 57
+      x: 46
+      y: 71
+      width: 36
+      height: 59
     spriteID: 4c12cd9800eb14e4ea832e6d3356d7da
     spriteBone: []
     spriteOutline: []
@@ -230,18 +230,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 44, y: 69}
+    uvTransform: {x: 46, y: 71}
   - name: witchdocter_Frame_5
     originalName: 
-    pivot: {x: 0.42424244, y: 0}
+    pivot: {x: 0.42857143, y: -0.033333335}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 44
-      y: 134
-      width: 33
-      height: 58
+      x: 46
+      y: 138
+      width: 35
+      height: 60
     spriteID: bd0842dd4765cf44a84b7ece00c5808e
     spriteBone: []
     spriteOutline: []
@@ -250,18 +250,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 44, y: 134}
+    uvTransform: {x: 46, y: 138}
   - name: witchdocter_Frame_6
     originalName: 
-    pivot: {x: 0.40625, y: 0}
+    pivot: {x: 0.4117647, y: -0.032786887}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 142
-      width: 32
-      height: 59
+      y: 146
+      width: 34
+      height: 61
     spriteID: cc73f4b948c466740b75bdbaa63b616d
     spriteBone: []
     spriteOutline: []
@@ -270,18 +270,18 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 142}
+    uvTransform: {x: 4, y: 146}
   - name: witchdocter_Frame_7
     originalName: 
-    pivot: {x: 0.375, y: 0}
+    pivot: {x: 0.38235295, y: -0.031746034}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 32
-      height: 61
+      width: 34
+      height: 63
     spriteID: 279f7519701ccd244aece971b4c1900d
     spriteBone: []
     spriteOutline: []
@@ -293,15 +293,15 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: witchdocter_Frame_8
     originalName: 
-    pivot: {x: 0.375, y: 0}
+    pivot: {x: 0.38235295, y: -0.031746034}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 73
-      width: 32
-      height: 61
+      y: 75
+      width: 34
+      height: 63
     spriteID: dcf7d85829577364e9253ef9f5d9cc91
     spriteBone: []
     spriteOutline: []
@@ -310,7 +310,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 73}
+    uvTransform: {x: 4, y: 75}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
