@@ -9,8 +9,6 @@ namespace TacticsToolkit
     // Script for a playable character.
     public class CharacterManager : Entity
     { 
-        
-        
         private PathFinder pathFinder;
         private PathRenderer pathRenderer;
         private RangeFinder rangeFinder;
@@ -29,23 +27,6 @@ namespace TacticsToolkit
         {
             if (actionQueue.Count == 0) return;
             
-            if (Input.GetMouseButtonDown(0))
-            {
-                isActing = true;
-                lineRenderer.positionCount = 0;
-                OverlayManagerV2.Instance.ClearTiles();
-                actionQueue[0].StartAction();
-
-                if (actionQueue[0].Type == Action.ActionType.Move)
-                {
-                    hasMoved = true;
-                }
-                
-                if (actionQueue[0].Type == Action.ActionType.Attack)
-                {
-                    hasAttacked = true;
-                }
-            }
             
             if (actionQueue[0].State == Action.ActionState.InProgress && actionQueue[0].Type == Action.ActionType.Move)
                 actionQueue[0].DoAction();
@@ -79,6 +60,26 @@ namespace TacticsToolkit
                 {
                     OverlayManagerV2.Instance.ShowMovementOverlay();
                 }
+            }
+        }
+
+        public override void ActionButtonPressed()
+        {
+            if (actionQueue.Count == 0) return;
+            
+            isActing = true;
+            lineRenderer.positionCount = 0;
+            OverlayManagerV2.Instance.ClearTiles();
+            actionQueue[0].StartAction();
+
+            if (actionQueue[0].Type == Action.ActionType.Move)
+            {
+                hasMoved = true;
+            }
+                
+            if (actionQueue[0].Type == Action.ActionType.Attack)
+            {
+                hasAttacked = true;
             }
         }
 

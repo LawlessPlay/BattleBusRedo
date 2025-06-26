@@ -13,6 +13,8 @@ namespace TacticsToolkit
 
         private OverlayTile focusedOnTile;
 
+        public GameObject ConfirmationUI;
+
         private void Start()
         {
             focusedOnTile = MapManager.Instance.GetOverlayByTransform(transform.position);
@@ -33,6 +35,9 @@ namespace TacticsToolkit
         // Update is called once per frame
         void FixedUpdate()
         {
+            if (ConfirmationUI.activeSelf == true) return;
+            
+            
             var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             OverlayTile newFocusedOnTile;
 

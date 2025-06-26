@@ -58,10 +58,10 @@ namespace TacticsToolkit
             //    endTurnEvent.Raise();
             //}
 
-            //if (Input.GetKeyDown(cancelActionButton))
-            //{
-            //    cancelActionEvent.Raise();
-            //}
+            if (Input.GetKeyDown(cancelActionButton))
+            {
+                cancelActionEvent.Raise();
+            }
         }
 
         // record all inputs    

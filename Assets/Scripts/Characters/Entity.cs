@@ -70,7 +70,7 @@ namespace TacticsToolkit
         protected bool hasAttacked = false;
         protected bool hasMoved = false;
         
-        protected List<Action> actionQueue = new List<Action>();
+        public List<Action> actionQueue = new List<Action>();
         
         private void Awake()
         {
@@ -520,7 +520,12 @@ namespace TacticsToolkit
         public virtual void TriggerNextAction()
         {
         }
-        
+
+
+        public virtual void ActionButtonPressed()
+        {
+        }
+
         public virtual void TriggerAction()
         {
             if (actionQueue.Count > 0)

@@ -16,17 +16,17 @@ MonoBehaviour:
   thickness: 2
   resolutionInvariant: 0
   fadeWithDistance: 0
-  fadeRangeStart: 5.52
-  fadeRangeEnd: 5.52
+  fadeRangeStart: 0
+  fadeRangeEnd: 75.2
   useDepth: 1
   minDepthThreshold: 0
-  maxDepthThreshold: 400
+  maxDepthThreshold: 10
   useNormals: 0
   minNormalsThreshold: 0.1
   maxNormalsThreshold: 0.25
   useColor: 0
-  minColorThreshold: 0.1
-  maxColorThreshold: 0.25
+  minColorThreshold: 0
+  maxColorThreshold: 3.88
   renderEvent: 450
   outlineOnly: 0
   applyInSceneView: 1
@@ -70,12 +70,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColorThresholdMax: 0.25
-    - _ColorThresholdMin: 0.1
-    - _DepthThresholdMax: 400
+    - _ColorThresholdMax: 3.88
+    - _ColorThresholdMin: 0
+    - _DepthThresholdMax: 10
     - _DepthThresholdMin: 0
-    - _FadeRangeEnd: 5.52
-    - _FadeRangeStart: 5.52
+    - _FadeRangeEnd: 75.2
+    - _FadeRangeStart: 0
     - _NormalThresholdMax: 0.25
     - _NormalThresholdMin: 0.1
     - _Thickness: 2

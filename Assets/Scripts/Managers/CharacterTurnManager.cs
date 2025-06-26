@@ -17,6 +17,8 @@ public class CharacterTurnManager : MonoBehaviour
 
     [SerializeField] private LineRenderer lineRenderer;
 
+    [SerializeField] private GameObject confirmationUI;
+
     private bool isActive;
 
     private void Start()
@@ -27,6 +29,33 @@ public class CharacterTurnManager : MonoBehaviour
         activeCharacters.AddRange(GameObject.FindGameObjectsWithTag("Enemy").Select(x => x.GetComponent<Entity>()).ToList());
     }
 
+    
+    
+    public void ActiveButtonPressed()
+    {
+        if (activeCharacter && !activeCharacter.isActing && activeCharacter.actionQueue.Count > 0 && confirmationUI.activeSelf == false)
+        {
+            confirmationUI.SetActive(true);
+        }
+    }
+
+    public void ConfirmAction()
+    {
+        if (activeCharacter && confirmationUI.activeSelf == true)
+        {
+            confirmationUI.SetActive(false);
+            activeCharacter.ActionButtonPressed();
+        }
+    }
+    
+    public void DeclineAction()
+    {
+        if (activeCharacter && confirmationUI.activeSelf == true)
+        {
+            confirmationUI.SetActive(false);
+        }
+    }
+    
     public void StartTurn()
     {
         activeCharacter.SetRenderers(lineRenderer);
