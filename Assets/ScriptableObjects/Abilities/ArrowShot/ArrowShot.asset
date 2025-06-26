@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c5e685a8bcdc547813e305986d832e, type: 3}
+  m_Name: ArrowShot
+  m_EditorClassIdentifier: 
+  Name: SwordSwing
+  Desc: 
+  abilityShape: {fileID: 4900000, guid: f30cbe7258a912d48a84b0dca1125752, type: 3}
+  effects: []
+  abilityFX: {fileID: 1962646870923850, guid: 75a558cb72398c6448e1c33c9af9d431, type: 3}
+  range: 4
+  cooldown: 0
+  cost: 0
+  value: 100
+  abilityType: 1
+  includeOrigin: 1
+  requiredLevel: 0
+  requiresTarget: 0
+  tooltip: {fileID: 11400000, guid: dabb81233b5b5844fa3bb20c31cb1622, type: 2}
