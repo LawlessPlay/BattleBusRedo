@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace TacticsToolkit
@@ -9,7 +10,10 @@ namespace TacticsToolkit
     {
         public static TooltipManager instance;
 
-        public Tooltip tooltip;
+        [SerializeField]
+        private Tooltip spellTooltip;
+        [SerializeField]
+        private Tooltip targetTooltip;
         public float fadeOnTime = 1f;
         public float waitTime = 1f;
 
@@ -18,11 +22,18 @@ namespace TacticsToolkit
             instance = this;
         }
 
-        public static void Show(Sprite image, string title, string description, Vector3 position, Vector2 dimensions) => instance.StartCoroutine(instance.ShowTooltipOverTime(image, title, description, position, dimensions));
-
-        private IEnumerator ShowTooltipOverTime(Sprite image, string title, string description, Vector3 position, Vector2 dimensions)
+        public void Show(Sprite image, string title, string description, Vector3 position, Vector2 dimensions, bool isSpell)
         {
-            if (instance)
+            if(isSpell)
+                instance.StartCoroutine(instance.ShowTooltipOverTime(image, title, description, position, dimensions, spellTooltip));
+            else
+                instance.StartCoroutine(instance.ShowTooltipOverTime(image, title, description, position, dimensions, targetTooltip));
+                
+        }
+
+        private IEnumerator ShowTooltipOverTime(Sprite image, string title, string description, Vector3 position, Vector2 dimensions, Tooltip tooltip)
+        {
+            if (instance && !tooltip.isActiveAndEnabled)
             {
                 yield return new WaitForSeconds(waitTime);
 
@@ -84,8 +95,10 @@ namespace TacticsToolkit
             if (instance)
             {
                 instance.StopAllCoroutines();
-                instance.tooltip.ResetContent();
-                instance.tooltip.gameObject.SetActive(false);
+                instance.spellTooltip.ResetContent();
+                instance.spellTooltip.gameObject.SetActive(false);
+                instance.targetTooltip.ResetContent();
+                instance.targetTooltip.gameObject.SetActive(false);
             }
         }
     }

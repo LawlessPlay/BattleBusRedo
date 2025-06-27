@@ -7,16 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b6833bb4-6c4b-430a-a63c-b7586ee97cae" name="Changes" comment="">
+    <list default="true" id="b6833bb4-6c4b-430a-a63c-b7586ee97cae" name="Changes" comment="Add assetpackv2">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/3D Overlay Tile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/3D Overlay Tile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/UI/UI-Components.aseprite.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Images/UI/UI-Components.aseprite.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/PlayerCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/PlayerCharacter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterTurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterTurnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/InputController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/InputController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/MouseController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/MouseController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/OutlineSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/OutlineSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/OverlayManagerV2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/OverlayManagerV2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tooltips/TooltipManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tooltips/TooltipManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tooltips/TooltipTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tooltips/TooltipTrigger.cs" afterDir="false" />
     </list>
     <list id="fad7dc97-0138-4e61-b232-51a97a9935b3" name="Commit" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +47,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/50e5acd061cd4a73b7fc8eecbf07e915176600/fb/d9e1c49f/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a2fb550e986748b88facf50cd71afc3c10fc00/4f/de987c14/Enumerable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/EventTriggerer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/aaron/Documents/BattleBusRedo/Assets/Scripts/Characters/PlayerCharacter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/aaron/Documents/BattleBusRedo/Assets/Prefabs/Objects/3D Overlay Tile.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/HoverObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../BattleBusURP/Assets/Scripts/ComboManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -117,13 +115,15 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="32188">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="32188" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -218,6 +218,8 @@
       <workItem from="1748677187000" duration="1487000" />
       <workItem from="1748772911666" duration="6123000" />
       <workItem from="1749017031513" duration="1007000" />
+      <workItem from="1750971831909" duration="300000" />
+      <workItem from="1751046561138" duration="2137000" />
     </task>
     <task id="LOCAL-00001" summary="git ignore and attributes">
       <option name="closed" value="true" />
@@ -283,7 +285,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748269290582</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add assetpackv2">
+      <option name="closed" value="true" />
+      <created>1750972093839</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1750972093839</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add assetpackv2">
+      <option name="closed" value="true" />
+      <created>1750972126125</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1750972126125</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +334,9 @@
     <MESSAGE value="Add Textmesh" />
     <MESSAGE value="Bug fixes" />
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Add assetpack" />
+    <MESSAGE value="Add assetpackv2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add assetpackv2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -515,6 +535,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Tooltips/TooltipManager.cs</url>
+          <line>29</line>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Tooltips\TooltipManager.cs" containingFunctionPresentation="Method 'Show'">
+            <startOffsets>
+              <option value="855" />
+            </startOffsets>
+            <endOffsets>
+              <option value="973" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="101" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

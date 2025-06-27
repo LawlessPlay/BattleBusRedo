@@ -51,7 +51,7 @@ namespace TacticsToolkit
                 if (Hastooltip(newFocusedOnTile))
                 {
                     Vector3 screenPos = Camera.main.WorldToScreenPoint(newFocusedOnTile.transform.position);
-                    TooltipManager.Show(newFocusedOnTile.tileData.tooltip.image, newFocusedOnTile.tileData.tooltip.tooltipName, newFocusedOnTile.tileData.tooltip.tooltipDescription, screenPos, new Vector2(50, 50));
+                    TooltipManager.instance.Show(newFocusedOnTile.tileData.tooltip.image, newFocusedOnTile.tileData.tooltip.tooltipName, newFocusedOnTile.tileData.tooltip.tooltipDescription, screenPos, new Vector2(50, 50), false);
                 }
 
                 if (focusedOnTile != newFocusedOnTile)

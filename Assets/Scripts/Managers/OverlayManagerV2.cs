@@ -240,7 +240,9 @@ public class OverlayManagerV2 : MonoBehaviour
 
         if (activeTile.activeCharacter)
         {
-            
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(activeTile.activeCharacter.transform.position);
+            TooltipManager.instance.Show(activeTile.activeCharacter.GetComponentInChildren<SpriteRenderer>().sprite, activeTile.activeCharacter.name, activeTile.activeCharacter.name, screenPos, new Vector2(50, 50), false);
+
         }
     }
 
@@ -310,7 +312,7 @@ public class OverlayManagerV2 : MonoBehaviour
     public void DrawSpell(OverlayTile overlayTile, Ability ability)
     {
         if(ability.tooltip != null)
-            TooltipManager.Show(ability.tooltip.image, ability.tooltip.tooltipName, ability.tooltip.tooltipDescription, new Vector3(0,0,0), new Vector2(50, 50));
+            TooltipManager.instance.Show(ability.tooltip.image, ability.tooltip.tooltipName, ability.tooltip.tooltipDescription, new Vector3(0,0,0), new Vector2(50, 50), true);
         
         var tiles = shapeParser.GetAbilityTileLocations(overlayTile, ability.abilityShape, activeCharacter.activeTile.grid2DLocation);
 
