@@ -7,9 +7,10 @@ namespace TacticsToolkit
     [CreateAssetMenu(fileName = "ScriptableEffect", menuName = "ScriptableObjects/ScriptableEffect")]
     public class ScriptableEffect : ScriptableObject
     {
+        public string description;
         public Stats statKey;
         public Operation Operator;
-        public float Duration;
+        public int Duration;
         public int Value;
 
         public Stats GetStatKey()

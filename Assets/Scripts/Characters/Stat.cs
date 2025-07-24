@@ -54,6 +54,11 @@ namespace TacticsToolkit
                 }
             }
         }
+        
+        public List<StatModifier> GetStatMods()
+        {
+            return statMods;
+        }
 
         public void TickStatMods()
         {
@@ -99,7 +104,9 @@ namespace TacticsToolkit
                     statValue = Mathf.CeilToInt(statValue / statMod.value);
                     break;
                 case Operation.AddByPercentage:
-                    statValue = Mathf.CeilToInt(statValue * (1 + statMod.value / 100));
+                    float test = (float)(1 +  (float)(statMod.value / 100f));
+                    var temp = (float)(statValue * test);
+                    statValue = Mathf.CeilToInt(temp);
                     break;
                 case Operation.MinusByPercentage:
                     if (statKey == Stats.CurrentHealth)

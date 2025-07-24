@@ -7,6 +7,6 @@ namespace TacticsToolkit
         public const int MoveCost = 3000;
         public const int AttackCost = 3500;
         public const int AbilityCost = 4000;
-        public const int BaseCost = 6000;
+        public const int BaseCost = 1000;
     }
 }

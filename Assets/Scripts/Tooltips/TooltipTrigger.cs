@@ -16,7 +16,7 @@ namespace TacticsToolkit
             Vector3 position = rectTransform.position;
             Vector2 dimensions = new Vector2(rectTransform.rect.width, rectTransform.rect.height);
 
-            TooltipManager.instance.Show(image, title, description, position, dimensions, false);
+            TooltipManager.instance.ShowSpellTooltip(image, title, description, position, dimensions);
         }
 
 

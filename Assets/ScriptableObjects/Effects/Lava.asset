@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e056478c281fb40a5f090dfe61735e, type: 3}
   m_Name: Lava
   m_EditorClassIdentifier: 
+  description: Burn baby burn
   statKey: 8
   Operator: 5
   Duration: 3

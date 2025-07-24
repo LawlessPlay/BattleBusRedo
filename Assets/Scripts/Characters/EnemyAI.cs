@@ -27,6 +27,8 @@ public class EnemyAI : Entity
         pathFinder = new PathFinder();
         shapeParser = new ShapeParser();
         pathRenderer = new PathRenderer();
+
+        teamID = TeamType.Enemy;
     }
 
     void Update()
@@ -147,6 +149,9 @@ public class EnemyAI : Entity
         }
 
         this.actionQueue = actionQueue;
+        
+        var turnValue = actionQueue.Sum(x => x.InitiativeValue);
+        UpdateInitiative(turnValue);
         actionQueue[0].StartAction();
     }
 

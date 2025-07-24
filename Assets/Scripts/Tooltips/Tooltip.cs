@@ -9,8 +9,6 @@ namespace TacticsToolkit
     [ExecuteInEditMode()]
     public class Tooltip : MonoBehaviour
     {
-        public TooltipSO tooltip;
-        
         public Text title;
         public Text description;
         public Image image;
@@ -65,7 +63,7 @@ namespace TacticsToolkit
         }
 
         public RectTransform buttonRectTransform;
-        private IEnumerator MoveTooltip(Vector3 position, Vector2 dimensions)
+        public IEnumerator MoveTooltip(Vector3 position, Vector2 dimensions)
         {
             yield return new WaitForEndOfFrame();
             RectTransform rectTransform = gameObject.GetComponent<RectTransform>();

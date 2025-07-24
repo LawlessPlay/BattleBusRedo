@@ -23,6 +23,7 @@ using UnityEngine;
         public ActionState State;
         public OverlayTile Target;
         public Ability Ability;
+        public int InitiativeValue;
 
         private bool isMoving;
         private ShapeParser ShapeParser;
@@ -34,6 +35,16 @@ using UnityEngine;
             this.Target = target;
             this.Ability = ability;
             this.Entity = entity;
+
+            switch (actionType)
+            {
+                case ActionType.Move:
+                    InitiativeValue = Constants.AttackCost;
+                    break;
+                case ActionType.Attack:
+                    InitiativeValue = Constants.MoveCost;
+                    break;
+            }
             
             State = ActionState.NotStarted;
             ShapeParser = new ShapeParser();

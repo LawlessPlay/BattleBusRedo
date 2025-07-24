@@ -81,6 +81,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7065301894268166837, guid: 2f89de34b9b451a47a4485e2e0c4d697,
         type: 3}
+      propertyPath: portrait
+      value: 
+      objectReference: {fileID: -1419124847495321224, guid: e40e3bb12a996e140934d11ae35aeed0,
+        type: 3}
+    - target: {fileID: 7065301894268166837, guid: 2f89de34b9b451a47a4485e2e0c4d697,
+        type: 3}
       propertyPath: characterClass
       value: 
       objectReference: {fileID: 11400000, guid: 877fb9b69af760f49bcb3ef3934df957,

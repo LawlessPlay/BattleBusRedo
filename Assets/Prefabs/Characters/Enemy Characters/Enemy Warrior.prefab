@@ -60,6 +60,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4930011141140313776, guid: 1ae8e8f202eca6a449fbd44bc9a67fec,
         type: 3}
+      propertyPath: portrait
+      value: 
+      objectReference: {fileID: 4220300916075751455, guid: e5e4ceef7deee5149bbbecbf96236afd,
+        type: 3}
+    - target: {fileID: 4930011141140313776, guid: 1ae8e8f202eca6a449fbd44bc9a67fec,
+        type: 3}
       propertyPath: triggerProjectile
       value: 
       objectReference: {fileID: 11400000, guid: 6db8c17fc01e4344f820ee1a85ff32dd,

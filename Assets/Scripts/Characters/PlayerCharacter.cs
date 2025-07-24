@@ -16,11 +16,15 @@ namespace TacticsToolkit
         private const float LineOffset = 0.5f;
         private List<Vector3> linePositions = new();
 
+        public int ActionInitiativeValue = 0;
+        
         private void Start()
         {
             rangeFinder = new RangeFinder();
             pathFinder = new PathFinder();
             pathRenderer = new PathRenderer(LineOffset);
+
+            teamID = TeamType.Player;
         }
 
         private void Update()
@@ -95,6 +99,8 @@ namespace TacticsToolkit
             actionQueue = targetTile.activeCharacter != null 
                 ? HandleActiveTileWithCharacter(targetTile) 
                 : HandleActiveTileWithoutCharacter(targetTile);
+            
+            
         }
 
         private List<Action> HandleActiveTileWithCharacter(OverlayTile targetTile)

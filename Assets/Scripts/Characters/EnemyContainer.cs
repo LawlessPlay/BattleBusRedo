@@ -20,7 +20,7 @@ namespace TacticsToolkit
         public void SpawnPlayerCharacter(GameObject newCharacter)
         {
             //is ally team
-            if (newCharacter.GetComponent<Entity>().teamID == 1)
+            if (newCharacter.GetComponent<Entity>().teamID == Entity.TeamType.Player)
             {
                 foreach (var enemy in enemyList)
                 {

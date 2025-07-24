@@ -198,6 +198,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 849432966597489293, guid: 94912624c52864e4e833d8cbca8aec94,
         type: 3}
+      propertyPath: portrait
+      value: 
+      objectReference: {fileID: -730664410152825646, guid: b6fbcaa66f06f1f4eb13f8a009584c58,
+        type: 3}
+    - target: {fileID: 849432966597489293, guid: 94912624c52864e4e833d8cbca8aec94,
+        type: 3}
       propertyPath: AllySpell
       value: 
       objectReference: {fileID: 11400000, guid: 04fcd65fa2acd0b4592ad2cf4c0b62f2,

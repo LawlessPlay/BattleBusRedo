@@ -8,7 +8,7 @@ namespace TacticsToolkit
     public class SpawnTileContainer : MonoBehaviour
     {
         public List<SpawnTile> spawnTiles;
-        public int TeamID = 0;
+        public Entity.TeamType TeamID = Entity.TeamType.Player;
 
         private void Start()
         {

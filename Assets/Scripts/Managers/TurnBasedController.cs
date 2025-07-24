@@ -24,6 +24,8 @@ namespace TacticsToolkit
 
         public int previewPoolCount = 10;
         private Entity activeCharacter;
+        
+        public TurnOrderDisplayTwo turnOrderDisplay;
 
         public enum TurnSorting
         {
@@ -41,12 +43,12 @@ namespace TacticsToolkit
 
             foreach (var item in teamA)
             {
-                item.teamID = 1;
+                item.teamID = Entity.TeamType.Player;
             }
 
             foreach (var item in teamB)
             {
-                item.teamID = 2;
+                item.teamID = Entity.TeamType.Enemy;
             }
 
             if (teamA.Count > 0 || teamB.Count > 0)
@@ -67,13 +69,13 @@ namespace TacticsToolkit
                         combinedList.Add(entity);
                     }
                 }
-            }
+            }                               
 
             if (turnSorting == TurnSorting.ConstantAttribute)
             {
                 turnOrderPreview = combinedList
                     .OrderBy(x => x.statsContainer.Speed.statValue)
-                    .Select(x => new TurnOrderPreviewObject(x, x.initiativeValue))
+                    .Select(x => new TurnOrderPreviewObject(x, x.initiativeValue,0))
                     .ToList();
 
                 if (updateListSize)
@@ -83,7 +85,7 @@ namespace TacticsToolkit
                     {
                         foreach (var entity in combinedList)
                         {
-                            turnOrderPreview.Add(new TurnOrderPreviewObject(entity, entity.initiativeValue * characterCount));
+                            turnOrderPreview.Add(new TurnOrderPreviewObject(entity, entity.initiativeValue * characterCount,0));
                         }
                         characterCount++;
                     }
@@ -92,7 +94,7 @@ namespace TacticsToolkit
             else if (turnSorting == TurnSorting.CTB)
             {
                 turnOrderPreview = combinedList
-                    .Select(x => new TurnOrderPreviewObject(x, x.initiativeValue + (Constants.BaseCost / x.GetStat(Stats.Speed).statValue)))
+                    .Select(x => new TurnOrderPreviewObject(x, x.initiativeValue + (Constants.BaseCost / x.GetStat(Stats.Speed).statValue),0))
                     .ToList();
 
                 int characterCount = 2;
@@ -100,7 +102,7 @@ namespace TacticsToolkit
                 {
                     foreach (var entity in combinedList)
                     {
-                        turnOrderPreview.Add(new TurnOrderPreviewObject(entity, entity.initiativeValue + ((Constants.BaseCost / entity.GetStat(Stats.Speed).statValue) * characterCount)));
+                        turnOrderPreview.Add(new TurnOrderPreviewObject(entity, entity.initiativeValue + ((Constants.BaseCost / entity.GetStat(Stats.Speed).statValue) * characterCount),0));
                     }
                     characterCount++;
                 }
@@ -110,7 +112,10 @@ namespace TacticsToolkit
 
             activeCharacter = turnOrderPreview[0].character;
             currentTurnOrderPreview = turnOrderPreview;
+            
             turnOrderSet.Raise(turnOrderPreview.Select(x => x.character.gameObject).ToList());
+            
+            turnOrderDisplay.SetTurnOrderList(turnOrderPreview);
         }
 
         public void StartLevel()
@@ -128,18 +133,24 @@ namespace TacticsToolkit
             if (turnOrderPreview.Count > 0)
             {
                 FinaliseEndCharactersTurn();
+                turnOrderDisplay.PopOffFirst(DoInsert);
+                
+                
+            }
+        }
+        public void DoInsert()
+        {
+            //turnOrderDisplay.InsertAt(turnOrderPreview.Count - 1, activeCharacter);
+            SortTeamOrder();
+            
+            foreach (var entity in turnOrderPreview)
+                entity.character.SetIsActive(false);
 
-                SortTeamOrder();
-
-                foreach (var entity in turnOrderPreview)
-                    entity.character.SetIsActive(false);
-
-                if (HasAliveCharacters())
-                {  
-                    if (activeCharacter.isAlive)
-                    {
-                        startNewCharacterTurn.Raise(activeCharacter.gameObject);
-                    }
+            if (HasAliveCharacters())
+            {  
+                if (activeCharacter.isAlive)
+                {
+                    startNewCharacterTurn.Raise(activeCharacter.gameObject);
                 }
             }
         }
@@ -206,7 +217,7 @@ namespace TacticsToolkit
         public void UpdatePreviewForAction(int actionCost)
         {
             var updatedTurnOrderPreview = turnOrderPreview
-                .Select(x => new TurnOrderPreviewObject(x.character, x.PreviewInitiativeValue))
+                .Select(x => new TurnOrderPreviewObject(x.character, x.PreviewInitiativeValue,0))
                 .ToList();
 
             var activeCharacters = updatedTurnOrderPreview
@@ -217,8 +228,9 @@ namespace TacticsToolkit
             {
                 activeCharacters[i].PreviewInitiativeValue += Mathf.RoundToInt(actionCost / activeCharacters[i].character.GetStat(Stats.Speed).statValue);
             }
-
+            
             currentTurnOrderPreview = updatedTurnOrderPreview.OrderBy(x => x.PreviewInitiativeValue).ToList();
+            turnOrderDisplay.StartPreview(currentTurnOrderPreview, activeCharacter);
             turnPreviewSet.Raise(currentTurnOrderPreview.Select(x => x.character.gameObject).ToList());
         }
 
@@ -237,12 +249,26 @@ namespace TacticsToolkit
     public class TurnOrderPreviewObject
     {
         public Entity character;
-        public int PreviewInitiativeValue;
+        public float PreviewInitiativeValue;
+        public float DefaultPreviewInitiativeValue;
+        public int index;
 
-        public TurnOrderPreviewObject(Entity character, int previewInitiativeValue)
+        public TurnOrderPreviewObject(Entity character, float previewInitiativeValue, int i)
         {
             this.character = character;
-            PreviewInitiativeValue = previewInitiativeValue;
+            this.PreviewInitiativeValue = previewInitiativeValue;
+            this.DefaultPreviewInitiativeValue = previewInitiativeValue;
+            this.index = i;
+        }
+
+        public void ModifyTurnOrderPreview(int turnOrderPreview)
+        {
+            PreviewInitiativeValue += turnOrderPreview;
+        }
+
+        public void ResetPreview()
+        {
+            PreviewInitiativeValue = DefaultPreviewInitiativeValue;
         }
     }
 }

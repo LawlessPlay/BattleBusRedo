@@ -552,10 +552,12 @@ MonoBehaviour:
   characterClass: {fileID: 11400000, guid: f703702be4c3bfa4ea708886723fe57d, type: 2}
   statsContainer: {fileID: 0}
   initiativeValue: 0
+  portrait: {fileID: 0}
   isAlive: 1
   isActive: 0
   isActiveIndicator: {fileID: 0}
   endTurn: {fileID: 11400000, guid: fdfd2d860fc9f35449f03cd73e2c6948, type: 2}
+  dieEvent: {fileID: 11400000, guid: 74d708d35196dd6439988e40eef548e0, type: 2}
   previousTurnCost: 1000
   gameConfig: {fileID: 11400000, guid: eaeab84eb6b1df54eb4c6951b5ec44ae, type: 2}
   facingDirection: {x: 0, y: -1}
@@ -569,6 +571,7 @@ MonoBehaviour:
   isActing: 0
   triggerProjectile: {fileID: 11400000, guid: 6db8c17fc01e4344f820ee1a85ff32dd, type: 2}
   setTarget: {fileID: 11400000, guid: 55f8c37e8ebd1174aa655f615f441954, type: 2}
+  ActionInitiativeValue: 0
 --- !u!114 &7694651815376587606
 MonoBehaviour:
   m_ObjectHideFlags: 0

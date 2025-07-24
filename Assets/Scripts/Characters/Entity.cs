@@ -18,7 +18,7 @@ namespace TacticsToolkit
         public int requiredExperience = 0;
 
         [Header("General")]
-        public int teamID = 0;
+        public TeamType teamID = 0;
         [HideInInspector]
         public OverlayTile activeTile;
         public CharacterClass characterClass;
@@ -26,6 +26,8 @@ namespace TacticsToolkit
         public CharacterStats statsContainer;
         [HideInInspector]
         public int initiativeValue;
+
+        public Sprite portrait;
 
         [HideInInspector]
         public bool isAlive = true;
@@ -36,6 +38,7 @@ namespace TacticsToolkit
         public GameObject isActiveIndicator;
 
         public GameEvent endTurn;
+        public GameEventGameObject dieEvent;
         private HealthBarManager healthBarManager;
         [HideInInspector]
         public int previousTurnCost = -1;
@@ -71,6 +74,13 @@ namespace TacticsToolkit
         protected bool hasMoved = false;
         
         public List<Action> actionQueue = new List<Action>();
+
+        public enum TeamType
+        {
+            Player = 0,
+            Ally = 1,
+            Enemy = 2
+        }
         
         private void Awake()
         {
@@ -104,12 +114,12 @@ namespace TacticsToolkit
                 statsContainer.AttackRange = new Stat(Stats.AttackRange, characterClass.AttackRange, this);
                 statsContainer.CurrentHealth = new Stat(Stats.CurrentHealth, characterClass.Health.baseStatValue, this);
                 statsContainer.CurrentMana = new Stat(Stats.CurrentMana, characterClass.Mana.baseStatValue, this);
+                for (int i = 0; i < level; i++)
+                {
+                    LevelUpStats();
+                }
             }
 
-            for (int i = 0; i < level; i++)
-            {
-                LevelUpStats();
-            }
         }
 
         // Update is called once per frame
@@ -332,26 +342,15 @@ namespace TacticsToolkit
         //What happens when a character dies. 
         public IEnumerator Die()
         {
-            float DegreesPerSecond = 360f;
-            Vector3 currentRot, targetRot = new Vector3();
-            currentRot = transform.eulerAngles;
-            targetRot.z = currentRot.z + 90; // calculate the new angle
-
+            dieEvent.Raise(gameObject);
+            
             foreach (Transform child in transform)
             {
                 child.gameObject.SetActive(false);
             }
 
             gameObject.SetActive(false);
-
-            while (currentRot.z < targetRot.z)
-            {
-                currentRot.z = Mathf.MoveTowardsAngle(currentRot.z, targetRot.z, DegreesPerSecond * Time.deltaTime);
-                transform.eulerAngles = currentRot;
-                yield return null;
-            }
-
-            GetComponent<SpriteRenderer>().color = new Color(0.35f, 0.35f, 0.35f, 1);
+            yield return null;
         }
 
         //Change characters mana
@@ -367,17 +366,17 @@ namespace TacticsToolkit
                 if (statToEffect.statMods.FindIndex(x => x.statModName == scriptableEffect.name) != -1)
                 {
                     int modIndex = statToEffect.statMods.FindIndex(x => x.statModName == scriptableEffect.name);
-                    statToEffect.statMods[modIndex] = new StatModifier(scriptableEffect.statKey, scriptableEffect.Value, scriptableEffect.Duration, scriptableEffect.Operator, scriptableEffect.name);
+                    statToEffect.statMods[modIndex] = new StatModifier(scriptableEffect.statKey, scriptableEffect.Value, scriptableEffect.Duration, scriptableEffect.Operator, scriptableEffect.name, scriptableEffect.description);
                 }
                 else
-                    statToEffect.statMods.Add(new StatModifier(scriptableEffect.statKey, scriptableEffect.Value, scriptableEffect.Duration, scriptableEffect.Operator, scriptableEffect.name));
+                    statToEffect.statMods.Add(new StatModifier(scriptableEffect.statKey, scriptableEffect.Value, scriptableEffect.Duration, scriptableEffect.Operator, scriptableEffect.name, scriptableEffect.description));
             }
         }
 
         //Effects that don't have a duration can just be applied straight away. 
         public void ApplySingleEffects(ScriptableEffect scriptableEffect)
         {
-            var statMod = new StatModifier(scriptableEffect.statKey, scriptableEffect.Value, scriptableEffect.Duration, scriptableEffect.Operator, scriptableEffect.name);
+            var statMod = new StatModifier(scriptableEffect.statKey, scriptableEffect.Value, scriptableEffect.Duration, scriptableEffect.Operator, scriptableEffect.name, scriptableEffect.description);
             Stat value = statsContainer.getStat(scriptableEffect.GetStatKey());
             value.ApplySingleStatMod(statMod);
             healthBarManager.UpdateCharacterUI();
@@ -386,7 +385,7 @@ namespace TacticsToolkit
         //Effects that don't have a duration should be manually removed. 
         public void UndoEffect(ScriptableEffect scriptableEffect)
         {
-            var statMod = new StatModifier(scriptableEffect.statKey, scriptableEffect.Value, scriptableEffect.Duration, scriptableEffect.Operator, scriptableEffect.name);
+            var statMod = new StatModifier(scriptableEffect.statKey, scriptableEffect.Value, scriptableEffect.Duration, scriptableEffect.Operator, scriptableEffect.name, scriptableEffect.description);
             Stat value = statsContainer.getStat(scriptableEffect.GetStatKey());
             value.UndoStatMod(statMod);
             healthBarManager.UpdateCharacterUI();
@@ -408,6 +407,21 @@ namespace TacticsToolkit
             }
 
             healthBarManager.UpdateCharacterUI();
+        }
+
+        public List<StatModifier> GetStatModifiers()
+        {
+            List<StatModifier> mods = new List<StatModifier>();
+            var fields = typeof(CharacterStats).GetFields();
+            foreach (var item in fields)
+            {
+                var type = item.FieldType;
+                Stat value = (Stat)item.GetValue(statsContainer);
+
+                mods.AddRange(value.GetStatMods());
+            }
+
+            return mods;
         }
 
         //Gets Entities ability. 
