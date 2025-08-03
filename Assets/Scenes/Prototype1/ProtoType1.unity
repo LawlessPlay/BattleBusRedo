@@ -4678,6 +4678,10 @@ PrefabInstance:
       propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1721331917, guid: a80d692113c8c70468b30e0b8a330619, type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 391050203242677088, guid: a80d692113c8c70468b30e0b8a330619,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -4901,6 +4905,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3476948550120642131, guid: a80d692113c8c70468b30e0b8a330619,
         type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476948550120642131, guid: a80d692113c8c70468b30e0b8a330619,
+        type: 3}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 714054529}
@@ -5069,6 +5078,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4622273859636439820, guid: a80d692113c8c70468b30e0b8a330619,
         type: 3}
+      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4622273859636439820, guid: a80d692113c8c70468b30e0b8a330619,
+        type: 3}
       propertyPath: response.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 503514059}
@@ -5126,6 +5140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4622273859786725456, guid: a80d692113c8c70468b30e0b8a330619,
+        type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4622273859786725456, guid: a80d692113c8c70468b30e0b8a330619,
         type: 3}
@@ -7248,7 +7267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 58.7, y: 0}
+  m_AnchoredPosition: {x: 58.7, y: 84.78}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &570073577
@@ -7304,7 +7323,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535

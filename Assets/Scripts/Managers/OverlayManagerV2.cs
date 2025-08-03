@@ -321,7 +321,7 @@ public class OverlayManagerV2 : MonoBehaviour
             UpdateAbilityTileColors(tile, HighlightColor);
             
             if(tile.activeCharacter)
-                tile.activeCharacter.GetComponent<HealthBarManager>().SetPreview(ability.value, ability.abilityType == Ability.AbilityTypes.Damage);
+                tile.activeCharacter.GetComponent<HealthBarManager>().SetPreview(ability.value, ability.abilityType == Ability.AbilityTypes.Enemy);
             
             ShowTile(tile);
         }

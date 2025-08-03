@@ -9,32 +9,20 @@
   <component name="ChangeListManager">
     <list default="true" id="b6833bb4-6c4b-430a-a63c-b7586ee97cae" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Base.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Base.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy Characters/Enemy Archer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy Characters/Enemy Archer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy Characters/Enemy Mage Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy Characters/Enemy Mage Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy Characters/Enemy Warrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Enemy Characters/Enemy Warrior.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player Characters/Archer Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player Characters/Archer Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player Characters/Mage Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player Characters/Mage Variant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player Characters/Warrior.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player Characters/Warrior.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Effects/Lava.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Effects/Lava.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Character Classes/Archer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Character Classes/Archer.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Entity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/PlayerCharacter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/PlayerCharacter.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Stat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Stat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/StatModifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/StatModifier.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Classes/Action.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Classes/Action.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/AbilityController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/AbilityController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterTurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterTurnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/MouseController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/MouseController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/OverlayManagerV2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/OverlayManagerV2.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Effects/ScriptableEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Effects/ScriptableEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tiles/SpawnTileContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tiles/SpawnTileContainer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tooltips/Tooltip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tooltips/Tooltip.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tooltips/TooltipManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tooltips/TooltipManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tooltips/TooltipTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tooltips/TooltipTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/Constants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/Constants.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Actions/Ability.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Actions/Ability.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TurnOrderDisplayTwo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TurnOrderDisplayTwo.cs" afterDir="false" />
     </list>
     <list id="fad7dc97-0138-4e61-b232-51a97a9935b3" name="Commit" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -138,10 +126,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20000">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="5364">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="20000" />
+      <option name="pid" value="5364" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -254,7 +242,11 @@
       <workItem from="1752924147456" duration="1814000" />
       <workItem from="1752948762832" duration="5171000" />
       <workItem from="1753190687149" duration="18991000" />
-      <workItem from="1753380353575" duration="3064000" />
+      <workItem from="1753380353575" duration="3900000" />
+      <workItem from="1753455966211" duration="5255000" />
+      <workItem from="1753534563274" duration="2961000" />
+      <workItem from="1753986373168" duration="2595000" />
+      <workItem from="1754225044880" duration="3937000" />
     </task>
     <task id="LOCAL-00001" summary="git ignore and attributes">
       <option name="closed" value="true" />
@@ -336,7 +328,23 @@
       <option name="project" value="LOCAL" />
       <updated>1750972126125</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="hubuhyb">
+      <option name="closed" value="true" />
+      <created>1753390311457</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1753390311457</updated>
+    </task>
+    <task id="LOCAL-00012" summary="mijnui">
+      <option name="closed" value="true" />
+      <created>1753390332184</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1753390332184</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,7 +379,9 @@
     <MESSAGE value="Update" />
     <MESSAGE value="Add assetpack" />
     <MESSAGE value="Add assetpackv2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add assetpackv2" />
+    <MESSAGE value="hubuhyb" />
+    <MESSAGE value="mijnui" />
+    <option name="LAST_COMMIT_MESSAGE" value="mijnui" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -442,19 +452,6 @@
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/GamepadInputController.cs</url>
-          <line>87</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\GamepadInputController.cs" containingFunctionPresentation="Method 'Update'">
-            <startOffsets>
-              <option value="3166" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3187" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="61" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/MovementController.cs</url>
           <line>157</line>
           <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\MovementController.cs" containingFunctionPresentation="Method 'MoveAlongPath'">
@@ -472,10 +469,10 @@
           <line>67</line>
           <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\AbilityController.cs" containingFunctionPresentation="Method 'CastAbility'">
             <startOffsets>
-              <option value="2627" />
+              <option value="2626" />
             </startOffsets>
             <endOffsets>
-              <option value="2680" />
+              <option value="2679" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="82" />
@@ -485,10 +482,10 @@
           <line>70</line>
           <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\AbilityController.cs" containingFunctionPresentation="Method 'CastAbility'">
             <startOffsets>
-              <option value="2791" />
+              <option value="2790" />
             </startOffsets>
             <endOffsets>
-              <option value="2844" />
+              <option value="2843" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="83" />
@@ -531,6 +528,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs</url>
+          <line>116</line>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\TurnBasedManagerRedo.cs" containingFunctionPresentation="Method 'StartTurn'">
+            <startOffsets>
+              <option value="4021" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4074" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="89" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

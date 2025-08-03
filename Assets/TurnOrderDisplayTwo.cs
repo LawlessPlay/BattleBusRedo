@@ -19,12 +19,12 @@ public class TurnOrderDisplayTwo : MonoBehaviour
     public float marginX = 0f, marginY = 0f;
     public float spacing = 10f;
 
-    public List<TurnOrderPreviewObject> currentOrder = new List<TurnOrderPreviewObject>();
+    public List<TurnOrderObject> currentOrder = new List<TurnOrderObject>();
     private List<RectTransform> iconRects = new List<RectTransform>();
     private List<Image> iconImages = new List<Image>();
 
 
-    public void SetTurnOrderList(List<TurnOrderPreviewObject> order)
+    public void SetTurnOrderList(List<TurnOrderObject> order)
     {
         StopCoroutine("MoveToPosition");
         // Remove old icons
@@ -114,6 +114,10 @@ public class TurnOrderDisplayTwo : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / duration);
+            
+            
+            if (firstRect == null || firstRect.Equals(null)) yield break;
+            
             firstRect.anchoredPosition = Vector2.Lerp(startPos, offTarget, t);
             yield return null;
         }
@@ -176,18 +180,20 @@ public class TurnOrderDisplayTwo : MonoBehaviour
             {
                 elapsed += Time.deltaTime;
                 float t = Mathf.Clamp01(elapsed / duration);
-                if(rt.anchoredPosition != null)
-                    rt.anchoredPosition = Vector2.Lerp(startPos, endPos, t);
                 
+                if (rt == null || rt.Equals(null)) yield break;
+                
+                rt.anchoredPosition = Vector2.Lerp(startPos, endPos, t);
                 yield return null;
             }
-            if(rt.anchoredPosition != null)
-                rt.anchoredPosition = endPos;
+            if (rt == null || rt.Equals(null)) yield break;
+            
+            rt.anchoredPosition = endPos;
         }
         yield return null;
     }
 
-    public void InsertAt(int index, TurnOrderPreviewObject newChar)
+    public void InsertAt(int index, TurnOrderObject newChar)
     {
         // Clamp index to valid range [0, currentOrder.Count]
         if (index < 0) index = 0;
@@ -262,15 +268,15 @@ public class TurnOrderDisplayTwo : MonoBehaviour
         StartCoroutine(MoveToPosition(newRect, startPos, newTarget));
     }
 
-    private List<TurnOrderPreviewObject> originalOrderBackup = new List<TurnOrderPreviewObject>();
-    private bool isPreviewMode = false;
+    private List<TurnOrderObject> originalOrderBackup = new List<TurnOrderObject>();
+    public bool isPreviewMode = false;
     private Entity previewTargetChar;
 
     public float previewOffset = 10f; // how far to offset previewed icons
     public float previewAlpha = 0.7f; // transparency for previewed icons (1 = fully opaque)
     public Color previewTintColor = Color.yellow; // tint color for preview (e.g., yellow highlight)
 
-    public void StartPreview(List<TurnOrderPreviewObject> newOrder, Entity affectedChar)
+    public void StartPreview(List<TurnOrderObject> newOrder, Entity affectedChar)
     {
         if (isPreviewMode)
         {
@@ -278,7 +284,7 @@ public class TurnOrderDisplayTwo : MonoBehaviour
         }
 
         // Backup the current order data
-        originalOrderBackup = new List<TurnOrderPreviewObject>(currentOrder);
+        originalOrderBackup = new List<TurnOrderObject>(currentOrder);
         previewTargetChar = affectedChar;
         isPreviewMode = true;
         // Display the new order list (instantly, no animation here)

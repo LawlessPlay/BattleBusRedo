@@ -39,8 +39,8 @@ namespace TacticsToolkit
 
         public enum AbilityTypes
         {
-            Heal,
-            Damage,
+            Ally,
+            Enemy,
             All
         }
 

@@ -61,10 +61,10 @@ namespace TacticsToolkit
                     //apply value
                     switch (abilityContainer.ability.abilityType)
                     {
-                        case AbilityTypes.Heal:
+                        case AbilityTypes.Ally:
                             character.HealEntity(abilityContainer.ability.value);
                             break;
-                        case AbilityTypes.Damage:
+                        case AbilityTypes.Enemy:
                             character.TakeDamage(abilityContainer.ability.value);
                             break;
                         case AbilityTypes.All:
@@ -109,11 +109,11 @@ namespace TacticsToolkit
         //Check if Abilities are targeting the right entities.
         private bool CheckAbilityTargets(AbilityTypes abilityType, Entity characterTarget)
         {
-            if (abilityType == AbilityTypes.Damage)
+            if (abilityType == AbilityTypes.Enemy)
             {
                 return characterTarget.teamID != activeCharacter.teamID;
             }
-            else if (abilityType == AbilityTypes.Heal)
+            else if (abilityType == AbilityTypes.Ally)
             {
                 return characterTarget.teamID == activeCharacter.teamID;
             }

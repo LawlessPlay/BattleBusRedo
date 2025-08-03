@@ -157,10 +157,10 @@ using UnityEngine;
                     //apply value
                     switch (Ability.abilityType)
                     {
-                        case Ability.AbilityTypes.Heal:
+                        case Ability.AbilityTypes.Ally:
                             character.HealEntity(Ability.value);
                             break;
-                        case Ability.AbilityTypes.Damage:
+                        case Ability.AbilityTypes.Enemy:
                             character.TakeDamage(Ability.value);
                             break;
                         case Ability.AbilityTypes.All:
@@ -186,11 +186,11 @@ using UnityEngine;
         
         private bool CheckAbilityTargets(Ability.AbilityTypes abilityType, Entity characterTarget)
         {
-            if (abilityType == Ability.AbilityTypes.Damage)
+            if (abilityType == Ability.AbilityTypes.Enemy)
             {
                 return characterTarget.teamID != Entity.teamID;
             }
-            else if (abilityType == Ability.AbilityTypes.Heal)
+            else if (abilityType == Ability.AbilityTypes.Ally)
             {
                 return characterTarget.teamID == Entity.teamID;
             }

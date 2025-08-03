@@ -37,22 +37,37 @@ public class CharacterTurnManager : MonoBehaviour
     {
         if (activeCharacter && !activeCharacter.isActing && activeCharacter.actionQueue.Count > 0 && confirmationUI.activeSelf == false)
         {
+            var speedMultiplier = 1f;
+            var multiplier = 1.5f;
             //check if updating speed. 
             foreach (var action in activeCharacter.actionQueue)
             {
                 if (action.Type == Action.ActionType.Attack)
                 {
+                    switch (action.Ability.abilityType)
+                    {
+                        case Ability.AbilityTypes.Ally:
+                            multiplier = 1;
+                            break;
+                        case Ability.AbilityTypes.Enemy:
+                            multiplier = 1.2f;
+                            break;
+                        case Ability.AbilityTypes.All:
+                            multiplier = 0.8f;
+                            break;
+                    }
+                    
                     foreach (var effect in action.Ability.effects)
                     {
                         if (effect.statKey == Stats.Speed)
                         {
-                            action.Target.activeCharacter.ApplySingleEffects(effect);
-                            turnBasedManagerRedo.PreviewUpdateOrder(action.Target.activeCharacter.gameObject, effect.Duration);
+                            speedMultiplier = (float)(1 +  (float)(effect.Value / 100f));
                         }
                     }
                 }
             }
             
+            turnBasedManagerRedo.PreviewUpdateOrder(activeCharacter.gameObject, multiplier);
             confirmationUI.SetActive(true);
         }
     }
@@ -71,6 +86,19 @@ public class CharacterTurnManager : MonoBehaviour
     {
         if (activeCharacter && confirmationUI.activeSelf == true)
         {
+            foreach (var action in activeCharacter.actionQueue)
+            {
+                if (action.Type == Action.ActionType.Attack)
+                {
+                    foreach (var effect in action.Ability.effects)
+                    {
+                        if (effect.statKey == Stats.Speed)
+                        {
+                            action.Target.activeCharacter.UndoEffect(effect);
+                        }
+                    }
+                }
+            }
             confirmationUI.SetActive(false);
             turnBasedManagerRedo.UndoPreview();
         }

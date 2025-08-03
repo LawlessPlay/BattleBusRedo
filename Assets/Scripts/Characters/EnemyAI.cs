@@ -173,7 +173,7 @@ public class EnemyAI : Entity
 
             switch (ability.abilityType)
             {
-                case Ability.AbilityTypes.Heal:
+                case Ability.AbilityTypes.Ally:
                     characters = affectedTiles.Where(x => x.activeCharacter && x.activeCharacter.teamID == teamID)
                         .Select(x => x.activeCharacter).ToList();
 
@@ -199,7 +199,7 @@ public class EnemyAI : Entity
                     }
 
                     break;
-                case Ability.AbilityTypes.Damage:
+                case Ability.AbilityTypes.Enemy:
                     characters = affectedTiles.Select(x => x.activeCharacter).Where(c => c != null).ToList();
                     var enemyCharacters = characters.Where(c => c.teamID != teamID).ToList();
                     var allyCharacters = characters.Where(c => c.teamID == teamID).ToList();

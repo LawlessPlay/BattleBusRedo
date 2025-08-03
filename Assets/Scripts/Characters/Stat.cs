@@ -66,7 +66,6 @@ namespace TacticsToolkit
             {
                 if (statMod != null)
                 {
-
                     statMod.duration--;
                 }
 
