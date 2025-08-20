@@ -14547,8 +14547,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5973590191841460615, guid: e8833d6a09864194a9baa078f84d80d5,
         type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5973590191841460615, guid: e8833d6a09864194a9baa078f84d80d5,
+        type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5973590191841460618, guid: e8833d6a09864194a9baa078f84d80d5,
         type: 3}
