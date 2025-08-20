@@ -10,19 +10,9 @@
     <list default="true" id="b6833bb4-6c4b-430a-a63c-b7586ee97cae" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Character Classes/Archer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Character Classes/Archer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/EnemyAI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Stat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Stat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Classes/Action.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Classes/Action.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/AbilityController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/AbilityController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterTurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterTurnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/OverlayManagerV2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/OverlayManagerV2.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedController.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Actions/Ability.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Actions/Ability.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TurnOrderDisplayTwo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TurnOrderDisplayTwo.cs" afterDir="false" />
     </list>
     <list id="fad7dc97-0138-4e61-b232-51a97a9935b3" name="Commit" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,6 +46,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/50e5acd061cd4a73b7fc8eecbf07e915176600/fb/d9e1c49f/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a2fb550e986748b88facf50cd71afc3c10fc00/4f/de987c14/Enumerable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/EventTriggerer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/aaron/Documents/BattleBusRedo/Assets/Scripts/Managers/TurnBasedManagerRedo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Character/CharacterDescription.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/HoverObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.4/Runtime/VisualScripting.Core/Utilities/UnityObjectUtility.cs" root0="SKIP_HIGHLIGHTING" />
@@ -126,10 +117,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="5364">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19440">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="5364" />
+      <option name="pid" value="19440" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -246,7 +237,9 @@
       <workItem from="1753455966211" duration="5255000" />
       <workItem from="1753534563274" duration="2961000" />
       <workItem from="1753986373168" duration="2595000" />
-      <workItem from="1754225044880" duration="3937000" />
+      <workItem from="1754225044880" duration="4563000" />
+      <workItem from="1754825346353" duration="6017000" />
+      <workItem from="1754925736841" duration="3595000" />
     </task>
     <task id="LOCAL-00001" summary="git ignore and attributes">
       <option name="closed" value="true" />
@@ -344,7 +337,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753390332184</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="dcwa">
+      <option name="closed" value="true" />
+      <created>1754236224339</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1754236224339</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,7 +382,8 @@
     <MESSAGE value="Add assetpackv2" />
     <MESSAGE value="hubuhyb" />
     <MESSAGE value="mijnui" />
-    <option name="LAST_COMMIT_MESSAGE" value="mijnui" />
+    <MESSAGE value="dcwa" />
+    <option name="LAST_COMMIT_MESSAGE" value="dcwa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -531,16 +533,42 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs</url>
-          <line>116</line>
+          <line>118</line>
           <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\TurnBasedManagerRedo.cs" containingFunctionPresentation="Method 'StartTurn'">
             <startOffsets>
-              <option value="4021" />
+              <option value="4101" />
             </startOffsets>
             <endOffsets>
-              <option value="4074" />
+              <option value="4154" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs</url>
+          <line>79</line>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\TurnBasedManagerRedo.cs" containingFunctionPresentation="Method 'PreviewUpdateOrder'">
+            <startOffsets>
+              <option value="2993" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3083" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs</url>
+          <line>116</line>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\TurnBasedManagerRedo.cs" containingFunctionPresentation="Method 'StartTurn'">
+            <startOffsets>
+              <option value="3970" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4013" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="91" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

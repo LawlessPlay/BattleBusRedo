@@ -11,6 +11,7 @@ public class TurnBasedManagerRedo : MonoBehaviour
     public List<Entity> playerList = new List<Entity>();
     public List<Entity> enemyList = new List<Entity>();
     public List<TurnOrderObject> turnCombatantList = new List<TurnOrderObject>();
+    public List<TurnOrderObject> previewTurnCombatantList = new List<TurnOrderObject>();
     public TMP_Text speedOrderText;
     
     public GameEventGameObject setActiveCharacter;
@@ -32,7 +33,7 @@ public class TurnBasedManagerRedo : MonoBehaviour
         speedOrderText.text = "";
         foreach (var turnObject in turnCombatantList)
         {
-            speedOrderText.text += turnObject.character.name + " - Speed: " + turnObject.character.GetStat(Stats.Speed).statValue + " CurrentTickValue: " + turnObject.currentTickCount + " MaxTickCount: " + turnObject.tickCount;
+            speedOrderText.text += turnObject.character.name + " - Speed: " + turnObject.character.GetStat(Stats.Speed).statValue + " CurrentTickValue: " + turnObject.currentTickCount + " MaxTickCount: " + turnObject.tickMax;
             speedOrderText.text += "\n\n";
         }
     }
@@ -41,7 +42,8 @@ public class TurnBasedManagerRedo : MonoBehaviour
     {
         turnCombatantList.Clear();
         turnCombatantList = CreateTurnOrder();
-        turnOrderDisplay.SetTurnOrderList(turnCombatantList);
+        previewTurnCombatantList = turnCombatantList;
+        turnOrderDisplay.SetTurnOrderList(previewTurnCombatantList);
     }
 
     public List<TurnOrderObject> CreateTurnOrder()
@@ -67,12 +69,15 @@ public class TurnBasedManagerRedo : MonoBehaviour
     
     public void PreviewUpdateOrder(GameObject character, float multiplier)
     {
-        turnCombatantList.First(x => x.character == character.GetComponent<Entity>()).ResetTickCount(multiplier);
-        var tempTurnCombatantList = turnCombatantList.OrderBy(x => x.currentTickCount).ToList();
-        var doubleList = new List<TurnOrderObject>();
-        doubleList.AddRange(tempTurnCombatantList);
-        doubleList.AddRange(tempTurnCombatantList);
-        turnOrderDisplay.StartPreview(doubleList, character.GetComponent<Entity>());
+        var minTickValue = turnCombatantList[0].currentTickCount;
+        foreach (var characters in previewTurnCombatantList)
+        {
+            characters.UpdateTickCount(minTickValue);
+        }
+        
+        previewTurnCombatantList.First(x => x.character == character.GetComponent<Entity>()).ResetTickCount(multiplier);
+        previewTurnCombatantList = previewTurnCombatantList.OrderBy(x => x.currentTickCount).ToList();
+        turnOrderDisplay.StartPreview(previewTurnCombatantList, character.GetComponent<Entity>());
     }
     
     public void UndoPreview()
@@ -83,16 +88,11 @@ public class TurnBasedManagerRedo : MonoBehaviour
     public void ConfirmPreview()
     {
         turnOrderDisplay.ConfirmPreview();
-        turnCombatantList = turnOrderDisplay.currentOrder;
+        turnCombatantList = previewTurnCombatantList;
     }
     
     public void EndTurn()
     {
-        var minTickValue = turnCombatantList[0].currentTickCount;
-        foreach (var characters in turnCombatantList)
-        {
-            characters.UpdateTickCount(minTickValue);
-        }
         StartTurn();
     }
 
@@ -103,11 +103,13 @@ public class TurnBasedManagerRedo : MonoBehaviour
             ConfirmPreview();
         else
         {
+            var minTickValue = turnCombatantList[0].currentTickCount;
+            foreach (var characters in turnCombatantList)
+            {
+                characters.UpdateTickCount(minTickValue);
+            }
             turnCombatantList[0].ResetTickCount(1.2f);
             turnCombatantList = turnCombatantList.OrderBy(x => x.currentTickCount).ToList();
-            var doubleList = new List<TurnOrderObject>();
-            doubleList.AddRange(turnCombatantList);
-            doubleList.AddRange(turnCombatantList);
             turnOrderDisplay.SetTurnOrderList(turnCombatantList);
         }
 
@@ -121,15 +123,19 @@ public class TurnBasedManagerRedo : MonoBehaviour
     {
         var newTurnOrderObject = new TurnOrderObject(character.GetComponent<Entity>(), Constants.BaseCost);
         turnCombatantList.Add(newTurnOrderObject);
+        
         turnCombatantList = turnCombatantList.OrderBy(x => x.currentTickCount).ToList();
-        turnOrderDisplay.SetTurnOrderList(turnCombatantList);
+        
+        previewTurnCombatantList = turnCombatantList;
+        turnOrderDisplay.SetTurnOrderList(previewTurnCombatantList);
     }
 
     public void HandleCharacterDespawning(GameObject character)
     {
         turnCombatantList.RemoveAll(x => x.character == character.GetComponent<Entity>());
         turnCombatantList = turnCombatantList.OrderBy(x => x.currentTickCount).ToList();
-        turnOrderDisplay.SetTurnOrderList(turnCombatantList);
+        previewTurnCombatantList = turnCombatantList;
+        turnOrderDisplay.SetTurnOrderList(previewTurnCombatantList);
     }
 }
 
@@ -137,7 +143,7 @@ public class TurnOrderObject
 {
     public Entity character;
     public float stepValue;
-    public float tickCount;
+    public float tickMax;
     public float currentTickCount;
     public float baseTurnValue;
 
@@ -147,27 +153,33 @@ public class TurnOrderObject
        this.baseTurnValue = baseTurnValue;
        
        this.stepValue = (float)character.GetStat(Stats.Speed).statValue;
-       this.tickCount = baseTurnValue / stepValue;
-       this.currentTickCount = tickCount;
+       this.tickMax = baseTurnValue / stepValue;
+       this.currentTickCount = tickMax - 10f;
+       
+       if(this.currentTickCount < 0)
+           this.currentTickCount = 0;
     }
 
     public void UpdateTickCount(float newTickCount)
     {
         this.currentTickCount -= newTickCount;
+        
+        if(this.currentTickCount < 0)
+            this.currentTickCount = 0;
     }
 
     public void ResetTickCount(float multiplier)
     {
-        this.currentTickCount = tickCount * multiplier;
+        this.currentTickCount = tickMax * multiplier;
     }
 
     public void RecalculateTickCount(float speedMultiplier)
     {
         this.stepValue = (float)character.GetStat(Stats.Speed).statValue * speedMultiplier;
         var newTickCount = (baseTurnValue / stepValue);
-        var difference = Mathf.Abs(tickCount - newTickCount);
+        var difference = Mathf.Abs(tickMax - newTickCount);
         this.currentTickCount -= difference;
         
-        this.tickCount = newTickCount;
+        this.tickMax = newTickCount;
     }
 }

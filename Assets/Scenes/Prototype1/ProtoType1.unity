@@ -4671,6 +4671,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1054702581, guid: a80d692113c8c70468b30e0b8a330619, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1054702581, guid: a80d692113c8c70468b30e0b8a330619, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
@@ -5541,6 +5545,10 @@ PrefabInstance:
       addedObject: {fileID: 594574704}
     - targetCorrespondingSourceObject: {fileID: 1054702582, guid: a80d692113c8c70468b30e0b8a330619,
         type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 570073576}
+    - targetCorrespondingSourceObject: {fileID: 1054702582, guid: a80d692113c8c70468b30e0b8a330619,
+        type: 3}
       insertIndex: -1
       addedObject: {fileID: 1594343923}
     - targetCorrespondingSourceObject: {fileID: 1054702582, guid: a80d692113c8c70468b30e0b8a330619,
@@ -5551,10 +5559,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 531751333}
-    - targetCorrespondingSourceObject: {fileID: 1054702582, guid: a80d692113c8c70468b30e0b8a330619,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 570073576}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6456182683733979834, guid: a80d692113c8c70468b30e0b8a330619,
         type: 3}
@@ -7259,7 +7263,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570073575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 30.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7299,8 +7303,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4280613087
+  m_fontColor: {r: 0.8746147, g: 0.972549, b: 0.14117645, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7317,8 +7321,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 5
+  m_fontSizeBase: 5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14535,6 +14539,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5973590191841460615, guid: e8833d6a09864194a9baa078f84d80d5,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5973590191841460615, guid: e8833d6a09864194a9baa078f84d80d5,
         type: 3}
