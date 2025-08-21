@@ -38,14 +38,15 @@ public class CharacterTurnManager : MonoBehaviour
         if (activeCharacter && !activeCharacter.isActing && activeCharacter.actionQueue.Count > 0 && confirmationUI.activeSelf == false)
         {
             var speedMultiplier = 1f;
+            var targets = new List<Entity>();
             var multiplier = 1f;
-            var hasAttack = false;
+            var hasAction = false;
             //check if updating speed. 
             foreach (var action in activeCharacter.actionQueue)
             {
                 if (action.Type == Action.ActionType.Attack)
                 {
-                    hasAttack = true;
+                    hasAction = true;
                     switch (action.Ability.abilityType)
                     {
                         case Ability.AbilityTypes.Ally:
@@ -63,15 +64,19 @@ public class CharacterTurnManager : MonoBehaviour
                     {
                         if (effect.statKey == Stats.Speed)
                         {
+                            targets = action.FindAffectedCharacters();
                             speedMultiplier = (float)(1 +  (float)(effect.Value / 100f));
                         }
                     }
                 }
             }
-            
-            if(hasAttack)
-                turnBasedManagerRedo.PreviewUpdateOrder(activeCharacter.gameObject, multiplier);
-            
+
+            if (hasAction)
+            {
+                turnBasedManagerRedo.PreviewUpdateOrder(targets, multiplier, speedMultiplier);
+                //turnBasedManagerRedo.PreviewUpdateSpeed(.gameObject, speedMultiplier);
+            }
+
             confirmationUI.SetActive(true);
         }
     }

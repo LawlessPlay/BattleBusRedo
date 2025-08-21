@@ -27,6 +27,7 @@ using UnityEngine;
 
         private bool isMoving;
         private ShapeParser ShapeParser;
+        private RangeFinder RangeFinder;
         
         public Action(List<Vector3> path, ActionType actionType, OverlayTile target, Entity entity, Ability ability = null)
         {
@@ -48,6 +49,7 @@ using UnityEngine;
             
             State = ActionState.NotStarted;
             ShapeParser = new ShapeParser();
+            RangeFinder = new RangeFinder();
             isMoving = false;
         }
 
@@ -122,7 +124,7 @@ using UnityEngine;
             character.LinkCharacterToTile(overlayTile);
         }
 
-        private void CastAbility()
+        public List<Entity> FindAffectedCharacters()
         {
             var inRangeCharacters = new List<Entity>();
             var abilityAffectedTiles = ShapeParser.GetAbilityTileLocations(Target, Ability.abilityShape, Entity.activeTile.grid2DLocation, false);
@@ -140,6 +142,13 @@ using UnityEngine;
                     inRangeCharacters.Add(targetCharacter);
                 }
             }
+
+            return inRangeCharacters;
+        }
+        
+        private void CastAbility()
+        {
+            var inRangeCharacters = FindAffectedCharacters();
             
             if (Ability.requiresTarget && inRangeCharacters.Count > 0 || !Ability.requiresTarget)
             {

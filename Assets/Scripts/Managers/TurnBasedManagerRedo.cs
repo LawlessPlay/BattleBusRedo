@@ -15,7 +15,7 @@ public class TurnBasedManagerRedo : MonoBehaviour
     public TMP_Text speedOrderText;
     
     public GameEventGameObject setActiveCharacter;
-    
+    public Entity activeCharacter;
 
     public TurnOrderDisplayTwo turnOrderDisplay;
     
@@ -59,25 +59,27 @@ public class TurnBasedManagerRedo : MonoBehaviour
         tempList = tempList.OrderBy(x => x.currentTickCount).ToList();
         return tempList;
     }
-
-    public void PreviewUpdateSpeed(GameObject character, float speedMultiplier)
-    {
-      turnCombatantList.First(x => x.character == character.GetComponent<Entity>()).RecalculateTickCount(speedMultiplier);
-      var tempTurnCombatantList = turnCombatantList.OrderBy(x => x.currentTickCount).ToList();
-      turnOrderDisplay.StartPreview(tempTurnCombatantList, character.GetComponent<Entity>());
-    }
     
-    public void PreviewUpdateOrder(GameObject character, float multiplier)
+    public void PreviewUpdateOrder(List<Entity> targets, float multiplier, float speedMultiplier)
     {
         var minTickValue = turnCombatantList[0].currentTickCount;
-        foreach (var characters in previewTurnCombatantList)
+        
+        foreach (var previewTurnCombatant in previewTurnCombatantList)
         {
-            characters.UpdateTickCount(minTickValue);
+            previewTurnCombatant.UpdateTickCount(minTickValue);
+            if (targets.Contains(previewTurnCombatant.character))
+            {
+                previewTurnCombatant.RecalculateTickCount(speedMultiplier);
+            }
         }
         
-        previewTurnCombatantList.First(x => x.character == character.GetComponent<Entity>()).ResetTickCount(multiplier);
+        previewTurnCombatantList.First(x => x.character == activeCharacter).ResetTickCount(multiplier);
         previewTurnCombatantList = previewTurnCombatantList.OrderBy(x => x.currentTickCount).ToList();
-        turnOrderDisplay.StartPreview(previewTurnCombatantList, character.GetComponent<Entity>());
+        
+        var affectedCharacters = new List<Entity>();
+        affectedCharacters.AddRange(targets);
+        affectedCharacters.Add(activeCharacter);
+        turnOrderDisplay.StartPreview(previewTurnCombatantList, affectedCharacters);
     }
     
     public void UndoPreview()
@@ -116,6 +118,7 @@ public class TurnBasedManagerRedo : MonoBehaviour
 
         turnCombatantList[0].character.StartTurn();
         setActiveCharacter.Raise(turnCombatantList[0].character.gameObject);
+        activeCharacter = turnCombatantList[0].character;
         //turnOrderDisplay.SetTurnOrderList(turnCombatantList);
     }
 

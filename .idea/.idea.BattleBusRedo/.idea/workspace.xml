@@ -9,10 +9,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b6833bb4-6c4b-430a-a63c-b7586ee97cae" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GabrielAguiarProductions/UPMPVol1_2022_URP_v1.1.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Classes/Action.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Classes/Action.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterTurnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/CharacterTurnManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TurnOrderDisplayTwo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TurnOrderDisplayTwo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ide.visualstudio@2.0.22/Editor/Plugins/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/Library/PackageCache/com.unity.ide.visualstudio@2.0.22/Editor/Plugins/.gitattributes" afterDir="false" />
     </list>
     <list id="fad7dc97-0138-4e61-b232-51a97a9935b3" name="Commit" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,12 +34,12 @@
     &quot;assignee&quot;: &quot;LawlessPlay&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/LawlessPlay/BattleBusRedo.git&quot;,
-    &quot;accountId&quot;: &quot;cbef0a74-af05-41f9-a83b-d3cacbb3ed09&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/LawlessPlay/BattleBusRedo.git",
+    "accountId": "108fd178-ca09-407b-9325-bdfe3be9c191"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0e74aaecc5d24ba79f82222a4901f73195c800/ec/a270c507/Editor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/31687ccd371e4dc6b0c23a1317cf947446ac00/7e/baf6f676/ArraySortHelper`1.cs" root0="FORCE_HIGHLIGHTING" />
@@ -57,7 +59,6 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2pXDz3uq9WAFKWcDsNZHVuhZ3wr" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -86,6 +87,10 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\aaron\Documents\BattleBusRedo\Build" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
@@ -94,6 +99,10 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\aaron\Documents\BattleBusRedo" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
@@ -102,6 +111,10 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\aaron\Documents\BattleBusRedo" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -115,19 +128,23 @@
       <option name="selectedOptions">
         <list />
       </option>
+      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19560">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="19560" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
       </option>
+      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
   </component>
@@ -389,184 +406,68 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/../BattleBusURP/Assets/Scripts/ComboManager.cs</url>
           <line>47</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusURP\Assets\Scripts\ComboManager.cs" containingFunctionPresentation="Method 'PlayAttackCombo'">
-            <startOffsets>
-              <option value="1846" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1865" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusURP\Assets\Scripts\ComboManager.cs" containingFunctionPresentation="Method 'PlayAttackCombo'" />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/../BattleBusURP/Assets/Scripts/ComboManager.cs</url>
           <line>45</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusURP\Assets\Scripts\ComboManager.cs" containingFunctionPresentation="Method 'PlayAttackCombo'">
-            <startOffsets>
-              <option value="1801" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1823" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusURP\Assets\Scripts\ComboManager.cs" containingFunctionPresentation="Method 'PlayAttackCombo'" />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Characters/EnemyController.cs</url>
           <line>68</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Characters\EnemyController.cs" containingFunctionPresentation="Method 'CharacterMoved'">
-            <startOffsets>
-              <option value="2190" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2216" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Characters\EnemyController.cs" containingFunctionPresentation="Method 'CharacterMoved'" />
           <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Characters/EnemyController.cs</url>
           <line>303</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Characters\EnemyController.cs" containingFunctionPresentation="Method 'EndTurn'">
-            <startOffsets>
-              <option value="12044" />
-            </startOffsets>
-            <endOffsets>
-              <option value="12060" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Characters\EnemyController.cs" containingFunctionPresentation="Method 'EndTurn'" />
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/BattleController.cs</url>
           <line>69</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\BattleController.cs" containingFunctionPresentation="Method 'EndAttack'">
-            <startOffsets>
-              <option value="1861" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1893" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\BattleController.cs" containingFunctionPresentation="Method 'EndAttack'" />
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/MovementController.cs</url>
           <line>157</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\MovementController.cs" containingFunctionPresentation="Method 'MoveAlongPath'">
-            <startOffsets>
-              <option value="5536" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5557" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\MovementController.cs" containingFunctionPresentation="Method 'MoveAlongPath'" />
           <option name="timeStamp" value="62" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/AbilityController.cs</url>
           <line>67</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\AbilityController.cs" containingFunctionPresentation="Method 'CastAbility'">
-            <startOffsets>
-              <option value="2626" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2679" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\AbilityController.cs" containingFunctionPresentation="Method 'CastAbility'" />
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/AbilityController.cs</url>
           <line>70</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\AbilityController.cs" containingFunctionPresentation="Method 'CastAbility'">
-            <startOffsets>
-              <option value="2790" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2843" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\AbilityController.cs" containingFunctionPresentation="Method 'CastAbility'" />
           <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/BattleController.cs</url>
           <line>92</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\BattleController.cs" containingFunctionPresentation="Method 'AttackUnit'">
-            <startOffsets>
-              <option value="2454" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2533" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\BattleController.cs" containingFunctionPresentation="Method 'AttackUnit'" />
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/BattleController.cs</url>
           <line>122</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\BattleController.cs" containingFunctionPresentation="Method 'FinishAttack'">
-            <startOffsets>
-              <option value="3792" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3871" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\BattleController.cs" containingFunctionPresentation="Method 'FinishAttack'" />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/3D Specific/Projectile.cs</url>
           <line>42</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\3D Specific\Projectile.cs" containingFunctionPresentation="Method 'Update'">
-            <startOffsets>
-              <option value="1078" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1127" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\3D Specific\Projectile.cs" containingFunctionPresentation="Method 'Update'" />
           <option name="timeStamp" value="86" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs</url>
-          <line>118</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\TurnBasedManagerRedo.cs" containingFunctionPresentation="Method 'StartTurn'">
-            <startOffsets>
-              <option value="4101" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4154" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs</url>
-          <line>79</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\TurnBasedManagerRedo.cs" containingFunctionPresentation="Method 'PreviewUpdateOrder'">
-            <startOffsets>
-              <option value="2993" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3083" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs</url>
-          <line>116</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Managers\TurnBasedManagerRedo.cs" containingFunctionPresentation="Method 'StartTurn'">
-            <startOffsets>
-              <option value="3970" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4013" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="91" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

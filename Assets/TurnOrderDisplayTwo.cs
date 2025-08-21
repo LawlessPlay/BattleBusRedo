@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TacticsToolkit;
 using UnityEngine;
 using UnityEngine.UI;
@@ -270,13 +271,13 @@ public class TurnOrderDisplayTwo : MonoBehaviour
 
     private List<TurnOrderObject> originalOrderBackup = new List<TurnOrderObject>();
     public bool isPreviewMode = false;
-    private Entity previewTargetChar;
+    private List<Entity> previewTargetChars;
 
     public float previewOffset = 10f; // how far to offset previewed icons
     public float previewAlpha = 0.7f; // transparency for previewed icons (1 = fully opaque)
     public Color previewTintColor = Color.yellow; // tint color for preview (e.g., yellow highlight)
 
-    public void StartPreview(List<TurnOrderObject> newOrder, Entity affectedChar)
+    public void StartPreview(List<TurnOrderObject> newOrder, List<Entity> affectedChars)
     {
         if (isPreviewMode)
         {
@@ -285,10 +286,13 @@ public class TurnOrderDisplayTwo : MonoBehaviour
 
         // Backup the current order data
         originalOrderBackup = new List<TurnOrderObject>(currentOrder);
-        previewTargetChar = affectedChar;
-        isPreviewMode = true;
         // Display the new order list (instantly, no animation here)
         SetTurnOrderList(newOrder);
+        
+        previewTargetChars = affectedChars;
+        foreach (var affectedChar in affectedChars)
+        {
+        isPreviewMode = true;
         // Apply preview styling to all instances of the affected character
         for (int i = 0; i < currentOrder.Count; i++)
         {
@@ -321,6 +325,8 @@ public class TurnOrderDisplayTwo : MonoBehaviour
                     outline.effectColor = previewTintColor;
                 }
             }
+            
+        }
         }
     }
 
@@ -330,7 +336,7 @@ public class TurnOrderDisplayTwo : MonoBehaviour
         // Remove the offset and restore normal appearance for previously affected icons
         for (int i = 0; i < currentOrder.Count; i++)
         {
-            if (currentOrder[i].character == previewTargetChar)
+            if (previewTargetChars.Contains(currentOrder[i].character))
             {
                 if (orientation == Orientation.Vertical)
                 {
@@ -358,7 +364,7 @@ public class TurnOrderDisplayTwo : MonoBehaviour
         // The currentOrder remains as the new order now
         originalOrderBackup.Clear();
         isPreviewMode = false;
-        previewTargetChar = null;
+        previewTargetChars = null;
     }
 
     public void CancelPreview()
@@ -368,7 +374,7 @@ public class TurnOrderDisplayTwo : MonoBehaviour
         SetTurnOrderList(originalOrderBackup);
         originalOrderBackup.Clear();
         isPreviewMode = false;
-        previewTargetChar = null;
+        previewTargetChars = null;
     }
 
     public void RemoveAt(int index, System.Action onComplete = null)
