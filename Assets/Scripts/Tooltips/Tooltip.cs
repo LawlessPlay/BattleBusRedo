@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,8 +10,8 @@ namespace TacticsToolkit
     [ExecuteInEditMode()]
     public class Tooltip : MonoBehaviour
     {
-        public Text title;
-        public Text description;
+        public TMP_Text title;
+        public TMP_Text description;
         public Image image;
 
         public LayoutElement layoutElement;
@@ -21,6 +22,7 @@ namespace TacticsToolkit
         public int characterLimit;
 
         public bool isFixedPosition;
+        public bool followMousePosition;
 
         public TooltipAlignment defaultAlignment;
         private TooltipAlignment alignment;
@@ -42,18 +44,40 @@ namespace TacticsToolkit
             alignment = defaultAlignment;
         }
 
+        private void Update()
+        {
+            if (followMousePosition)
+            {
+                var mousePosition = Input.mousePosition;
+                mousePosition = new Vector3(mousePosition.x + xPadding + (gameObject.GetComponent<RectTransform>().rect.width/2), mousePosition.y + yPadding + (gameObject.GetComponent<RectTransform>().rect.height/2),  mousePosition.z );
+                
+                transform.position = mousePosition;
+                
+            }
+        }
 
         [SerializeField]
         private RectTransform canvas;
 
         public void SetContent(Sprite image, string title, string description, Vector3 position, Vector2 dimensions)
         {
-            this.title.text = title;
-            this.description.text = description;
-            this.image.sprite = image;
+            int titleLenght = 0;
+            int descriptionLenght = 0;
+            if (this.title != null)
+            {
+                this.title.text = title;
+                titleLenght = this.title.text.Length;
+            }
 
-            int titleLenght = this.title.text.Length;
-            int descriptionLenght = this.description.text.Length;
+            if (this.description != null)
+            {
+                this.description.text = description;
+                descriptionLenght = this.description.text.Length;
+            }
+
+            if (this.image != null)
+                this.image.sprite = image;
+
             layoutElement.enabled = titleLenght > characterLimit || descriptionLenght > characterLimit;
 
             if (!isFixedPosition)
@@ -73,7 +97,9 @@ namespace TacticsToolkit
 
         private void MoveToAlignment(Vector3 position, Vector2 dimensions, Vector2 tooltipDimensions)
         {
-            Vector3 tooltipPosition = position; switch (alignment)
+            Vector3 tooltipPosition = position; 
+            
+            switch (alignment)
             {
                 case TooltipAlignment.TopLeft:
                     tooltipPosition += new Vector3(-dimensions.x / 2 - tooltipDimensions.x / 2, dimensions.y / 2 + tooltipDimensions.y / 2, 0);
@@ -108,36 +134,43 @@ namespace TacticsToolkit
         void ChooseValidAlignment(Vector3 position, Vector2 dimensions, Vector2 tooltipDimensions)
         {
             MoveToAlignment(position, dimensions, tooltipDimensions);
+            
             Vector3[] objectCorners = new Vector3[4];
             GetComponent<RectTransform>().GetWorldCorners(objectCorners);
-            bool isValid = objectCorners.All(x => x.x < Screen.width && x.x > 0 && x.y < Screen.height && x.y > 0);
-
             TooltipAlignment[] alignments = (TooltipAlignment[])Enum.GetValues(alignment.GetType());
 
-            int ogAlignment = Array.IndexOf(alignments, alignment);
+            var fitsInPlace = CheckAlignment(position, dimensions, tooltipDimensions, defaultAlignment, objectCorners);
 
-
-            while (!isValid)
+            if (!fitsInPlace)
             {
-                int j = Array.IndexOf(alignments, alignment) + 1;
-
-                if (ogAlignment == j)
-                    break;
-
-                alignment = (alignments.Length == j) ? alignments[0] : alignments[j];
-                MoveToAlignment(position, dimensions, tooltipDimensions);
-                GetComponent<RectTransform>().GetWorldCorners(objectCorners);
-                isValid = objectCorners.All(x => x.x < Screen.width && x.x > 0 && x.y < Screen.height && x.y > 0);
-
-
+                foreach (var alignmentToCheck in alignments)
+                {
+                    if (CheckAlignment(position, dimensions, tooltipDimensions, alignmentToCheck, objectCorners)) break;
+                }
             }
+        }
+
+        private bool CheckAlignment(Vector3 position, Vector2 dimensions, Vector2 tooltipDimensions,
+            TooltipAlignment alignmentToCheck, Vector3[] objectCorners)
+        {
+            this.alignment = alignmentToCheck;
+            MoveToAlignment(position, dimensions, tooltipDimensions);
+            GetComponent<RectTransform>().GetWorldCorners(objectCorners);
+            var isValid = objectCorners.All(x => x.x < Screen.width && x.x > 0 && x.y < Screen.height && x.y > 0);
+                
+            if (isValid)
+                return true;
+            return false;
         }
 
 
         public void ResetContent()
         {
-            this.title.text = "";
-            this.description.text = "";
+            if (title != null)
+                this.title.text = "";
+            
+            if (description != null)
+                this.description.text = "";
         }
 
     }

@@ -311,9 +311,13 @@ public class OverlayManagerV2 : MonoBehaviour
 
     public void DrawSpell(OverlayTile overlayTile, Ability ability)
     {
-        if(ability.tooltip != null)
-            TooltipManager.instance.ShowSpellTooltip(ability.tooltip.image, ability.tooltip.tooltipName, ability.tooltip.tooltipDescription, new Vector3(0,0,0), new Vector2(50, 50));
-        
+        if (ability.tooltip != null)
+        {
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(overlayTile.transform.position);
+            TooltipManager.instance.ShowSpellTooltip(ability.tooltip.image, ability.tooltip.tooltipName,
+                ability.tooltip.tooltipDescription, screenPos, new Vector2(50, 50));
+        }
+
         var tiles = shapeParser.GetAbilityTileLocations(overlayTile, ability.abilityShape, activeCharacter.activeTile.grid2DLocation);
 
         foreach (var tile in tiles)
