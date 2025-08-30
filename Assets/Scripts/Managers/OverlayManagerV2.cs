@@ -238,7 +238,7 @@ public class OverlayManagerV2 : MonoBehaviour
         
         this.activeTile = activeTile;
 
-        if (activeTile.activeCharacter)
+        if (activeTile.activeCharacter && TooltipManager.instance)
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(activeTile.activeCharacter.transform.position);
             TooltipManager.instance.ShowTargetTooltip(activeTile.activeCharacter, screenPos, new Vector2(50, 50));
@@ -311,7 +311,7 @@ public class OverlayManagerV2 : MonoBehaviour
 
     public void DrawSpell(OverlayTile overlayTile, Ability ability)
     {
-        if (ability.tooltip != null)
+        if (ability.tooltip != null && TooltipManager.instance)
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(overlayTile.transform.position);
             TooltipManager.instance.ShowSpellTooltip(ability.tooltip.image, ability.tooltip.tooltipName,

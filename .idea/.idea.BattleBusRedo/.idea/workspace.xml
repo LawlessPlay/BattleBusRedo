@@ -8,13 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6833bb4-6c4b-430a-a63c-b7586ee97cae" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/shelf/Uncommitted_changes_before_Update_at_23_08_2025_08_15_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/shelf/Uncommitted_changes_before_Update_at_23_08_2025_08_15__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Images/UI/DarkFrame.aseprite" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Images/UI/DarkFrame.aseprite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Tooltip Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/Tooltip Canvas.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/OverlayManagerV2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/OverlayManagerV2.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tooltips/Tooltip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tooltips/Tooltip.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
     </list>
     <list id="fad7dc97-0138-4e61-b232-51a97a9935b3" name="Commit" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +47,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a2fb550e986748b88facf50cd71afc3c10fc00/4f/de987c14/Enumerable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/EventTriggerer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Character/CharacterDescription.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/TileCardView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/HoverObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.4/Runtime/VisualScripting.Core/Utilities/UnityObjectUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../BattleBusURP/Assets/Scripts/ComboManager.cs" root0="SKIP_HIGHLIGHTING" />
@@ -242,6 +241,9 @@
       <workItem from="1755668733228" duration="259000" />
       <workItem from="1755933275490" duration="8169000" />
       <workItem from="1756041235264" duration="2468000" />
+      <workItem from="1756099182407" duration="1293000" />
+      <workItem from="1756282162663" duration="687000" />
+      <workItem from="1756563854235" duration="2853000" />
     </task>
     <task id="LOCAL-00001" summary="git ignore and attributes">
       <option name="closed" value="true" />
@@ -363,7 +365,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755668781926</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Tooltip changes">
+      <option name="closed" value="true" />
+      <created>1756099989006</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1756099989006</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,7 +412,8 @@
     <MESSAGE value="mijnui" />
     <MESSAGE value="dcwa" />
     <MESSAGE value="Add speed to turn order preview count" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add speed to turn order preview count" />
+    <MESSAGE value="Tooltip changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tooltip changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
