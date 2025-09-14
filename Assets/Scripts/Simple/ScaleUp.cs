@@ -15,7 +15,9 @@ public class ScaleUp : MonoBehaviour
     void Awake()
     {
         isReady = false;
+        transform.localScale = new Vector3(0, 0, 0);
         initialScale = transform.localScale;
+        
         StartCoroutine(ScaleCoroutine());
     }
 

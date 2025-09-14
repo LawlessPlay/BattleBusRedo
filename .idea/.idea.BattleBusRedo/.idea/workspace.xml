@@ -8,11 +8,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6833bb4-6c4b-430a-a63c-b7586ee97cae" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/shelf/Uncommitted_changes_before_Update_at_23_08_2025_08_15_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/shelf/Uncommitted_changes_before_Update_at_23_08_2025_08_15__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleBusRedo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/VCR_OSD_MONO_1.001 SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/VCR_OSD_MONO_1.001 SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/3d/Sprites/3D Overlay Tile SquareP2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Images/3d/Sprites/3D Overlay Tile SquareP2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/3d/Sprites/TestOverlay/3D Overlay Tile SquareP2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Images/3d/Sprites/TestOverlay/3D Overlay Tile SquareP2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Images/UI/BasicSheet.aseprite" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Images/UI/BasicSheet.aseprite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Prototype1/ProtoType1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Tiles/TileDatas/3d TileDatas/GrassTile3D.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Tiles/TileDatas/3d TileDatas/GrassTile3D.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Tiles/TileDatas/3d TileDatas/LavaTile3D.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Tiles/TileDatas/3d TileDatas/LavaTile3D.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Tiles/TileDatas/3d TileDatas/TileData Tooltips/grass.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Tiles/TileDatas/3d TileDatas/TileData Tooltips/grass.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Tiles/TileDatas/3d TileDatas/TileData Tooltips/grass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Tiles/TileDatas/3d TileDatas/TileData Tooltips/grass.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Tiles/TileDatas/3d TileDatas/TileList3D.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Tiles/TileDatas/3d TileDatas/TileList3D.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Tiles/TileDatas/MudTile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Tiles/TileDatas/MudTile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Entity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Entity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/MouseController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/MouseController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/OverlayManagerV2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/OverlayManagerV2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/TurnBasedManagerRedo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Simple/ScaleUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Simple/ScaleUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tooltips/TooltipManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tooltips/TooltipManager.cs" afterDir="false" />
     </list>
     <list id="fad7dc97-0138-4e61-b232-51a97a9935b3" name="Commit" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +64,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Scriptable Objects/Character/CharacterDescription.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TileCardView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/HoverObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/bubble.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.4/Runtime/VisualScripting.Core/Utilities/UnityObjectUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../BattleBusURP/Assets/Scripts/ComboManager.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -81,7 +97,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/Build/temp/BattleBusRedo.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Build/temp/BattleBusRedo_BurstDebugInformation_DoNotShip\BattleBusRedo.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\aaron\Documents\BattleBusRedo\Build" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -243,7 +259,13 @@
       <workItem from="1756041235264" duration="2468000" />
       <workItem from="1756099182407" duration="1293000" />
       <workItem from="1756282162663" duration="687000" />
-      <workItem from="1756563854235" duration="2853000" />
+      <workItem from="1756563854235" duration="3487000" />
+      <workItem from="1756879963928" duration="2093000" />
+      <workItem from="1757051803509" duration="4433000" />
+      <workItem from="1757169798420" duration="3195000" />
+      <workItem from="1757354759138" duration="2138000" />
+      <workItem from="1757660444534" duration="3108000" />
+      <workItem from="1757787418541" duration="2895000" />
     </task>
     <task id="LOCAL-00001" summary="git ignore and attributes">
       <option name="closed" value="true" />
@@ -373,7 +395,23 @@
       <option name="project" value="LOCAL" />
       <updated>1756099989006</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="dwadwadw">
+      <option name="closed" value="true" />
+      <created>1756577478040</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1756577478041</updated>
+    </task>
+    <task id="LOCAL-00018" summary="More UI Mocks">
+      <option name="closed" value="true" />
+      <created>1756886722037</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1756886722037</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,7 +451,9 @@
     <MESSAGE value="dcwa" />
     <MESSAGE value="Add speed to turn order preview count" />
     <MESSAGE value="Tooltip changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tooltip changes" />
+    <MESSAGE value="dwadwadw" />
+    <MESSAGE value="More UI Mocks" />
+    <option name="LAST_COMMIT_MESSAGE" value="More UI Mocks" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -546,45 +586,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="86" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Tooltips/Tooltip.cs</url>
-          <line>101</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Tooltips\Tooltip.cs" containingFunctionPresentation="Method 'MoveToAlignment'">
-            <startOffsets>
-              <option value="3035" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3053" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="103" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Tooltips/Tooltip.cs</url>
-          <line>130</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Tooltips\Tooltip.cs" containingFunctionPresentation="Method 'MoveToAlignment'">
-            <startOffsets>
-              <option value="4718" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4755" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="104" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Tooltips/Tooltip.cs</url>
-          <line>53</line>
-          <properties documentPath="C:\Users\aaron\Documents\BattleBusRedo\Assets\Scripts\Tooltips\Tooltip.cs" containingFunctionPresentation="Method 'Update'">
-            <startOffsets>
-              <option value="1370" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1405" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="105" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

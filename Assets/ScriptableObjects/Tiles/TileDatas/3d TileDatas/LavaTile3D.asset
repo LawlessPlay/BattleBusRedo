@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseTiles: []
   hasTooltip: 1
+  tooltip: {fileID: 11400000, guid: 85ccded5613441b449d0f7f412f34ba5, type: 2}
   tooltipName: Lava
   tooltipDescription: When a character stands on this tile, they will receive burn
     damage at the beginning of each of their next three turns.
@@ -21,4 +22,4 @@ MonoBehaviour:
   MoveCost: 1
   effect: {fileID: 11400000, guid: 28ba77fd5b6a94d48845cb79e74d02e8, type: 2}
   Tiles3D:
-  - {fileID: 2100000, guid: 626b69a36ddc23247a936504c2d06e75, type: 2}
+  - {fileID: 2100000, guid: 9d861c79abe01644aa256b1eb434d976, type: 2}

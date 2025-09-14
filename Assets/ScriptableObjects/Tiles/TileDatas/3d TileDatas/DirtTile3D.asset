@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b920242333a3084489ec4e5d2dc108c, type: 3}
-  m_Name: GrassTile3D
+  m_Name: DirtTile3D
   m_EditorClassIdentifier: 
   baseTiles: []
   hasTooltip: 1
-  tooltip: {fileID: 11400000, guid: f657f62b4104c7e4ea1ae4dd159f2dcf, type: 2}
-  tooltipName: Grass
-  tooltipDescription: This is grass
+  tooltip: {fileID: 11400000, guid: e6f26b20d1ef2d8439d82125f78dd969, type: 2}
+  tooltipName: Lava
+  tooltipDescription: When a character stands on this tile, they will receive burn
+    damage at the beginning of each of their next three turns.
   type: 0
-  MoveCost: 1
+  MoveCost: 2
   effect: {fileID: 0}
   Tiles3D:
-  - {fileID: 2100000, guid: 72bb7f23fd787be4b82895e983e578d8, type: 2}
-  - {fileID: 2100000, guid: cbcd3b6314691a34bae3d435a0633c64, type: 2}
+  - {fileID: 2100000, guid: 5e19f1d97119a024b9abfada16e7fc08, type: 2}

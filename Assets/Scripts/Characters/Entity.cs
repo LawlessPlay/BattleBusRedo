@@ -376,10 +376,15 @@ namespace TacticsToolkit
         //Effects that don't have a duration can just be applied straight away. 
         public void ApplySingleEffects(ScriptableEffect scriptableEffect)
         {
-            var statMod = new StatModifier(scriptableEffect.statKey, scriptableEffect.Value, scriptableEffect.Duration, scriptableEffect.Operator, scriptableEffect.name, scriptableEffect.description);
-            Stat value = statsContainer.getStat(scriptableEffect.GetStatKey());
-            value.ApplySingleStatMod(statMod);
-            healthBarManager.UpdateCharacterUI();
+            if (scriptableEffect)
+            {
+                var statMod = new StatModifier(scriptableEffect.statKey, scriptableEffect.Value,
+                    scriptableEffect.Duration, scriptableEffect.Operator, scriptableEffect.name,
+                    scriptableEffect.description);
+                Stat value = statsContainer.getStat(scriptableEffect.GetStatKey());
+                value.ApplySingleStatMod(statMod);
+                healthBarManager.UpdateCharacterUI();
+            }
         }
 
         //Effects that don't have a duration should be manually removed. 

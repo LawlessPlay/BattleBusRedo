@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ namespace TacticsToolkit
         private Tooltip spellTooltip;
         [SerializeField]
         private CharacterTooltip targetTooltip;
+        public TileTooltip tileTooltip;
         public float fadeOnTime = 1f;
         public float waitTime = 1f;
 
@@ -26,15 +28,19 @@ namespace TacticsToolkit
 
         public void ShowTargetTooltip(Entity character, Vector3 position, Vector2 dimensions) => instance.StartCoroutine(instance.ShowTargetTooltipOverTime(character, position, dimensions, targetTooltip));
 
-        
-        private IEnumerator ShowTargetTooltipOverTime(Entity character, Vector3 position, Vector2 dimensions, CharacterTooltip tooltip)
+        public void ShowTileTooptip(OverlayTile tile)
         {
-            if (instance && !tooltip.isActiveAndEnabled)
+            tileTooltip.SetContent(tile);
+            StartCoroutine(ShowTooltipOverTime(tileTooltip.gameObject));
+        }
+        
+        private IEnumerator ShowTooltipOverTime(GameObject tooltip)
+        {
+            if (instance)
             {
                 yield return new WaitForSeconds(waitTime);
 
                 tooltip.gameObject.SetActive(true);
-                tooltip.SetContent(character, position, dimensions);
 
                 yield return new WaitForEndOfFrame();
                 // Get all the child components with Image or Text components
@@ -85,6 +91,62 @@ namespace TacticsToolkit
                 }
             }
         }
+        
+        private IEnumerator ShowTargetTooltipOverTime(Entity character, Vector3 position, Vector2 dimensions, CharacterTooltip tooltip)
+        {
+            if (instance && !tooltip.isActiveAndEnabled)
+            {
+                // Optional initial delay before showing
+                if (waitTime > 0f)
+                    yield return new WaitForSecondsRealtime(waitTime);
+
+                // Ensure CanvasGroup exists on the tooltip root
+                var cg = tooltip.GetComponent<CanvasGroup>();
+                if (cg == null) cg = tooltip.gameObject.AddComponent<CanvasGroup>();
+
+                // Prepare
+                tooltip.gameObject.SetActive(true);
+                tooltip.SetContent(character, position, dimensions);
+
+                // Wait a frame so layout/content settle
+                yield return new WaitForEndOfFrame();
+
+                // Prime for fade-in
+                float startAlpha = 0f;
+                float endAlpha   = 1f;
+                float elapsed    = 0f;
+
+                // Temporarily disable interaction while fading in (optional)
+                bool prevInteractable   = cg.interactable;
+                bool prevBlocksRaycasts = cg.blocksRaycasts;
+                cg.alpha = startAlpha;
+                cg.interactable = false;
+                cg.blocksRaycasts = false;
+
+                // Fade
+                if (fadeOnTime <= 0f)
+                {
+                    cg.alpha = endAlpha;
+                }
+                else
+                {
+                    while (elapsed < fadeOnTime)
+                    {
+                        float t = Mathf.Clamp01(elapsed / fadeOnTime);
+                        cg.alpha = Mathf.Lerp(startAlpha, endAlpha, t);
+                        elapsed += Time.unscaledDeltaTime; // unscaled for UI
+                        yield return null;
+                    }
+                    cg.alpha = endAlpha;
+                }
+
+                // Restore interaction
+                cg.interactable = prevInteractable;
+                cg.blocksRaycasts = prevBlocksRaycasts;
+            }
+        }
+
+
         
 
         private IEnumerator ShowSpellTooltipOverTime(Sprite image, string title, string description, Vector3 position, Vector2 dimensions, Tooltip tooltip)
@@ -152,8 +214,7 @@ namespace TacticsToolkit
                 instance.StopAllCoroutines();
                 instance.spellTooltip.ResetContent();
                 instance.spellTooltip.gameObject.SetActive(false);
-                instance.targetTooltip.ResetContent();
-                instance.targetTooltip.gameObject.SetActive(false);
+                //instance.targetTooltip.GetComponent<CanvasGroup>().alpha = 0;
             }
         }
     }

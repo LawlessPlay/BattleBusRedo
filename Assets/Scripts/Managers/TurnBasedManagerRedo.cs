@@ -89,6 +89,7 @@ public class TurnBasedManagerRedo : MonoBehaviour
     
     public void ConfirmPreview()
     {
+        turnCombatantList[0].character.AttachEffect(turnCombatantList[0].character.activeTile.tileData.effect);
         turnOrderDisplay.ConfirmPreview();
         turnCombatantList = previewTurnCombatantList;
     }
@@ -101,8 +102,10 @@ public class TurnBasedManagerRedo : MonoBehaviour
 
     public void StartTurn()
     {
-        if(turnOrderDisplay.isPreviewMode)
+        if (turnOrderDisplay.isPreviewMode)
+        {
             ConfirmPreview();
+        }
         else
         {
             var minTickValue = turnCombatantList[0].currentTickCount;
@@ -110,6 +113,7 @@ public class TurnBasedManagerRedo : MonoBehaviour
             {
                 characters.UpdateTickCount(minTickValue);
             }
+            turnCombatantList[0].character.ApplySingleEffects(turnCombatantList[0].character.activeTile.tileData.effect);
             turnCombatantList[0].ResetTickCount(1.2f);
             turnCombatantList = turnCombatantList.OrderBy(x => x.currentTickCount).ToList();
             turnOrderDisplay.SetTurnOrderList(turnCombatantList);

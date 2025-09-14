@@ -87,8 +87,8 @@ public class OverlayManagerV2 : MonoBehaviour
     public void ShowTotalOverlay()
     {
         var movementTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange);
-        var enemySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange + activeCharacter.EnemySpell.range);
-        var allySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange + activeCharacter.AllySpell.range);
+        var enemySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange + activeCharacter.EnemySpell.range + Mathf.RoundToInt(activeTile.transform.position.y), true);
+        var allySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange + activeCharacter.AllySpell.range + Mathf.RoundToInt(activeTile.transform.position.y), true);
 
         var combinedTiles = new HashSet<OverlayTile>(enemySpellTilesToShow.Item1);
         combinedTiles.UnionWith(allySpellTilesToShow.Item1); 
@@ -132,8 +132,8 @@ public class OverlayManagerV2 : MonoBehaviour
 
     public void ShowAttackOverlay()
     {
-        var enemySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.EnemySpell.range);
-        var allySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.AllySpell.range);
+        var enemySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.EnemySpell.range, true);
+        var allySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.AllySpell.range, true);
 
         var combinedTiles = new HashSet<OverlayTile>(enemySpellTilesToShow.Item1);
         combinedTiles.UnionWith(allySpellTilesToShow.Item1); 
@@ -241,8 +241,14 @@ public class OverlayManagerV2 : MonoBehaviour
         if (activeTile.activeCharacter && TooltipManager.instance)
         {
             Vector3 screenPos = Camera.main.WorldToScreenPoint(activeTile.activeCharacter.transform.position);
-            TooltipManager.instance.ShowTargetTooltip(activeTile.activeCharacter, screenPos, new Vector2(50, 50));
-
+            
+            if (activeTile.activeCharacter)
+            {
+                TooltipManager.instance.ShowTargetTooltip(activeTile.activeCharacter, screenPos, new Vector2(50, 50));
+            } else
+            {
+                TooltipManager.instance.ShowTileTooptip(activeTile);
+            }
         }
     }
 

@@ -15,9 +15,11 @@ MonoBehaviour:
   baseTiles:
   - {fileID: 11400000, guid: 3ee1be9b6b25e364495e2013cb206407, type: 2}
   hasTooltip: 1
+  tooltip: {fileID: 0}
   tooltipName: Mud
   tooltipDescription: Costs twice as much to travel on
   type: 0
   MoveCost: 2
   effect: {fileID: 0}
-  Tiles3D: []
+  Tiles3D:
+  - {fileID: 2100000, guid: 5e19f1d97119a024b9abfada16e7fc08, type: 2}
