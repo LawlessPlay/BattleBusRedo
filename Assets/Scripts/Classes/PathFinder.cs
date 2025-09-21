@@ -78,9 +78,9 @@ namespace TacticsToolkit
         }
 
         // Returns the Manhattan distance between start and neighbour tile multiplied by the move cost of the neighbour tile.
-        public int GetManhattenDistance(OverlayTile start, OverlayTile neighbour)
+        public int GetManhattenDistance(OverlayTile start, OverlayTile neighbour,bool ignoreMoveCost = false)
         {
-            int moveCost = neighbour.tileData ? neighbour.tileData.MoveCost : 1;
+            int moveCost = neighbour.tileData && !ignoreMoveCost ? neighbour.tileData.MoveCost : 1;
 
             int xDistance = Mathf.Abs(start.gridLocation.x - neighbour.gridLocation.x);
             int yDistance = Mathf.Abs(start.gridLocation.y - neighbour.gridLocation.y);

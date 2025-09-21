@@ -11,10 +11,8 @@ namespace TacticsToolkit
     {
         public static TooltipManager instance;
 
-        [SerializeField]
-        private Tooltip spellTooltip;
-        [SerializeField]
-        private CharacterTooltip targetTooltip;
+        public Tooltip spellTooltip;
+        public CharacterTooltip targetTooltip;
         public TileTooltip tileTooltip;
         public float fadeOnTime = 1f;
         public float waitTime = 1f;
@@ -24,15 +22,124 @@ namespace TacticsToolkit
             instance = this;
         }
 
-        public void ShowSpellTooltip(Sprite image, string title, string description, Vector3 position, Vector2 dimensions) => instance.StartCoroutine(instance.ShowSpellTooltipOverTime(image, title, description, position, dimensions, spellTooltip));
+        public void ShowSpellTooltip(Sprite image, string title, string description, Vector3 position, Vector2 dimensions)
+        {
+            spellTooltip.SetContent(image, title, description, position, dimensions);
+            Show(spellTooltip.gameObject, -waitTime);
+        }
 
-        public void ShowTargetTooltip(Entity character, Vector3 position, Vector2 dimensions) => instance.StartCoroutine(instance.ShowTargetTooltipOverTime(character, position, dimensions, targetTooltip));
+        public void ShowTargetTooltip(Entity character, Vector3 position, Vector2 dimensions)
+        {
+            targetTooltip.SetContent(character, position, dimensions);
+            Show(targetTooltip.gameObject);
+        }
 
         public void ShowTileTooptip(OverlayTile tile)
         {
             tileTooltip.SetContent(tile);
-            StartCoroutine(ShowTooltipOverTime(tileTooltip.gameObject));
+            Show(tileTooltip.gameObject);
         }
+
+        private Coroutine hideRoutine;
+        private Coroutine showRoutine;
+
+// Optional: a generation counter to invalidate stale Show coroutines
+private int showGen = 0;
+
+public void Show(GameObject tooltip, float delay = 0f)
+{
+    var canvasGroup = tooltip.GetComponent<CanvasGroup>();
+    if (!canvasGroup) return;
+
+    // Cancel any previous pending show (for other tiles or older hovers)
+    if (showRoutine != null)
+    {
+        StopCoroutine(showRoutine);
+        showRoutine = null;
+    }
+
+    // New generation token for this Show call
+    int myGen = ++showGen;
+    showRoutine = StartCoroutine(DelayedShowAfterWait(canvasGroup, myGen, delay));
+}
+
+private IEnumerator DelayedShowAfterWait(CanvasGroup canvasGroup, int myGen, float delay = 0f)
+{
+    var waitToUse = waitTime + delay;
+    // Wait first; do not interrupt any ongoing hide yet
+    if (waitToUse > 0f)
+        yield return new WaitForSecondsRealtime(waitTime);
+
+    // If a newer Show started while we were waiting, abort
+    if (myGen != showGen)
+        yield break;
+
+    // Now that we're actually going to show, stop any ongoing hide
+    if (hideRoutine != null)
+    {
+        StopCoroutine(hideRoutine);
+        hideRoutine = null;
+    }
+
+    // Fade from current alpha -> 1
+    yield return FadeCanvasGroup(canvasGroup, canvasGroup.alpha, 1f);
+
+    showRoutine = null;
+}
+
+public void Hide(GameObject tooltip)
+{
+    var canvasGroup = tooltip.GetComponent<CanvasGroup>();
+    if (!canvasGroup) return;
+
+    // Cancel any pending show immediately (moving off or to a new tile)
+    if (showRoutine != null)
+    {
+        StopCoroutine(showRoutine);
+        showRoutine = null;
+        // Optionally bump gen to invalidate any stray coroutines
+        // ++showGen;
+    }
+
+    // If already fully hidden, skip
+    if (canvasGroup.alpha <= 0f) return;
+
+    // Stop previous hide and start a fresh one from current alpha -> 0
+    if (hideRoutine != null)
+    {
+        StopCoroutine(hideRoutine);
+        hideRoutine = null;
+    }
+
+    hideRoutine = StartCoroutine(FadeCanvasGroup(canvasGroup, canvasGroup.alpha, 0f));
+}
+
+private IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float startAlpha, float endAlpha)
+{
+    if (Mathf.Approximately(startAlpha, endAlpha))
+    {
+        canvasGroup.alpha = endAlpha;
+        yield break;
+    }
+
+    if (fadeOnTime <= 0f)
+    {
+        canvasGroup.alpha = endAlpha;
+        yield break;
+    }
+
+    float elapsed = 0f;
+    while (elapsed < fadeOnTime)
+    {
+        float t = Mathf.Clamp01(elapsed / fadeOnTime);
+        canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, t);
+        elapsed += Time.unscaledDeltaTime;
+        yield return null;
+    }
+    canvasGroup.alpha = endAlpha;
+}
+
+
         
         private IEnumerator ShowTooltipOverTime(GameObject tooltip)
         {
@@ -214,7 +321,6 @@ namespace TacticsToolkit
                 instance.StopAllCoroutines();
                 instance.spellTooltip.ResetContent();
                 instance.spellTooltip.gameObject.SetActive(false);
-                //instance.targetTooltip.GetComponent<CanvasGroup>().alpha = 0;
             }
         }
     }

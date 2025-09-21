@@ -37,7 +37,6 @@ namespace TacticsToolkit
         {
             if (ConfirmationUI.activeSelf == true) return;
             
-            
             var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             OverlayTile newFocusedOnTile;
 
@@ -48,23 +47,23 @@ namespace TacticsToolkit
 
             if (newFocusedOnTile)
             {
-                if (Hastooltip(newFocusedOnTile))
-                {
-                    Vector3 screenPos = Camera.main.WorldToScreenPoint(newFocusedOnTile.transform.position);
-                    if (newFocusedOnTile.activeCharacter)
-                    {
-                        TooltipManager.instance.tileTooltip.gameObject.SetActive(false);
-                        TooltipManager.instance.ShowTargetTooltip(newFocusedOnTile.activeCharacter, screenPos, new Vector2(50, 50));
-                    } else
-                    {
-                        TooltipManager.instance.tileTooltip.gameObject.SetActive(true);
-                        TooltipManager.instance.ShowTileTooptip(newFocusedOnTile);
-                    }
-                }
-
                 if (focusedOnTile != newFocusedOnTile)
                 {
-                    TooltipManager.Hide();
+                    TooltipManager.instance.Hide(TooltipManager.instance.tileTooltip.gameObject);
+                    TooltipManager.instance.Hide(TooltipManager.instance.targetTooltip.gameObject);
+                    
+                    if (Hastooltip(newFocusedOnTile))
+                    {
+                        Vector3 screenPos = Camera.main.WorldToScreenPoint(newFocusedOnTile.transform.position);
+                        if (newFocusedOnTile.activeCharacter)
+                        {
+                            TooltipManager.instance.ShowTargetTooltip(newFocusedOnTile.activeCharacter, screenPos, new Vector2(50, 50));
+                        } else
+                        {
+                            TooltipManager.instance.ShowTileTooptip(newFocusedOnTile);
+                        }
+                    }
+                    //TooltipManager.Hide();
                     transform.position = newFocusedOnTile.transform.position;
                     focusedOnTile = newFocusedOnTile;
 

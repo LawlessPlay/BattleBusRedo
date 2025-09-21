@@ -114,7 +114,7 @@ namespace TacticsToolkit
             if (targetTile.activeCharacter == this)
                 return DisplaySpell(new List<OverlayTile>(), SelfSpell, targetTile);
             
-            int distance = pathFinder.GetManhattenDistance(activeTile, targetTile);
+            int distance = pathFinder.GetManhattenDistance(activeTile, targetTile, true);
             
             if (targetTile.activeCharacter.teamID == teamID)
             {
@@ -195,7 +195,7 @@ namespace TacticsToolkit
                 actionQueue.Add(new Action(finalPath, Action.ActionType.Move, MapManager.Instance.GetOverlayByTransform(finalPath.Last()), this));
                 actionQueue.Add(new Action(finalPath, Action.ActionType.Attack, targetTile, this, ability));
             }
-            else if (pathFinder.GetManhattenDistance(activeTile, targetTile) <= ability.range)
+            else if (pathFinder.GetManhattenDistance(activeTile, targetTile, true) <= ability.range)
             {
                 ResetLineRenderer();
                 AddArcToLineRenderer(activeTile.transform.position, targetTile.transform.position, 2);

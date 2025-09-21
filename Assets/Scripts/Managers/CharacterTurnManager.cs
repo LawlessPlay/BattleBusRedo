@@ -46,6 +46,11 @@ public class CharacterTurnManager : MonoBehaviour
             {
                 if (action.Type == Action.ActionType.Attack)
                 {
+                    
+                    Vector3 screenPos = Camera.main.WorldToScreenPoint(action.Target.transform.position);
+                    TooltipManager.instance.ShowSpellTooltip(action.Ability.tooltip.image, action.Ability.tooltip.tooltipName,
+                        action.Ability.tooltip.tooltipDescription, screenPos, new Vector2(50, 50));
+                    
                     hasAction = true;
                     switch (action.Ability.abilityType)
                     {
@@ -77,6 +82,7 @@ public class CharacterTurnManager : MonoBehaviour
                 //turnBasedManagerRedo.PreviewUpdateSpeed(.gameObject, speedMultiplier);
             }
 
+
             confirmationUI.SetActive(true);
         }
     }
@@ -87,6 +93,7 @@ public class CharacterTurnManager : MonoBehaviour
         {
             confirmationUI.SetActive(false);
             activeCharacter.ActionButtonPressed();
+            TooltipManager.instance.Hide(TooltipManager.instance.spellTooltip.gameObject);
             //turnBasedManagerRedo.ConfirmPreview();
         }
     }
@@ -108,6 +115,9 @@ public class CharacterTurnManager : MonoBehaviour
                     }
                 }
             }
+            
+            
+            TooltipManager.instance.Hide(TooltipManager.instance.spellTooltip.gameObject);
             confirmationUI.SetActive(false);
             turnBasedManagerRedo.UndoPreview();
         }

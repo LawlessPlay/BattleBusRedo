@@ -319,9 +319,8 @@ public class OverlayManagerV2 : MonoBehaviour
     {
         if (ability.tooltip != null && TooltipManager.instance)
         {
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(overlayTile.transform.position);
-            TooltipManager.instance.ShowSpellTooltip(ability.tooltip.image, ability.tooltip.tooltipName,
-                ability.tooltip.tooltipDescription, screenPos, new Vector2(50, 50));
+            /*TooltipManager.instance.ShowSpellTooltip(ability.tooltip.image, ability.tooltip.tooltipName,
+                ability.tooltip.tooltipDescription, screenPos, new Vector2(50, 50));*/
         }
 
         var tiles = shapeParser.GetAbilityTileLocations(overlayTile, ability.abilityShape, activeCharacter.activeTile.grid2DLocation);
