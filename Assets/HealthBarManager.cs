@@ -1,104 +1,176 @@
-using System.Collections;
-using System.Collections.Generic;
-using TacticsToolkit;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class HealthBarManager : MonoBehaviour
 {
-    public Image healthBar;
-    public GameObject HundredContainer;
-    public GameObject FiftyContainer;
-    public GameObject bigLinePrefab;
-    public GameObject smallLinePrefab;
-    public GameObject PreviewObject;
-    public GameObject HealPreviewObject;
-    
-    [SerializeField]
-    private int maxHealth = 0;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        maxHealth = GetComponent<Entity>().GetStat(Stats.Health).baseStatValue;
-        var bigLineAmount = Mathf.FloorToInt(maxHealth / 100f);
-        var smallLineAmount = Mathf.FloorToInt(maxHealth / 25f);
+    [Header("UI References")]
+    [SerializeField] private Image healthBar;
+    [SerializeField] private GameObject HundredContainer;
+    [SerializeField] private GameObject FiftyContainer;
+    [SerializeField] private GameObject bigLinePrefab;
+    [SerializeField] private GameObject smallLinePrefab;
+    [SerializeField] private GameObject PreviewObject;      // Damage preview overlay
+    [SerializeField] private GameObject HealPreviewObject;  // Heal preview overlay
 
-        var width = HundredContainer.GetComponent<RectTransform>().rect.width;
-        
-        for (int i = 1; i <= bigLineAmount; i++)
-        {
-            var indicator = Instantiate(bigLinePrefab, HundredContainer.transform);
-            var indicatorWidth = indicator.GetComponent<RectTransform>().rect.width;
-            var percentage = (i * 100f / maxHealth) * 100f;
-            var xPos = (width / 100f * percentage) - (indicatorWidth/2);
-            
-            indicator.GetComponent<RectTransform>().anchoredPosition = new Vector3(xPos, 0, 0);
-        }
-        
-        for (int i = 1; i <= smallLineAmount; i++)
-        {
-            var indicator = Instantiate(smallLinePrefab, FiftyContainer.transform);
-            var indicatorWidth = indicator.GetComponent<RectTransform>().rect.width;
-            var percentage = (i * 25f / maxHealth) * 100f;
-            var xPos = (width / 100f * percentage) - (indicatorWidth/2);
-            
-            indicator.GetComponent<RectTransform>().anchoredPosition = new Vector3(xPos, 0, 0);
-        }
+    [Header("Values (read-only in Inspector)")]
+    [SerializeField] private int maxHealth = 0;
+    [SerializeField] private int currentHealth = 0;
+
+    // -------- Setters (push data in; no external deps) --------
+    public void SetUIRefs(
+        Image healthBarImage,
+        GameObject hundredContainer,
+        GameObject fiftyContainer,
+        GameObject bigTickPrefab,
+        GameObject smallTickPrefab,
+        GameObject damagePreviewObj,
+        GameObject healPreviewObj)
+    {
+        healthBar         = healthBarImage;
+        HundredContainer  = hundredContainer;
+        FiftyContainer    = fiftyContainer;
+        bigLinePrefab     = bigTickPrefab;
+        smallLinePrefab   = smallTickPrefab;
+        PreviewObject     = damagePreviewObj;
+        HealPreviewObject = healPreviewObj;
     }
-    
-    //Updates the characters healthbar. 
+
+    public void SetHealth(int current, int max)
+    {
+        maxHealth = Mathf.Max(0, max);
+        currentHealth = Mathf.Clamp(current, 0, maxHealth);
+        UpdateCharacterUI();
+        RebuildTickMarks();
+    }
+
+    public void SetMaxHealth(int max)
+    {
+        SetHealth(Mathf.Min(currentHealth, Mathf.Max(0, max)), max);
+    }
+
+    public void SetCurrentHealth(int current)
+    {
+        currentHealth = Mathf.Clamp(current, 0, maxHealth);
+        UpdateCharacterUI();
+    }
+
+    // -------- UI Updates --------
     public void UpdateCharacterUI()
     {
-        healthBar.fillAmount = (float) GetComponent<Entity>().GetStat(Stats.CurrentHealth).statValue / (float)GetComponent<Entity>().GetStat(Stats.Health).statValue;
+        if (!healthBar || maxHealth <= 0) return;
+        healthBar.fillAmount = maxHealth == 0 ? 0f : (float)currentHealth / maxHealth;
     }
 
+    public void RebuildTickMarks()
+    {
+        if (maxHealth <= 0) return;
+        if (!HundredContainer || !FiftyContainer || !healthBar) return;
+
+        // Clear old children (inline, no helper)
+        for (int i = HundredContainer.transform.childCount - 1; i >= 0; i--)
+            Destroy(HundredContainer.transform.GetChild(i).gameObject);
+        for (int i = FiftyContainer.transform.childCount - 1; i >= 0; i--)
+            Destroy(FiftyContainer.transform.GetChild(i).gameObject);
+
+        int bigLineAmount   = Mathf.FloorToInt(maxHealth / 100f);
+        int smallLineAmount = Mathf.FloorToInt(maxHealth / 25f);
+
+        var hundredRT = HundredContainer.GetComponent<RectTransform>();
+        var fiftyRT   = FiftyContainer.GetComponent<RectTransform>();
+        if (!hundredRT || !fiftyRT) return;
+
+        float width = hundredRT.rect.width;
+
+        // Big ticks (every 100)
+        for (int i = 1; i <= bigLineAmount; i++)
+        {
+            if (!bigLinePrefab) break;
+            var indicator = Instantiate(bigLinePrefab, HundredContainer.transform);
+            var indRT = indicator.GetComponent<RectTransform>();
+            float indicatorWidth = indRT ? indRT.rect.width : 0f;
+            float percentage = (i * 100f / maxHealth) * 100f; // percent of bar
+            float xPos = (width / 100f * percentage) - (indicatorWidth / 2f);
+            if (indRT) indRT.anchoredPosition = new Vector2(xPos, 0f);
+        }
+
+        // Small ticks (every 25)
+        for (int i = 1; i <= smallLineAmount; i++)
+        {
+            if (!smallLinePrefab) break;
+            var indicator = Instantiate(smallLinePrefab, FiftyContainer.transform);
+            var indRT = indicator.GetComponent<RectTransform>();
+            float indicatorWidth = indRT ? indRT.rect.width : 0f;
+            float percentage = (i * 25f / maxHealth) * 100f;
+            float xPos = (width / 100f * percentage) - (indicatorWidth / 2f);
+            if (indRT) indRT.anchoredPosition = new Vector2(xPos, 0f);
+        }
+    }
+
+    // -------- Previews --------
     public enum PreviewType { Damage, Heal }
 
+    /// <summary>
+    /// Show a preview of incoming damage/heal.
+    /// For damage: value is final damage.
+    /// For heal:   value is raw heal amount.
+    /// </summary>
     public void SetPreview(int value, bool isDamage)
     {
-        var entity = GetComponent<Entity>();
-        if (!entity) return;
+        if (!healthBar || maxHealth <= 0) return;
 
-        float currentHealth = entity.GetStat(Stats.CurrentHealth).statValue;
-        float maxHealth = entity.GetStat(Stats.Health).statValue;
+        var barRT = healthBar.GetComponent<RectTransform>();
+        if (!barRT) return;
 
-        float width = healthBar.GetComponent<RectTransform>().rect.width;
+        float width = barRT.rect.width;
+        if (width <= 0f) return;
+
         float fillAmountPercentage = healthBar.fillAmount * 100f;
-        float position = (width / 100f * fillAmountPercentage) - width;
-
-        // Default clamped amount to preview
-        float previewAmount = 0f;
 
         if (isDamage)
         {
             if (!PreviewObject) return;
 
-            float damage = entity.CalculateDamage(value);
-            previewAmount = Mathf.Min(damage, currentHealth); // clamp to current health
+            float damage = Mathf.Max(0f, value);
+            float clamped = Mathf.Min(damage, currentHealth);
 
-            PreviewObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(position, 0, 0);
-            PreviewObject.GetComponent<Image>().fillAmount = previewAmount / maxHealth;
+            var prevRT = PreviewObject.GetComponent<RectTransform>();
+            var img = PreviewObject.GetComponent<Image>();
+            if (!prevRT || !img) return;
+
+            // Preserve original position math
+            float xPos = (width / 100f * fillAmountPercentage) - width;
+            prevRT.anchoredPosition = new Vector2(xPos, 0f);
+            img.fillAmount = clamped / maxHealth;
         }
         else
         {
             if (!HealPreviewObject) return;
 
-            float missingHealth = maxHealth - currentHealth;
-            float healing = Mathf.Min(value, missingHealth); // clamp to missing health
-            previewAmount = healing;
-            HealPreviewObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(healthBar.fillAmount * width, 0, 0);
-            HealPreviewObject.GetComponent<Image>().fillAmount = previewAmount / maxHealth;
+            float missing = Mathf.Max(0f, maxHealth - currentHealth);
+            float clamped = Mathf.Clamp(value, 0f, missing);
+
+            var healRT = HealPreviewObject.GetComponent<RectTransform>();
+            var img = HealPreviewObject.GetComponent<Image>();
+            if (!healRT || !img) return;
+
+            float xPos = healthBar.fillAmount * width;
+            healRT.anchoredPosition = new Vector2(xPos, 0f);
+            img.fillAmount = clamped / maxHealth;
         }
     }
 
-
     public void HidePreview()
     {
-        PreviewObject.GetComponent<Image>().fillAmount  = 0f;
-        
-        if (!HealPreviewObject) return;
-            HealPreviewObject.GetComponent<Image>().fillAmount  = 0f;
+        if (PreviewObject)
+        {
+            var img = PreviewObject.GetComponent<Image>();
+            if (img) img.fillAmount = 0f;
+        }
+
+        if (HealPreviewObject)
+        {
+            var img = HealPreviewObject.GetComponent<Image>();
+            if (img) img.fillAmount = 0f;
+        }
     }
 }

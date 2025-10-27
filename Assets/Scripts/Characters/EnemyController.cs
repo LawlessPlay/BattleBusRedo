@@ -25,7 +25,7 @@ namespace TacticsToolkit
         private List<EnemyController> enemyCharacters;
         private List<OverlayTile> path;
         private ShapeParser shapeParser;
-        private Senario bestSenario;
+        private Scenario _bestScenario;
         private RangeFinder rangeFinder;
         private PathFinder pathFinder;
 
@@ -60,16 +60,16 @@ namespace TacticsToolkit
 
         public override void CharacterMoved()
         {
-            logAction.Raise(gameObject.name + ": Moved To " + bestSenario.positionTile.grid2DLocation);
+            logAction.Raise(gameObject.name + ": Moved To " + _bestScenario.positionTile.grid2DLocation);
 
             //Once a character has finished moving, check if a attack/ability is available and do it. Otherwise, end turn
-            if (bestSenario != null && (bestSenario.targetTile != null || bestSenario.targetAbility != null))
+            if (_bestScenario != null && (_bestScenario.targetTile != null || _bestScenario.targetAbility != null))
                 Attack();
             else
                 StartCoroutine(EndTurn());
         }
 
-        private Senario AutoAttackBasedOnPersonality(OverlayTile position)
+        private Scenario AutoAttackBasedOnPersonality(OverlayTile position)
         {
             switch (personality)
             {
@@ -86,11 +86,11 @@ namespace TacticsToolkit
                     break;
             }
 
-            return new Senario();
+            return new Scenario();
         }
 
         //Target Lowest Health Character
-        private Senario StrategicBasicAttackTarget(OverlayTile position)
+        private Scenario StrategicBasicAttackTarget(OverlayTile position)
         {
             var targetCharacter = FindClosestToDeathCharacter(position);
             if (targetCharacter)
@@ -110,14 +110,14 @@ namespace TacticsToolkit
                         senarioValue = 10000;
                     }
 
-                    return new Senario(senarioValue, null, targetCharacter.activeTile, position, true);
+                    return new Scenario(senarioValue, null, targetCharacter.activeTile, position, true);
                 }
             }
 
-            return new Senario();
+            return new Scenario();
         }
 
-        private Senario DefenciveBasicAttackTarget(OverlayTile position)
+        private Scenario DefenciveBasicAttackTarget(OverlayTile position)
         {
             var targetCharacter = FindClosestCharacter(position);
 
@@ -131,13 +131,13 @@ namespace TacticsToolkit
                     //calculate senarioValue;
                     var senarioValue = 0;
                     senarioValue += GetStat(Stats.Strenght).statValue + (closestDistance - GetStat(Stats.MoveRange).statValue);
-                    return new Senario(senarioValue, null, targetCharacter.activeTile, position, true);
+                    return new Scenario(senarioValue, null, targetCharacter.activeTile, position, true);
                 }
             }
-            return new Senario();
+            return new Scenario();
         }
 
-        private Senario AggressiveBasicAttackTarget(OverlayTile position)
+        private Scenario AggressiveBasicAttackTarget(OverlayTile position)
         {
             var targetCharacter = FindClosestCharacter(position);
 
@@ -154,11 +154,11 @@ namespace TacticsToolkit
                     var senarioValue = 0;
                     senarioValue += GetStat(Stats.Strenght).statValue + (GetStat(Stats.MoveRange).statValue - closestDistance);
 
-                    return new Senario(senarioValue, null, targetCharacter.activeTile, position, true);
+                    return new Scenario(senarioValue, null, targetCharacter.activeTile, position, true);
                 }
             }
 
-            return new Senario();
+            return new Scenario();
         }
 
         //Get the closest character
@@ -256,26 +256,26 @@ namespace TacticsToolkit
         private void Attack()
         {
             //If we can attack, we attack, if we have an ability, cast the ability
-            if (bestSenario.useAutoAttack && bestSenario.targetTile.activeCharacter)
-                StartCoroutine(AttackTargettedCharacter(bestSenario.targetTile.activeCharacter));
-            else if (bestSenario.targetAbility != null)
+            if (_bestScenario.useAutoAttack && _bestScenario.targetTile.activeCharacter)
+                StartCoroutine(AttackTargettedCharacter(_bestScenario.targetTile.activeCharacter));
+            else if (_bestScenario.targetAbility != null)
                 StartCoroutine(CastAbility());
         }
 
         private IEnumerator CastAbility()
         {
-            var abilityAffectedTiles = shapeParser.GetAbilityTileLocations(bestSenario.targetTile, bestSenario.targetAbility.ability.abilityShape, bestSenario.positionTile.grid2DLocation, bestSenario.targetAbility.ability.includeOrigin );
-            abilityAffectedTiles.Add(bestSenario.targetTile);
+            var abilityAffectedTiles = shapeParser.GetAbilityTileLocations(_bestScenario.targetTile, _bestScenario.targetAbility.ability.abilityShape, _bestScenario.positionTile.grid2DLocation, _bestScenario.targetAbility.ability.includeOrigin );
+            abilityAffectedTiles.Add(_bestScenario.targetTile);
             OverlayController.Instance.ColorTiles(OverlayController.Instance.AttackRangeColor, abilityAffectedTiles);
             yield return new WaitForSeconds(0.5f);
 
             //Tell the AbilityController to cast this ability
-            CastAbilityParams abilityCommandParams = new CastAbilityParams(abilityAffectedTiles, bestSenario.targetAbility);
+            CastAbilityParams abilityCommandParams = new CastAbilityParams(abilityAffectedTiles, _bestScenario.targetAbility);
             CastAbilityCommand abilityCommand = new CastAbilityCommand();
             abilityCommand.CommandParams = abilityCommandParams;
             castAbility.Raise(abilityCommand);
 
-            logAction.Raise(gameObject.name + ": Using " + bestSenario.targetAbility.ability.name);
+            logAction.Raise(gameObject.name + ": Using " + _bestScenario.targetAbility.ability.name);
             StartCoroutine(EndTurn());
         }
 
@@ -309,7 +309,7 @@ namespace TacticsToolkit
         {
             var tileInMovementRange = rangeFinder.GetTilesInRange(activeTile, GetStat(Stats.MoveRange).statValue).Item1;
             OverlayController.Instance.ColorTiles(OverlayController.Instance.MoveRangeColor, tileInMovementRange);
-            var senario = new Senario();
+            var senario = new Scenario();
             foreach (var tile in tileInMovementRange)
             {
                 if (!tile.isBlocked)
@@ -336,14 +336,14 @@ namespace TacticsToolkit
         }
 
         //Execute the best senario
-        private void ApplyBestSenario(Senario senario)
+        private void ApplyBestSenario(Scenario scenario)
         {
-            bestSenario = senario;
+            _bestScenario = scenario;
             var currentTile = activeTile;
-            path = pathFinder.FindPath(currentTile, bestSenario.positionTile, new List<OverlayTile>());
+            path = pathFinder.FindPath(currentTile, _bestScenario.positionTile, new List<OverlayTile>());
 
             //If it can attack but it doesn't need to move, attack
-            if (path.Count == 0 && bestSenario.targetTile != null)
+            if (path.Count == 0 && _bestScenario.targetTile != null)
             {
                 Attack();
             }
@@ -354,45 +354,45 @@ namespace TacticsToolkit
             }
         }
         //Apply the tile effects to the Senario Value. i.e. Burn Damage from lava tiles.
-        private void ApplyTileEffectsToSenarioValue(OverlayTile tile, Senario tempSenario)
+        private void ApplyTileEffectsToSenarioValue(OverlayTile tile, Scenario tempScenario)
         {
             if (tile.tileData && tile.tileData.effect)
             {
                 var tileEffectValue = GetEffectsSenarioValue(new List<ScriptableEffect>() { tile.tileData.effect }, new List<Entity>() { this });
-                tempSenario.senarioValue -= tileEffectValue;
+                tempScenario.senarioValue -= tileEffectValue;
             }
         }
 
         //Check is the new senario better than the current best senario.
-        private static Senario CompareSenarios(Senario senario, Senario tempSenario)
+        private static Scenario CompareSenarios(Scenario scenario, Scenario tempScenario)
         {
-            if ((tempSenario != null && tempSenario.senarioValue > senario.senarioValue))
+            if ((tempScenario != null && tempScenario.senarioValue > scenario.senarioValue))
             {
-                senario = tempSenario;
+                scenario = tempScenario;
             }
 
-            return senario;
+            return scenario;
         }
 
         //if the new senario and the current best senario are equal, then take the closest senario. 
-        private Senario CheckIfSenarioValuesAreEqual(List<OverlayTile> tileInMovementRange, Senario senario, Senario tempSenario)
+        private Scenario CheckIfSenarioValuesAreEqual(List<OverlayTile> tileInMovementRange, Scenario scenario, Scenario tempScenario)
         {
-            if (tempSenario.positionTile != null && tempSenario.senarioValue == senario.senarioValue)
+            if (tempScenario.positionTile != null && tempScenario.senarioValue == scenario.senarioValue)
             {
-                var tempSenarioPathCount = pathFinder.FindPath(activeTile, tempSenario.positionTile, tileInMovementRange).Count;
-                var senarioPathCount = pathFinder.FindPath(activeTile, senario.positionTile, tileInMovementRange).Count;
+                var tempSenarioPathCount = pathFinder.FindPath(activeTile, tempScenario.positionTile, tileInMovementRange).Count;
+                var senarioPathCount = pathFinder.FindPath(activeTile, scenario.positionTile, tileInMovementRange).Count;
 
                 if (tempSenarioPathCount < senarioPathCount)
-                    senario = tempSenario;
+                    scenario = tempScenario;
             }
 
-            return senario;
+            return scenario;
         }
 
         //If we have no attack target, check how close the tile is to a character.
-        private Senario CheckSenarioValueIfNoTarget(Senario senario, OverlayTile tile, Senario tempSenario)
+        private Scenario CheckSenarioValueIfNoTarget(Scenario scenario, OverlayTile tile, Scenario tempScenario)
         {
-            if (tempSenario.positionTile == null && !senario.targetTile)
+            if (tempScenario.positionTile == null && !scenario.targetTile)
             {
                 var targetCharacter = FindClosestToDeathCharacter(tile);
                 if (targetCharacter)
@@ -413,27 +413,27 @@ namespace TacticsToolkit
                                 senarioValue -= tileEffectValue;
                             }
 
-                            if (tile.grid2DLocation != activeTile.grid2DLocation && tile.grid2DLocation != targetCharacter.activeTile.grid2DLocation && (senarioValue > senario.senarioValue || !senario.positionTile))
-                                senario = new Senario(senarioValue, null, null, tile, false);
+                            if (tile.grid2DLocation != activeTile.grid2DLocation && tile.grid2DLocation != targetCharacter.activeTile.grid2DLocation && (senarioValue > scenario.senarioValue || !scenario.positionTile))
+                                scenario = new Scenario(senarioValue, null, null, tile, false);
                         }
                     }
                 }
             }
 
-            return senario;
+            return scenario;
         }
 
         //Tell the MovementController to move the enemy along a path. 
         private IEnumerator Move(List<OverlayTile> path)
         {
-            OverlayController.Instance.ColorSingleTile(OverlayController.Instance.MoveRangeColor, bestSenario.positionTile);
+            OverlayController.Instance.ColorSingleTile(OverlayController.Instance.MoveRangeColor, _bestScenario.positionTile);
             yield return new WaitForSeconds(0.25f);
             moveAlongPath.Raise(path.Select(x => x.gameObject).ToList());
         }
 
 
         //Create a senario based on if the enemy can attack from this tile. 
-        private Senario CreateTileSenarioValue(OverlayTile overlayTile)
+        private Scenario CreateTileSenarioValue(OverlayTile overlayTile)
         {
             //Basic Attack
             var attackSenario = AutoAttackBasedOnPersonality(overlayTile);
@@ -453,10 +453,10 @@ namespace TacticsToolkit
         }
 
         //Calculate the senario value of an ability. 
-        private Senario CreateAbilitySenario(AbilityContainer abilityContainer, OverlayTile position)
+        private Scenario CreateAbilitySenario(AbilityContainer abilityContainer, OverlayTile position)
         {
             var tilesInAbilityRange = rangeFinder.GetTilesInRange(position, abilityContainer.ability.range, true).Item1;
-            var senario = new Senario();
+            var senario = new Scenario();
             foreach (var tile in tilesInAbilityRange)
             {
                 var abilityAffectedTiles = shapeParser.GetAbilityTileLocations(tile, abilityContainer.ability.abilityShape, position.grid2DLocation, abilityContainer.ability.includeOrigin);
@@ -496,7 +496,7 @@ namespace TacticsToolkit
 
                     if (tempSenarioValue > senario.senarioValue)
                     {
-                        senario = new Senario(tempSenarioValue, abilityContainer, tile, position, false);
+                        senario = new Scenario(tempSenarioValue, abilityContainer, tile, position, false);
                     }
                 }
             }

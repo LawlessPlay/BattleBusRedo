@@ -4,7 +4,7 @@ namespace TacticsToolkit
     //The object used for the enemy AI. 
     //A senario is basically an action an enemy can take. 
 
-    public class Senario
+    public class Scenario
     {
         public float senarioValue;
         public AbilityContainer targetAbility;
@@ -13,7 +13,7 @@ namespace TacticsToolkit
         public OverlayTile positionTile;
         public bool useAutoAttack;
 
-        public Senario(float senarioValue, AbilityContainer targetAbility, OverlayTile targetTile, OverlayTile positionTile, bool useAutoAttack)
+        public Scenario(float senarioValue, AbilityContainer targetAbility, OverlayTile targetTile, OverlayTile positionTile, bool useAutoAttack)
         {
             this.senarioValue = senarioValue;
             this.targetAbility = targetAbility;
@@ -22,7 +22,7 @@ namespace TacticsToolkit
             this.useAutoAttack = useAutoAttack;
         }
 
-        public Senario(float senarioValue, Ability ability, OverlayTile targetTile, OverlayTile positionTile)
+        public Scenario(float senarioValue, Ability ability, OverlayTile targetTile, OverlayTile positionTile)
         {
             this.senarioValue = senarioValue;
             this.Ability = ability;
@@ -31,7 +31,7 @@ namespace TacticsToolkit
             this.useAutoAttack = useAutoAttack;
         }
         
-        public Senario()
+        public Scenario()
         {
             this.senarioValue = -10000;
             this.targetAbility = null;

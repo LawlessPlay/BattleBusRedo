@@ -198,6 +198,30 @@ namespace TacticsToolkit
             
             return closestDistance;
         }
+        
+        public int GetTileThreatLevel(bool isPlayer, Entity self, OverlayTile location)
+        {
+            var pathFinder = new PathFinder();
+            var playerTeam = GameObject.FindGameObjectsWithTag("Player").Select(x => x.GetComponent<Entity>()).Where(x => x != self).ToList();
+            var enemyTeam = GameObject.FindGameObjectsWithTag("Enemy").Select(x => x.GetComponent<Entity>()).ToList().Where(x => x != self).ToList();
+            
+            var totalPlayerDistances = 0;
+            var totaEnemyDistances =0;
+            
+            foreach (var entity in playerTeam)
+            {
+                totalPlayerDistances += pathFinder.GetManhattenDistance(location, entity.activeTile);
+            }
+            
+            foreach (var entity in enemyTeam)
+            {
+                totaEnemyDistances += pathFinder.GetManhattenDistance(location, entity.activeTile);
+            }
+            
+            var threatValue = isPlayer ? totalPlayerDistances - totaEnemyDistances : totaEnemyDistances - totalPlayerDistances;
+            
+            return threatValue;
+        }
     }
 
     public class MapBounds

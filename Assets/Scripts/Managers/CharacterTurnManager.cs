@@ -20,6 +20,8 @@ public class CharacterTurnManager : MonoBehaviour
     [SerializeField] private GameObject confirmationUI;
     [SerializeField] private GameEventInt previewTurnOrder;
     
+    [SerializeField] private GameEventBool confirmingAction;
+    
     public TurnBasedManagerRedo turnBasedManagerRedo;
     
         
@@ -35,21 +37,21 @@ public class CharacterTurnManager : MonoBehaviour
     
     public void ActiveButtonPressed()
     {
-        if (activeCharacter && !activeCharacter.isActing && activeCharacter.actionQueue.Count > 0 && confirmationUI.activeSelf == false)
+        if (activeCharacter && !activeCharacter.isActing && activeCharacter.actionQueue.Count > 0 && !confirmationUI.activeSelf)
         {
             var speedMultiplier = 1f;
             var targets = new List<Entity>();
             var multiplier = 1f;
             var hasAction = false;
+            
             //check if updating speed. 
             foreach (var action in activeCharacter.actionQueue)
             {
                 if (action.Type == Action.ActionType.Attack)
                 {
-                    
                     Vector3 screenPos = Camera.main.WorldToScreenPoint(action.Target.transform.position);
                     TooltipManager.instance.ShowSpellTooltip(action.Ability.tooltip.image, action.Ability.tooltip.tooltipName,
-                        action.Ability.tooltip.tooltipDescription, screenPos, new Vector2(50, 50));
+                        action.Ability.tooltip.tooltipDescription, screenPos, new Vector2(50f, 50f));
                     
                     hasAction = true;
                     switch (action.Ability.abilityType)
@@ -79,18 +81,18 @@ public class CharacterTurnManager : MonoBehaviour
             if (hasAction)
             {
                 turnBasedManagerRedo.PreviewUpdateOrder(targets, multiplier, speedMultiplier);
-                //turnBasedManagerRedo.PreviewUpdateSpeed(.gameObject, speedMultiplier);
             }
 
-
+            confirmingAction.Raise(true);
             confirmationUI.SetActive(true);
         }
     }
 
     public void ConfirmAction()
     {
-        if (activeCharacter && confirmationUI.activeSelf == true)
+        if (activeCharacter && confirmationUI.activeSelf)
         {
+            confirmingAction.Raise(false);
             confirmationUI.SetActive(false);
             activeCharacter.ActionButtonPressed();
             TooltipManager.instance.Hide(TooltipManager.instance.spellTooltip.gameObject);
@@ -100,8 +102,9 @@ public class CharacterTurnManager : MonoBehaviour
     
     public void DeclineAction()
     {
-        if (activeCharacter && confirmationUI.activeSelf == true)
+        if (activeCharacter && confirmationUI.activeSelf)
         {
+            
             foreach (var action in activeCharacter.actionQueue)
             {
                 if (action.Type == Action.ActionType.Attack)
@@ -116,7 +119,7 @@ public class CharacterTurnManager : MonoBehaviour
                 }
             }
             
-            
+            confirmingAction.Raise(false);
             TooltipManager.instance.Hide(TooltipManager.instance.spellTooltip.gameObject);
             confirmationUI.SetActive(false);
             turnBasedManagerRedo.UndoPreview();

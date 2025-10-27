@@ -37,6 +37,8 @@ public class OverlayManagerV2 : MonoBehaviour
     [SerializeField]
     public Color HighlightColor;
     
+    public HealthBarManager tooltipHealthBarManager;
+    
     
     public static OverlayManagerV2 Instance { get; private set; }
     
@@ -60,6 +62,26 @@ public class OverlayManagerV2 : MonoBehaviour
             Instance = this;
     }
 
+    public List<OverlayTile> GetMovementRangeTiles() => GetInRangeColoredTiles(MoveRangeColor);
+    public List<OverlayTile> GetAttackRangeTiles() => GetInRangeColoredTiles(AttackRangeColor);
+    public List<OverlayTile> GetSupportRangeTiles() => GetInRangeColoredTiles(AllyColor);
+    
+    public List<OverlayTile> GetInRangeColoredTiles(Color color)
+    {
+        var tiles = _inRangeColoredTiles.Keys;
+        var inRangeTiles = new List<OverlayTile>();
+
+        foreach (var tile in tiles)
+        {
+            if (_inRangeColoredTiles[tile].Contains(color))
+            {
+                inRangeTiles.Add(tile);
+            }
+        }
+        
+        return inRangeTiles;
+    }
+    
     public void UpdateTileColors(OverlayTile tile, Color color)
     {
         if (_inRangeColoredTiles.ContainsKey(tile))
@@ -86,12 +108,13 @@ public class OverlayManagerV2 : MonoBehaviour
     
     public void ShowTotalOverlay()
     {
-        var movementTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange);
-        var enemySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange + activeCharacter.EnemySpell.range + Mathf.RoundToInt(activeTile.transform.position.y), true);
-        var allySpellTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange + activeCharacter.AllySpell.range + Mathf.RoundToInt(activeTile.transform.position.y), true);
+        var movementTilesToShow = rangeFinder.GetTilesInRange(activeCharacter.activeTile, activeCharacter.characterClass.MoveRange, false, false);
+        var enemySpellTilesToShow = rangeFinder.GetExtraRange(movementTilesToShow.Item1, activeCharacter.EnemySpell.range, true);
+        var allySpellTilesToShow = rangeFinder.GetExtraRange(movementTilesToShow.Item1, activeCharacter.AllySpell.range, true);
 
         var combinedTiles = new HashSet<OverlayTile>(enemySpellTilesToShow.Item1);
         combinedTiles.UnionWith(allySpellTilesToShow.Item1); 
+        combinedTiles.UnionWith(movementTilesToShow.Item1); 
         
         foreach (var tile in combinedTiles)
         {
@@ -282,6 +305,8 @@ public class OverlayManagerV2 : MonoBehaviour
         var tempTilesToUpdate = new List<OverlayTile>();
         tempTilesToUpdate.AddRange(_abilityColoredTiles.Keys);
         _abilityColoredTiles.Clear();
+        tooltipHealthBarManager.HidePreview();
+        
         foreach (var tile in tempTilesToUpdate)
         {
             tile.HideTile();
@@ -315,24 +340,61 @@ public class OverlayManagerV2 : MonoBehaviour
         _inRangeColoredTiles[tile] = tileColors;
     }
 
-    public void DrawSpell(OverlayTile overlayTile, Ability ability)
+public void DrawSpell(OverlayTile originTile, Ability ability)
+{
+    if (ability == null || originTile == null) return;
+
+    // Optional tooltip (kept commented; uncomment if you want it active)
+    // if (ability.tooltip != null && TooltipManager.instance)
+    // {
+    //     var screenPos = Camera.main.WorldToScreenPoint(originTile.transform.position);
+    //     TooltipManager.instance.ShowSpellTooltip(
+    //         ability.tooltip.image,
+    //         ability.tooltip.tooltipName,
+    //         ability.tooltip.tooltipDescription,
+    //         screenPos,
+    //         new Vector2(50, 50));
+    // }
+
+    var tiles = shapeParser.GetAbilityTileLocations(
+        originTile,
+        ability.abilityShape,
+        activeCharacter.activeTile.grid2DLocation);
+
+    bool isDamage = ability.abilityType == Ability.AbilityTypes.Enemy;
+
+    // Update tooltip health for the character on the origin tile (if any)
+    var originChar = originTile.activeCharacter;
+    if (originChar != null && tooltipHealthBarManager != null)
     {
-        if (ability.tooltip != null && TooltipManager.instance)
-        {
-            /*TooltipManager.instance.ShowSpellTooltip(ability.tooltip.image, ability.tooltip.tooltipName,
-                ability.tooltip.tooltipDescription, screenPos, new Vector2(50, 50));*/
-        }
+        var originEntity = originChar.GetComponent<Entity>();
+        int maxHp   = originChar.GetStat(Stats.Health).statValue;
+        int curHp   = originChar.GetStat(Stats.CurrentHealth).statValue;
+        int preview = isDamage ? (originEntity?.CalculateDamage(ability.value) ?? 0) : ability.value;
 
-        var tiles = shapeParser.GetAbilityTileLocations(overlayTile, ability.abilityShape, activeCharacter.activeTile.grid2DLocation);
-
-        foreach (var tile in tiles)
-        {
-            UpdateAbilityTileColors(tile, HighlightColor);
-            
-            if(tile.activeCharacter)
-                tile.activeCharacter.GetComponent<HealthBarManager>().SetPreview(ability.value, ability.abilityType == Ability.AbilityTypes.Enemy);
-            
-            ShowTile(tile);
-        }
+        tooltipHealthBarManager.SetMaxHealth(maxHp);
+        tooltipHealthBarManager.SetCurrentHealth(curHp);
+        tooltipHealthBarManager.SetPreview(preview, isDamage);
     }
+
+    foreach (var tile in tiles)
+    {
+        UpdateAbilityTileColors(tile, HighlightColor);
+
+        var character = tile.activeCharacter;
+        if (character != null)
+        {
+            var entity = character.GetComponent<Entity>();
+            var hbm    = character.GetComponent<HealthBarManager>();
+            if (hbm != null)
+            {
+                int preview = isDamage ? (entity?.CalculateDamage(ability.value) ?? 0) : ability.value;
+                hbm.SetPreview(preview, isDamage);
+            }
+        }
+
+        ShowTile(tile);
+    }
+}
+
 }

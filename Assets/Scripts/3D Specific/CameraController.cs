@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
@@ -38,6 +39,9 @@ namespace TacticsToolkit
         [Header("Easing")]
         public AnimationCurve easeCurve;
 
+
+        private bool disableMovement = false;
+
         private void Start()
         {
             // Set the desired position and rotation to the current values
@@ -46,17 +50,21 @@ namespace TacticsToolkit
 
         private void Update()
         {
-            UpdatePixelPerfectZoom();
-            MoveCamera(); 
+            if (!disableMovement)
+            {
+                UpdatePixelPerfectZoom();
+                MoveCamera();
 
 
-            if (Input.GetKeyDown(KeyCode.E) && !isRotating)
-            {
-                StartCoroutine(StartRotation(1));
-            }
-            if (Input.GetKeyDown(KeyCode.Q) && !isRotating)
-            {
-                StartCoroutine(StartRotation(-1));
+                if (Input.GetKeyDown(KeyCode.E) && !isRotating)
+                {
+                    StartCoroutine(StartRotation(1));
+                }
+
+                if (Input.GetKeyDown(KeyCode.Q) && !isRotating)
+                {
+                    StartCoroutine(StartRotation(-1));
+                }
             }
         }
 
@@ -249,5 +257,7 @@ namespace TacticsToolkit
             activeMoveToTarget = MoveToTarget();
             StartCoroutine(activeMoveToTarget);
         }
+
+        public void DisableMovement(bool disable) => disableMovement = disable;
     }
 }

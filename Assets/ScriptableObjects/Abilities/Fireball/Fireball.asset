@@ -27,3 +27,4 @@ MonoBehaviour:
   requiredLevel: 0
   requiresTarget: 0
   tooltip: {fileID: 11400000, guid: d13362fbaad896449b9081e0b2f25843, type: 2}
+  tileFxController: {fileID: 9100000, guid: 2ff2db569e1a2b04daacd9a40241c32c, type: 2}

@@ -59,8 +59,6 @@ namespace TacticsToolkit
 
                 foreach (var item in tileForPreviousStep)
                 {
-                    int moveCost = !ignoreObstacles ? item.GetMoveCost() : 1; // Calculate the move cost
-
                     var newNeighbours = MapManager.Instance.GetNeighbourTiles(item, new List<OverlayTile>(), ignoreObstacles, walkThroughAllies, item.remainingMovement); // Get the neighbouring tiles of the current tile
 
                     foreach (var tile in newNeighbours)
@@ -90,6 +88,74 @@ namespace TacticsToolkit
                 item.remainingMovement = 0;
             }
 
+            return (inRangeTiles.Distinct().ToList(), charactersInRange.Distinct().ToList());
+        }
+        
+        //Gets all tiles within a range
+        public (List<OverlayTile>, List<OverlayTile>) GetExtraRange(List<OverlayTile> currentTiles, int range, bool ignoreObstacles = false, bool walkThroughAllies = true)
+        {
+            var inRangeTiles = new List<OverlayTile>();
+            var charactersInRange = new List<OverlayTile>();
+            int stepCount = 0;
+
+            foreach (var startingTile in currentTiles)
+            {
+                startingTile.remainingMovement = range;
+                inRangeTiles.Add(startingTile);
+
+                // List to hold the tiles in the previous step
+                var tileForPreviousStep = new List<OverlayTile>
+                {
+                    startingTile
+                };
+
+                while (stepCount < range)
+                {
+                    var surroundingTiles = new List<OverlayTile>(); // List to hold the tiles in the current step
+
+                    foreach (var item in tileForPreviousStep)
+                    {
+                        var newNeighbours = MapManager.Instance.GetNeighbourTiles(item, new List<OverlayTile>(),
+                            ignoreObstacles, walkThroughAllies,
+                            item.remainingMovement); // Get the neighbouring tiles of the current tile
+
+                        foreach (var tile in newNeighbours)
+                        {
+                            int heightDifference = CalculateHeightCost(ignoreObstacles, item, tile);
+
+                            var remainingMovement = item.remainingMovement - tile.GetMoveCost() - heightDifference;
+
+                            if (remainingMovement > tile.remainingMovement)
+                                tile.remainingMovement =
+                                    remainingMovement; // Calculate the remaining movement of the tile
+                        }
+
+                        //split between emptyTiles and character tiles
+                        var charTiles = newNeighbours.Where(x => x.activeCharacter).ToList();
+                        var allTiles = newNeighbours.ToList();
+                        charactersInRange.AddRange(charTiles);
+                        surroundingTiles.AddRange(allTiles.Where(x => x.remainingMovement >= 0)
+                            .ToList()); // Add the neighbouring tiles to the list of surrounding tiles
+                    }
+
+                    inRangeTiles.AddRange(surroundingTiles); // Add the surrounding tiles to the list of in-range tiles
+                    tileForPreviousStep =
+                        surroundingTiles.Distinct().ToList(); // Set the previous step tiles to the surrounding tiles
+                    stepCount++; // Increment the step count
+                }
+                
+
+                //reset movement
+                foreach (var item in inRangeTiles)
+                {
+                    item.remainingMovement = 0;
+                }
+
+                stepCount = 0;
+            }
+            
+            inRangeTiles = inRangeTiles.Where(x => !currentTiles.Contains(x)).ToList();
+            
             return (inRangeTiles.Distinct().ToList(), charactersInRange.Distinct().ToList());
         }
 

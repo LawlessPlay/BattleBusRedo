@@ -17,9 +17,23 @@ public class EnemyAI : Entity
     private LineRenderer lineRenderer;
     private float lineOffset = 0.5f;
     
+    
+    const float LowHealthThreshold = 0.20f; // 20%
+    const int LowHealthSaveBonus = 150;
+    const int LowHealthExecuteBonus = 150;
+    const int DamageInflation = 2; // if you want it
 
     private List<Vector3> linePositions = new List<Vector3>();
 
+    struct ScoreWeights {
+        public int DamageWeight;         // e.g., 1
+        public int HealWeight;           // e.g., 1
+        public int ExecuteBonus;         // e.g., 150
+        public int SaveAllyBonus;        // e.g., 150
+        public int DistanceToEnemyWeight;// e.g., +1 per step closer (or negative for kiting)
+        public int DistanceToAllyWeight; // e.g., prefer staying near allies?
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -63,9 +77,17 @@ public class EnemyAI : Entity
     {
         base.StartTurn();
         yield return new WaitForSeconds(0.5f);
-        Senario currentBestSenario = null;
+        Scenario currentBestScenario = null;
+        List<Scenario> historicalScenarios = new List<Scenario>();
 
         OverlayTile originalActiveTile = activeTile;
+        
+        List<Scenario> originSpells = new List<Scenario>();
+            
+        // Cache spell actions for this tile
+        originSpells.Add(GetBestSpellAction(EnemySpell, originalActiveTile));
+        originSpells.Add(GetBestSpellAction(AllySpell, originalActiveTile));
+        originSpells.Add(GetBestSpellAction(SelfSpell, originalActiveTile));
         
         // Cache movement range tiles
         var movementRangeData = rangeFinder.GetTilesInRange(activeTile, characterClass.MoveRange);
@@ -76,76 +98,67 @@ public class EnemyAI : Entity
             activeTile = movementRangeTile;
             movementRangeTile.activeCharacter = this;
             
-            List<Senario> spells = new List<Senario>();
+            var bestSpell = GetBestScenarioFromTile(movementRangeTile);
             
-            // Cache spell actions for this tile
-
-            spells.Add(GetBestSpellAction(EnemySpell, movementRangeTile));
-            spells.Add(GetBestSpellAction(AllySpell, movementRangeTile));
-            spells.Add(GetBestSpellAction(SelfSpell, movementRangeTile));
-
-            var bestSpell = spells.OrderByDescending(x => x.senarioValue).First();
-            
-            var distanceFromClosestEnemy = MapManager.Instance.GetClosestCharacterDistance(true, this, movementRangeTile);
-            var distanceFromClosestAlly = MapManager.Instance.GetClosestCharacterDistance(false, this, movementRangeTile);
-            
-            //var selectedSenario = GetWeightedRandomSpell(enemySpellAction, allySpellAction, selfSpellAction);
-
-            bestSpell.senarioValue += (GetStat(Stats.MoveRange).statValue - distanceFromClosestEnemy);
-            //bestSpell.senarioValue += (distanceFromClosestAlly - GetStat(Stats.MoveRange).statValue);
-            
-            if (currentBestSenario == null || bestSpell.senarioValue > currentBestSenario.senarioValue)
+            if (currentBestScenario == null || bestSpell.senarioValue > currentBestScenario.senarioValue)
             {
-                currentBestSenario = bestSpell;
-                currentBestSenario.positionTile = movementRangeTile;
+                currentBestScenario = bestSpell;
+                currentBestScenario.positionTile = movementRangeTile;
+                historicalScenarios.Add(currentBestScenario);
             }
             
             movementRangeTile.activeCharacter = null;
         }
 
         activeTile = originalActiveTile;
-        CreateActionQueueFromSenario(currentBestSenario);
+        CreateActionQueueFromSenario(currentBestScenario);
     }
 
-    private int CalulatePositionValue(OverlayTile movementRangeTile, int currentValue)
+    public Scenario GetBestScenarioFromTile(OverlayTile tile)
     {
-        var distanceFromClosestEnemy = MapManager.Instance.GetClosestCharacterDistance(true, this, movementRangeTile);
-        var distanceFromClosestAlly = MapManager.Instance.GetClosestCharacterDistance(false, this, movementRangeTile);
+        activeTile = tile;
+        tile.activeCharacter = this;
+            
+        List<Scenario> spells = new List<Scenario>();
+            
+        // Cache spell actions for this tile
+        spells.Add(GetBestSpellAction(EnemySpell, tile));
+        spells.Add(GetBestSpellAction(AllySpell, tile));
+        spells.Add(GetBestSpellAction(SelfSpell, tile));
+        
+        var bestSpell = spells.OrderByDescending(x => x.senarioValue).First();
+        var threatValue = MapManager.Instance.GetTileThreatLevel(false, this, tile);
+        var distanceFromPlayer = MapManager.Instance.GetClosestCharacterDistance(true, this, tile);
 
-        //further
-        var enemyDistance = distanceFromClosestEnemy * 10;
-        
-        //closer
-        var allyDistance = Mathf.Abs(distanceFromClosestAlly - 10) * 10;
-        
-        return enemyDistance + allyDistance;
-        
+        //bestSpell.senarioValue += threatValue;
+        bestSpell.senarioValue -= distanceFromPlayer * 1.25f;
+        return bestSpell;
     }
 
-    private void CreateActionQueueFromSenario(Senario currentBestSenario)
+    private void CreateActionQueueFromSenario(Scenario currentBestScenario)
     {
         var actionQueue = new List<Action>();
-        var path = pathFinder.FindPath(activeTile, currentBestSenario.positionTile,
+        var path = pathFinder.FindPath(activeTile, currentBestScenario.positionTile,
             rangeFinder.GetTilesInRange(activeTile, characterClass.MoveRange).Item1);
         var nicePath = pathRenderer.GeneratePath(path, activeTile.transform.position, -1);
 
-        actionQueue.Add(new Action(nicePath, Action.ActionType.Move, currentBestSenario.positionTile, this));
+        actionQueue.Add(new Action(nicePath, Action.ActionType.Move, currentBestScenario.positionTile, this));
 
-        if (currentBestSenario.targetTile != null)
+        if (currentBestScenario.targetTile != null)
         {
-            Debug.Log("Casting: " + currentBestSenario.Ability.name + " by " + this.name + " at " + currentBestSenario.targetTile.activeCharacter + " with a value of " + currentBestSenario.senarioValue);
-            var affectedCharacters = shapeParser.GetAbilityTileLocations(currentBestSenario.targetTile,
-                    currentBestSenario.Ability.abilityShape,
-                    activeTile.grid2DLocation, currentBestSenario.Ability.includeOrigin).Where(c => c.activeCharacter)
+            Debug.Log("Casting: " + currentBestScenario.Ability.name + " by " + this.name + " at " + currentBestScenario.targetTile.activeCharacter + " with a value of " + currentBestScenario.senarioValue);
+            var affectedCharacters = shapeParser.GetAbilityTileLocations(currentBestScenario.targetTile,
+                    currentBestScenario.Ability.abilityShape,
+                    activeTile.grid2DLocation, currentBestScenario.Ability.includeOrigin).Where(c => c.activeCharacter)
                 .ToList();
 
             foreach (var character in affectedCharacters)
             {
                 Debug.Log("Affecting: " + character.activeCharacter.name);
             }
-            setTarget.Raise(currentBestSenario.targetTile.gameObject);
-            actionQueue.Add(new Action(nicePath, Action.ActionType.Attack, currentBestSenario.targetTile, this,
-                currentBestSenario.Ability));
+            setTarget.Raise(currentBestScenario.targetTile.gameObject);
+            actionQueue.Add(new Action(nicePath, Action.ActionType.Attack, currentBestScenario.targetTile, this,
+                currentBestScenario.Ability));
         }
 
         this.actionQueue = actionQueue;
@@ -155,9 +168,9 @@ public class EnemyAI : Entity
         actionQueue[0].StartAction();
     }
 
-    public Senario GetBestSpellAction(Ability ability, OverlayTile overlayTile)
+    public Scenario GetBestSpellAction(Ability ability, OverlayTile overlayTile)
     {
-        var twoCollections = rangeFinder.GetTilesInRange(overlayTile, ability.range);
+        var twoCollections = rangeFinder.GetTilesInRange(overlayTile, ability.range, true);
         var inRangeTiles = twoCollections.Item1;
         inRangeTiles.AddRange(twoCollections.Item2);
         
@@ -190,9 +203,9 @@ public class EnemyAI : Entity
 
                         //if character is close to dying try to save it.
                         if (character.statsContainer.getStat(Stats.CurrentHealth).statValue <=
-                            character.statsContainer.getStat(Stats.Health).statValue / 100 * 20)
+                            character.statsContainer.getStat(Stats.Health).statValue * LowHealthThreshold )
                         {
-                            value += 1000;
+                            value += LowHealthSaveBonus ;
                         }
 
                         abilityValue += value;
@@ -209,20 +222,18 @@ public class EnemyAI : Entity
                         abilityValue += ability.value;
 
                         //if character is close to dying, finish them.
-                        if (enemy.statsContainer.getStat(Stats.CurrentHealth).statValue < ability.value)
+                        if (enemy.statsContainer.getStat(Stats.CurrentHealth).statValue < enemy.statsContainer.getStat(Stats.Health).statValue * LowHealthThreshold )
                         {
-                            abilityValue += 1000;
+                            abilityValue += LowHealthExecuteBonus ;
                         }
                     }
                     
-                    foreach (var ally in allyCharacters)
-                    {
-                        Debug.Log("Will Hit: " + ally.gameObject.name);
-                        abilityValue -= 9999;
-                    }
-
+                    const int allyHitPenalty = 250; // tune this
+                    if (allyCharacters.Count > 0) continue; // skip tile entirely
+                        abilityValue -= allyHitPenalty * allyCharacters.Count;
+                    
                     //damage inflation
-                    //abilityValue = Mathf.RoundToInt(abilityValue * 2f);
+                    abilityValue = Mathf.RoundToInt(abilityValue * DamageInflation );
                     
                     break;
                 case Ability.AbilityTypes.All:
@@ -231,7 +242,7 @@ public class EnemyAI : Entity
                     foreach (var character in characters)
                     {
                         var value = ability.value;
-                        abilityValue = value;
+                        abilityValue += value;
                     }
 
                     break;
@@ -246,10 +257,10 @@ public class EnemyAI : Entity
             }
         }
 
-        return new Senario(currentBestValue, ability, currentBestTile, overlayTile);
+        return new Scenario(currentBestValue, ability, currentBestTile, overlayTile);
     }
 
-    Senario GetWeightedRandomSpell(Senario EnemyAction, Senario AllyAction, Senario SelfAction)
+    Scenario GetWeightedRandomSpell(Scenario EnemyAction, Scenario AllyAction, Scenario SelfAction)
     {
         // Step 1: Calculate total weight
         float totalWeight = 0f;

@@ -48,8 +48,6 @@ namespace TacticsToolkit
                 isActing = false;
                 if (hasMoved && hasAttacked)
                 {
-                    hasMoved = false;
-                    hasAttacked = false;
                     EndTurn();
                     return;
                 }
@@ -99,8 +97,6 @@ namespace TacticsToolkit
             actionQueue = targetTile.activeCharacter != null 
                 ? HandleActiveTileWithCharacter(targetTile) 
                 : HandleActiveTileWithoutCharacter(targetTile);
-            
-            
         }
 
         private List<Action> HandleActiveTileWithCharacter(OverlayTile targetTile)
@@ -109,26 +105,19 @@ namespace TacticsToolkit
                 return new List<Action>();
                 
             setTarget.Raise(targetTile.gameObject);
-            var aq = new List<Action>();
             
             if (targetTile.activeCharacter == this)
                 return DisplaySpell(new List<OverlayTile>(), SelfSpell, targetTile);
             
-            int distance = pathFinder.GetManhattenDistance(activeTile, targetTile, true);
-            
             if (targetTile.activeCharacter.teamID == teamID)
             {
-                if (distance > characterClass.MoveRange + AllySpell.range) return aq;
-                
                 var path = pathFinder.FindPath(activeTile, targetTile,new List<OverlayTile>());
                 return DisplaySpell(path, AllySpell, targetTile);
             }
             
-            if (distance > characterClass.MoveRange + EnemySpell.range) return aq;
-            
             var enemyPath = pathFinder.FindPath(activeTile, targetTile,new List<OverlayTile>());
-            
-            return DisplaySpell(enemyPath, EnemySpell, targetTile);
+            var movementPath = enemyPath.Take(GetStat(Stats.MoveRange).statValue).ToList();
+            return DisplaySpell(movementPath, EnemySpell, targetTile);
         }
 
         private List<Action> HandleActiveTileWithoutCharacter(OverlayTile targetTile)
@@ -173,36 +162,43 @@ namespace TacticsToolkit
             return positions.Select(position => new Vector3(position.x, position.y + LineOffset, position.z)).ToList();
         }
 
-        private List<Action> DisplaySpell(List<OverlayTile> path, Ability ability, OverlayTile targetTile)
+        private List<Action> DisplaySpell(List<OverlayTile> movementPath, Ability ability, OverlayTile targetTile)
         {
-            var actionQueue = new List<Action>();
+            var tempActionQueue = new List<Action>();
             OverlayManagerV2.Instance.DrawSpell(targetTile, ability);
-            
 
             if(hasMoved)
-                path = new List<OverlayTile>();
-            
-            if (ability.range <= path.Count)
-            {
-                path.RemoveRange(path.Count - ability.range, ability.range);
-                var finalPath = pathRenderer.GeneratePath(path, activeTile.transform.position, -1);
-                RenderPath(finalPath);
-                lineRenderer.positionCount--;
-                
-                var lastPosition = new Vector3(finalPath.Last().x, finalPath.Last().y + LineOffset, finalPath.Last().z);
-                AddArcToLineRenderer(lastPosition, targetTile.transform.position, 2);
-                
-                actionQueue.Add(new Action(finalPath, Action.ActionType.Move, MapManager.Instance.GetOverlayByTransform(finalPath.Last()), this));
-                actionQueue.Add(new Action(finalPath, Action.ActionType.Attack, targetTile, this, ability));
-            }
-            else if (pathFinder.GetManhattenDistance(activeTile, targetTile, true) <= ability.range)
+                movementPath = new List<OverlayTile>();
+
+
+            //if starting tile is in range, attack
+            if (pathFinder.GetManhattenDistance(activeTile, targetTile, true) <= ability.range)
             {
                 ResetLineRenderer();
                 AddArcToLineRenderer(activeTile.transform.position, targetTile.transform.position, 2);
-                actionQueue.Add(new Action(linePositions, Action.ActionType.Attack, targetTile, this, ability));
+                tempActionQueue.Add(new Action(linePositions, Action.ActionType.Attack, targetTile, this, ability));
+                return tempActionQueue;
             }
-            
-            return actionQueue;
+
+            for (int i = 0; i < movementPath.Count; i++)
+            {
+                  if (pathFinder.GetManhattenDistance(movementPath[i],targetTile, true) < ability.range)
+                  {
+                      movementPath = movementPath.Take(i).ToList();
+                      var finalPath = pathRenderer.GeneratePath(movementPath, activeTile.transform.position, -1);
+                      RenderPath(finalPath);
+                      lineRenderer.positionCount--;
+                
+                      var lastPosition = new Vector3(finalPath.Last().x, finalPath.Last().y + LineOffset, finalPath.Last().z);
+                      AddArcToLineRenderer(lastPosition, targetTile.transform.position, 2);
+                
+                      tempActionQueue.Add(new Action(finalPath, Action.ActionType.Move, MapManager.Instance.GetOverlayByTransform(finalPath.Last()), this));
+                      tempActionQueue.Add(new Action(finalPath, Action.ActionType.Attack, targetTile, this, ability));
+                      return tempActionQueue;
+                  }
+            }
+
+            return tempActionQueue;
         }
 
         private void ResetLineRenderer()

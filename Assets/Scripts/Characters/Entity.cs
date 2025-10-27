@@ -70,8 +70,8 @@ namespace TacticsToolkit
         public GameEventGameObject setTarget;
         
         
-        protected bool hasAttacked = false;
-        protected bool hasMoved = false;
+        public bool hasAttacked = false;
+        public bool hasMoved = false;
         
         public List<Action> actionQueue = new List<Action>();
 
@@ -93,6 +93,8 @@ namespace TacticsToolkit
             SetStats();
             requiredExperience = gameConfig.GetRequiredExp(level);
             healthBarManager = GetComponent<HealthBarManager>();
+            
+            healthBarManager.SetHealth(GetStat(Stats.CurrentHealth).statValue, GetStat(Stats.Health).statValue);
             myRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
             initiativeValue = Mathf.RoundToInt(initiativeBase / GetStat(Stats.Speed).statValue);
             initialSpritePosition = myRenderer.transform.position;
@@ -251,7 +253,8 @@ namespace TacticsToolkit
             {
                 statsContainer.CurrentHealth.statValue -= damageToTake;
                 StartCoroutine(ShowDamage());
-                healthBarManager.UpdateCharacterUI();
+                healthBarManager.SetHealth(GetStat(Stats.CurrentHealth).statValue, GetStat(Stats.Health).statValue);
+                
                 if (GetStat(Stats.CurrentHealth).statValue <= 0)
                 {
                     isAlive = false;
@@ -294,7 +297,8 @@ namespace TacticsToolkit
                 statsContainer.CurrentHealth.statValue = statsContainer.Health.statValue;
             
             StartCoroutine(ShowHeal());
-            healthBarManager.UpdateCharacterUI();
+            
+            healthBarManager.SetHealth(GetStat(Stats.CurrentHealth).statValue, GetStat(Stats.Health).statValue);
         }
 
         //basic example if using a defencive stat
@@ -383,7 +387,8 @@ namespace TacticsToolkit
                     scriptableEffect.description);
                 Stat value = statsContainer.getStat(scriptableEffect.GetStatKey());
                 value.ApplySingleStatMod(statMod);
-                healthBarManager.UpdateCharacterUI();
+                
+                healthBarManager.SetHealth(GetStat(Stats.CurrentHealth).statValue, GetStat(Stats.Health).statValue);
             }
         }
 
@@ -393,7 +398,7 @@ namespace TacticsToolkit
             var statMod = new StatModifier(scriptableEffect.statKey, scriptableEffect.Value, scriptableEffect.Duration, scriptableEffect.Operator, scriptableEffect.name, scriptableEffect.description);
             Stat value = statsContainer.getStat(scriptableEffect.GetStatKey());
             value.UndoStatMod(statMod);
-            healthBarManager.UpdateCharacterUI();
+            healthBarManager.SetHealth(GetStat(Stats.CurrentHealth).statValue, GetStat(Stats.Health).statValue);
         }
 
 
@@ -411,7 +416,7 @@ namespace TacticsToolkit
                 value.TickStatMods();
             }
 
-            healthBarManager.UpdateCharacterUI();
+            healthBarManager.SetHealth(GetStat(Stats.CurrentHealth).statValue, GetStat(Stats.Health).statValue);
         }
 
         public List<StatModifier> GetStatModifiers()
@@ -558,6 +563,8 @@ namespace TacticsToolkit
         
         public void EndTurn()
         {
+            hasMoved = false;
+            hasAttacked = false;
             SetIsActive(false);
             myRenderer.material.SetFloat("_Enabled", 0);
             endTurn.Raise();

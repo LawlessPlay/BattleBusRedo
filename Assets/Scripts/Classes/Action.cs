@@ -132,9 +132,13 @@ using UnityEngine;
             if (Ability.includeOrigin)
                 abilityAffectedTiles.Add(Target);
             
+            
             //get in range characters
             foreach (var tile in abilityAffectedTiles)
             {
+                if(Ability.tileFxController)
+                    tile.spellFXController.TriggerFXAnimation(Ability.tileFxController);
+                
                 var targetCharacter = tile.activeCharacter;
                 if (targetCharacter &&  targetCharacter.isAlive)
                 {

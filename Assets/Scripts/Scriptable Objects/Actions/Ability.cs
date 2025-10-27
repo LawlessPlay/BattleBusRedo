@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace TacticsToolkit
@@ -36,6 +37,8 @@ namespace TacticsToolkit
         public bool requiresTarget;
         
         public TooltipSO tooltip;
+        
+        public AnimatorController tileFxController;
 
         public enum AbilityTypes
         {

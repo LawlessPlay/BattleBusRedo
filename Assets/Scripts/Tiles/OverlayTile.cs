@@ -29,6 +29,8 @@ namespace TacticsToolkit
         [HideInInspector]
         public int remainingMovement;
 
+        public TileSpellFXController spellFXController;
+        
         public enum TileColors
         {
             MovementColor,
