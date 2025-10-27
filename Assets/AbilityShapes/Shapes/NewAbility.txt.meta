@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 61bd392de19f37846a499e78b0291dbc
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 238215
+  packageName: Tactics Toolkit
+  packageVersion: 1.1.8
+  assetPath: Assets/LawlessGames/Tactics Toolkit/Abilities/Shapes/NewAbility.txt
+  uploadId: 617594
